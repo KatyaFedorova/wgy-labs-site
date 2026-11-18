@@ -2,14 +2,12 @@
 
 This repo holds the marketing site for **WGY Labs** (short for "We Got You"), Kat's AI ops automation company. The site is already built: `index.html` is a single self-contained page (HTML + CSS + a little JS, Google Fonts only). Don't redesign it; the design is approved.
 
-## First task: publish on GitHub Pages
-1. Create a **public** GitHub repo `KatyaFedorova/wgy-labs-site` (public because Pages on private repos needs a paid plan).
-2. Commit `index.html` (and this file) to `main`, push.
-3. Enable GitHub Pages: deploy from branch `main`, folder `/ (root)`.
-4. Confirm the live URL: `https://katyafedorova.github.io/wgy-labs-site/`.
-5. Later (separate step): custom domain, e.g. `wgylabs.com` → add `CNAME` file + DNS records at the registrar.
-
-Do NOT touch `KatyaFedorova/KatyaFedorova.github.io`; that is Kat's personal site (katfedorova.com).
+## Hosting and email (live since 2026-11-18)
+- Live site: https://wgylabs.com (and www), served by **Cloudflare Pages** project `wgy-labs-site` in Kat's own Cloudflare account (`6cb7c2713b5f88e2e1fa9cef0ea37d23`). Never use Ash's account.
+- Deploy: `CLOUDFLARE_ACCOUNT_ID=6cb7c2713b5f88e2e1fa9cef0ea37d23 npx wrangler pages deploy <dir with index.html> --project-name wgy-labs-site --branch main`. Pushing to GitHub does NOT deploy.
+- Domain: wgylabs.com registered at Cloudflare Registrar, $11.17/yr, auto-renews 2027-11-18. DNS is Cloudflare.
+- Email: hello@wgylabs.com on Zoho Mail Forever Free plan (web/mobile apps only, no IMAP). DNS has Zoho MX, SPF, DKIM (`zmail._domainkey`) and DMARC (p=none).
+- GitHub Pages is switched off for this repo. Do NOT touch `KatyaFedorova/KatyaFedorova.github.io` (Kat's personal site, katfedorova.com).
 
 ## Approved decisions (keep these)
 - **Name:** WGY Labs. Tagline: "We've got your back." Company voice ("we"), founder = Kat. Don't show her surname on the site.
@@ -24,10 +22,10 @@ Do NOT touch `KatyaFedorova/KatyaFedorova.github.io`; that is Kat's personal sit
 - **Honesty rules:** no fake testimonials, logos, client names or results. The hero dashboard and monthly figures are labeled as sample data; keep those labels.
 
 ## Open to-dos (in priority order)
-1. Publish on GitHub Pages (above).
-2. **Mobile menu:** header nav is hidden below 860px; add an accessible menu button.
+1. ~~Publish~~ done (see Hosting).
+2. ~~Mobile menu~~ done.
 3. **Booking form:** currently opens the visitor's email app (mailto to hello@wgylabs.com). Replace with Calendly and/or a form service (e.g. Formspree) once Kat has accounts.
-4. **Domain + email:** buy wgylabs.com (or similar), point to Pages, set up hello@wgylabs.com (the site already uses this address).
+4. ~~Domain + email~~ done.
 5. **Real case study:** Kat did one free project; add it once she gives details + client permission.
 6. **Confirm placeholders with Kat:** 30-day cancellation (FAQ), "reply within one business day", 30% / 5 founding clients, all prices, $150 refund limit in the sample dashboard.
 7. **SEO:** title/meta are set; still to do: keyword research, per-service pages, Open Graph image, sitemap, partner directory listings (Zapier Solution Partner, n8n Expert Partner, Make, Shopify Partner).
