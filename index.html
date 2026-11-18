@@ -55,6 +55,32 @@
   nav.main a{text-decoration:none;color:var(--muted)}
   nav.main a:hover{color:var(--forest)}
   @media (max-width:860px){nav.main{display:none}}
+  /* mobile menu */
+  .bar-actions{display:flex;align-items:center;gap:10px}
+  .menu-btn{display:none;align-items:center;gap:8px;font:inherit;font-size:15px;font-weight:600;color:var(--forest);background:transparent;border:1px solid var(--line-strong);border-radius:var(--radius-sm);padding:11px 14px;cursor:pointer;min-height:44px}
+  .menu-btn:hover{border-color:var(--forest)}
+  .menu-ico,.menu-ico::before,.menu-ico::after{display:block;width:16px;height:2px;background:currentColor;border-radius:2px;position:relative;transition:transform .2s,background .2s}
+  .menu-ico::before,.menu-ico::after{content:"";position:absolute;left:0}
+  .menu-ico::before{top:-5px}.menu-ico::after{top:5px}
+  .menu-btn[aria-expanded=true] .menu-ico{background:transparent}
+  .menu-btn[aria-expanded=true] .menu-ico::before{transform:translateY(5px) rotate(45deg)}
+  .menu-btn[aria-expanded=true] .menu-ico::after{transform:translateY(-5px) rotate(-45deg)}
+  @media (prefers-reduced-motion:reduce){.menu-ico,.menu-ico::before,.menu-ico::after{transition:none}}
+  .mnav{border-top:1px solid var(--line);background:var(--bg);max-height:calc(100vh - 68px);overflow-y:auto}
+  .bar .mnav .wrap{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;height:auto;padding-top:12px;padding-bottom:20px}
+  .mnav-h{margin:4px 0 4px;font-size:13px;font-weight:700;color:var(--faint)}
+  .mnav a{display:block;text-decoration:none;padding:10px 0;border-bottom:1px solid var(--line)}
+  .mnav a b{display:block;color:var(--forest);font-size:16px}
+  .mnav a span{display:block;color:var(--muted);font-size:14px}
+  .mnav-links{display:flex;flex-direction:column;margin-top:16px}
+  .mnav-links a{font-weight:700;color:var(--forest);font-size:17px;padding:12px 0}
+  .mnav-links a:last-child{border-bottom:0}
+  @media (max-width:860px){.menu-btn{display:inline-flex}}
+  @media (min-width:861px){.mnav{display:none!important}}
+  .logo .lw{white-space:nowrap}
+  [id]{scroll-margin-top:84px}
+  @media (max-width:400px){.bar .btn{padding:11px 12px;font-size:14px}.menu-btn{padding:11px 12px}.bar-actions{gap:8px}}
+  @media (max-width:350px){.bar .logo .lw{font-size:21px}.menu-btn{font-size:0;gap:0;padding:11px 13px}}
   .btn{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:#fff;text-decoration:none;font-weight:600;font-size:15px;padding:12px 20px;border-radius:var(--radius-sm);border:1px solid var(--forest)}
   .btn:hover{background:var(--forest-2)}
   .btn.secondary{background:transparent;color:var(--forest);border-color:var(--line-strong)}
@@ -327,8 +353,25 @@
       <a href="#pricing">Pricing</a>
       <a href="#about">About</a>
     </nav>
-    <a class="btn" href="#contact">Book a call</a>
+    <div class="bar-actions">
+      <a class="btn" href="#contact">Book a call</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav"><span class="menu-ico" aria-hidden="true"></span>Menu</button>
+    </div>
   </div>
+  <nav class="mnav" id="mnav" aria-label="Mobile" hidden>
+    <div class="wrap">
+      <p class="mnav-h">Services</p>
+      <a href="#services"><b>Build</b><span>New automations and AI support agents</span></a>
+      <a href="#services"><b>Test</b><span>Prove your AI agent works before launch</span></a>
+      <a href="#checks"><b>Monitor</b><span>Daily checks, fixes and monthly reports</span></a>
+      <a href="#pricing"><b>AI agent health check</b><span>Audit and tune an existing setup</span></a>
+      <div class="mnav-links">
+        <a href="#cases">Case studies</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#about">About</a>
+      </div>
+    </div>
+  </nav>
 </div>
 
 <main>
@@ -652,6 +695,14 @@
     dd.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){dd.removeAttribute('open');});});
     document.addEventListener('click',function(e){if(!dd.contains(e.target))dd.removeAttribute('open');});
     document.addEventListener('keydown',function(e){if(e.key==='Escape')dd.removeAttribute('open');});})();
+</script>
+<script>
+  (function(){var b=document.querySelector('.menu-btn'),m=document.getElementById('mnav');if(!b||!m)return;
+    function set(open){b.setAttribute('aria-expanded',open);m.hidden=!open;}
+    b.addEventListener('click',function(){set(m.hidden);});
+    m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){set(false);});});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden){set(false);b.focus();}});
+    window.matchMedia('(min-width:861px)').addEventListener('change',function(e){if(e.matches)set(false);});})();
 </script>
 <script>
   (function(){var f=document.getElementById('book');if(!f)return;var err=document.getElementById('f-err');
