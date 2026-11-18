@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WGY Labs — Reliable AI automations for Shopify brands</title>
+<meta name="description" content="WGY Labs builds AI support agents and operations automations for Shopify brands, then tests and monitors them every day so nothing fails quietly.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%230D3B2B%27/%3E%3Ctext x=%2732%27 y=%2742%27 text-anchor=%27middle%27 font-family=%27Arial,sans-serif%27 font-weight=%27800%27 font-size=%2734%27 fill=%27%23fff%27%3Ew%3C/text%3E%3Cpath d=%27M17 50Q32 56 47 50%27 fill=%27none%27 stroke=%27%233FCB86%27 stroke-width=%274%27 stroke-linecap=%27round%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F3F7F3;
+    --surface:#FFFFFF;
+    --tint:#E6F0E8;
+    --line:#D3E0D6;
+    --line-strong:#AFC4B5;
+    --forest:#0D3B2B;
+    --forest-2:#164A37;
+    --green:#16A05D;
+    --ink:#10241B;
+    --muted:#526459;
+    --faint:#7A8B81;
+    --sun:#F2C14E;
+    --amber-bg:#FDF1D8;
+    --amber:#8A5A00;
+    --rose:#B8452F;
+    --radius:10px;
+    --radius-sm:6px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Manrope",system-ui,sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:4px}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+  @media (max-width:640px){.wrap{padding:0 16px}}
+  .serif{font-family:"Newsreader",Georgia,serif}
+  h1,h2{font-family:"Newsreader",Georgia,serif;font-weight:500;letter-spacing:-.015em;color:var(--forest)}
+  h3{font-weight:700;letter-spacing:-.01em}
+  .muted{color:var(--muted)}
+
+  .logo{flex-direction:column;align-items:flex-start;gap:0}
+  .logo .lw{font-size:24px;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--forest)}
+  .logo .lw span{font-weight:500}
+  .logo .arc{display:block;width:100%;height:9px;margin-top:2px}
+  .foot .logo{margin-bottom:14px;display:inline-flex}
+  /* header */
+  .bar{border-bottom:1px solid var(--line);background:rgba(243,247,243,.92);backdrop-filter:saturate(1.2) blur(6px);position:sticky;top:0;z-index:10}
+  .bar .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:18px;color:var(--forest)}
+  nav.main{display:flex;gap:30px;font-size:15px;font-weight:600}
+  nav.main a{text-decoration:none;color:var(--muted)}
+  nav.main a:hover{color:var(--forest)}
+  @media (max-width:860px){nav.main{display:none}}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:#fff;text-decoration:none;font-weight:600;font-size:15px;padding:12px 20px;border-radius:var(--radius-sm);border:1px solid var(--forest)}
+  .btn:hover{background:var(--forest-2)}
+  .btn.secondary{background:transparent;color:var(--forest);border-color:var(--line-strong)}
+  .btn.secondary:hover{border-color:var(--forest)}
+  .btn.lg{font-size:16px;padding:14px 24px}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:1fr 1.08fr;gap:64px;align-items:center;padding:72px 0 80px}
+  @media (max-width:1000px){.hero{grid-template-columns:1fr;gap:48px;padding:48px 0 64px}}
+  .kicker{font-size:15px;font-weight:600;color:var(--green);margin:0 0 18px;display:flex;align-items:center;gap:10px}
+  .kicker::before{content:"";width:28px;height:2px;background:var(--green)}
+  h1{font-size:clamp(42px,5.4vw,66px);line-height:1.04;margin:0 0 22px}
+  .lead{font-size:19px;color:var(--muted);max-width:46ch;margin:0 0 30px}
+  .ctas{display:flex;gap:12px;flex-wrap:wrap}
+  .proof{margin-top:32px;padding-top:20px;border-top:1px solid var(--line);font-size:14px;color:var(--muted);max-width:46ch}
+  .proof b{color:var(--ink);font-weight:600}
+
+  /* product figure */
+  figure{margin:0}
+  .app{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 1px 0 rgba(13,59,43,.04),0 30px 60px -36px rgba(13,59,43,.35);overflow:hidden;font-size:14px}
+  .app-top{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);background:#FAFCFA}
+  .app-top .t{font-weight:700;color:var(--forest)}
+  .app-top .s{color:var(--faint);font-size:13px}
+  .app-body{display:grid;grid-template-columns:1.35fr 1fr}
+  @media (max-width:560px){.app-body{grid-template-columns:1fr}}
+  .wf-list{border-right:1px solid var(--line)}
+  @media (max-width:560px){.wf-list{border-right:0;border-bottom:1px solid var(--line)}}
+  .wf{display:grid;grid-template-columns:10px 1fr auto;gap:12px;align-items:center;padding:12px 18px;border-bottom:1px solid #EDF3EE}
+  .wf:last-child{border-bottom:0}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
+  .dot.warn{background:#D99A12}
+  .wf .n{font-weight:600;color:var(--ink);line-height:1.3}
+  .wf .m{display:block;font-weight:400;color:var(--faint);font-size:12.5px}
+  .wf .r{font-size:12.5px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+  .wf.incident{background:#FFFAF0}
+  .side{padding:16px 18px;display:flex;flex-direction:column;gap:16px}
+  .metric .l{font-size:12.5px;color:var(--faint)}
+  .metric .v{font-size:26px;font-weight:700;color:var(--forest);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .metric svg{display:block;width:100%;height:44px;margin-top:4px}
+  .note{background:var(--amber-bg);border-radius:var(--radius-sm);padding:10px 12px;font-size:13px;color:#5C3D00;line-height:1.45}
+  .note b{display:block;color:var(--amber)}
+  figcaption{font-size:13px;color:var(--faint);margin-top:12px}
+
+  /* tools */
+  .tools{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .tools .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px 32px;flex-wrap:wrap}
+  .tools p{margin:0;font-size:14px;color:var(--muted)}
+  .tools ul{list-style:none;margin:0;padding:0;display:flex;gap:28px;flex-wrap:wrap;font-weight:700;color:var(--forest-2);font-size:15px}
+
+  /* sections */
+  section{padding:104px 0}
+  @media (max-width:640px){section{padding:72px 0}}
+  section.surface{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .head{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-bottom:56px}
+  @media (max-width:900px){.head{grid-template-columns:1fr;gap:16px;margin-bottom:40px}}
+  h2{font-size:clamp(32px,3.8vw,48px);line-height:1.08;margin:0}
+  .head p{margin:0;color:var(--muted);max-width:52ch}
+
+  /* problem */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  @media (max-width:900px){.split{grid-template-columns:1fr;gap:40px}}
+  .failures{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+  .failures li{padding:22px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:150px 1fr;gap:20px}
+  @media (max-width:560px){.failures li{grid-template-columns:1fr;gap:4px}}
+  .failures .k{font-weight:700;color:var(--rose);font-size:15px}
+  .failures h3{margin:0 0 4px;font-size:18px}
+  .failures p{margin:0;color:var(--muted);font-size:16px}
+  .stat{margin-top:28px;padding:22px 24px;background:var(--tint);border-radius:var(--radius)}
+  .stat .big{font-family:"Newsreader",Georgia,serif;font-size:40px;line-height:1;color:var(--forest)}
+  .stat p{margin:8px 0 0;font-size:15px;color:var(--muted)}
+  .stat cite{font-style:normal;font-size:13px;color:var(--faint)}
+
+  .timeline{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);overflow:hidden}
+  .tl-head{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line);font-size:14px;font-weight:700}
+  .tl-head div{padding:14px 20px}
+  .tl-head div:first-child{color:var(--rose);border-right:1px solid var(--line)}
+  .tl-head div:last-child{color:var(--green)}
+  .tl-row{display:grid;grid-template-columns:1fr 1fr;font-size:15px}
+  .tl-row > div{padding:12px 20px;border-bottom:1px solid #EDF3EE}
+  .tl-row > div:first-child{border-right:1px solid var(--line)}
+  .tl-row .w{display:block;font-size:12.5px;color:var(--faint);font-weight:600;font-variant-numeric:tabular-nums}
+  .tl-foot{display:grid;grid-template-columns:1fr 1fr}
+  .tl-foot div{padding:16px 20px;font-family:"Newsreader",Georgia,serif;font-size:22px}
+  .tl-foot div:first-child{color:var(--rose);border-right:1px solid var(--line);background:#FCF5F3}
+  .tl-foot div:last-child{color:var(--forest);background:var(--tint)}
+
+  /* services */
+  .services{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--forest)}
+  @media (max-width:900px){.services{grid-template-columns:1fr}}
+  .svc{padding:32px 32px 8px 0}
+  .svc + .svc{padding-left:32px;border-left:1px solid var(--line)}
+  @media (max-width:900px){.svc,.svc + .svc{padding:28px 0;border-left:0;border-bottom:1px solid var(--line)}}
+  .svc h3{font-family:"Newsreader",Georgia,serif;font-weight:500;font-size:32px;color:var(--forest);margin:0 0 6px;letter-spacing:-.01em}
+  .svc .sum{margin:0 0 18px;color:var(--muted)}
+  .svc h4{font-size:13px;font-weight:700;color:var(--faint);margin:0 0 8px}
+  .svc ul{margin:0 0 20px;padding:0;list-style:none}
+  .svc li{padding:7px 0 7px 22px;position:relative;font-size:15.5px;border-top:1px dashed var(--line)}
+  .svc li::before{content:"";position:absolute;left:0;top:15px;width:10px;height:6px;border-left:2px solid var(--green);border-bottom:2px solid var(--green);transform:rotate(-45deg)}
+
+  nav.main{align-items:center}
+  details.dd,details.dd:last-child{position:relative;border:0}
+  .dd summary{padding:0;font-size:15px;font-weight:600}
+  .dd summary::after{position:static;right:auto;top:auto;border-width:0 2px 2px 0}
+  .dd[open] summary::after{top:auto;transform:rotate(-135deg) translateY(-1px)}
+  .dd summary{list-style:none;cursor:pointer;color:var(--muted);display:flex;align-items:center;gap:6px}
+  .dd summary::-webkit-details-marker{display:none}
+  .dd summary::after{content:"";width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px)}
+  .dd summary:hover,.dd[open] summary{color:var(--forest)}
+  .dd-menu{position:absolute;top:calc(100% + 14px);left:-16px;width:300px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 20px 40px -24px rgba(13,59,43,.35);padding:8px;display:flex;flex-direction:column}
+  .dd-menu a{display:block;padding:10px 12px;border-radius:var(--radius-sm);text-decoration:none}
+  .dd-menu a:hover{background:var(--tint)}
+  .dd-menu b{display:block;color:var(--forest);font-size:15px}
+  .dd-menu span{display:block;color:var(--muted);font-size:13.5px;font-weight:500}
+  /* case studies */
+  .cases{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media (max-width:960px){.cases{grid-template-columns:1fr}}
+  .case{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column}
+  .case .lab{align-self:flex-start;font-size:12.5px;font-weight:700;color:var(--amber);background:var(--amber-bg);padding:3px 10px;border-radius:99px;margin-bottom:14px}
+  .case .who{font-size:14px;color:var(--faint);font-weight:600}
+  .case h3{font-family:"Newsreader",Georgia,serif;font-weight:500;font-size:25px;line-height:1.15;color:var(--forest);margin:4px 0 16px;letter-spacing:-.01em}
+  .case dl{margin:0;display:grid;gap:12px}
+  .case dt{font-size:13px;font-weight:700;color:var(--faint)}
+  .case dd{margin:2px 0 0;font-size:15.5px}
+  .cases-note{margin-top:18px;font-size:14px;color:var(--muted)}
+  /* checks table */
+  table{width:100%;border-collapse:collapse;font-size:15.5px}
+  .tbl{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  th{text-align:left;font-size:13px;font-weight:700;color:var(--faint);padding:14px 20px;border-bottom:1px solid var(--line);background:#FAFCFA}
+  td{padding:16px 20px;border-bottom:1px solid #EDF3EE;vertical-align:top}
+  tr:last-child td{border-bottom:0}
+  td:first-child{font-weight:600;color:var(--forest);width:30%}
+  td.freq{white-space:nowrap;color:var(--muted);width:14%}
+  @media (max-width:720px){
+    .tbl table,.tbl tbody,.tbl tr,.tbl td{display:block;width:100%}
+    .tbl thead{display:none}
+    .tbl tr{padding:14px 18px;border-bottom:1px solid var(--line)}
+    .tbl tr:last-child{border-bottom:0}
+    .tbl td{padding:2px 0;border:0;width:auto}
+    td.freq{font-size:14px}
+  }
+
+  /* process */
+  .process{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s;position:relative}
+  @media (max-width:900px){.process{grid-template-columns:1fr 1fr;row-gap:36px}}
+  @media (max-width:560px){.process{grid-template-columns:1fr}}
+  .process li{counter-increment:s;padding:0 28px 0 0;position:relative}
+  .process li::before{content:counter(s);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--forest);color:#fff;font-weight:700;font-size:15px;position:relative;z-index:1;margin-bottom:18px}
+  .process li::after{content:"";position:absolute;left:36px;right:0;top:18px;height:1px;background:var(--line-strong)}
+  .process li:last-child::after{display:none}
+  @media (max-width:900px){.process li::after{display:none}}
+  .process .when{font-size:13px;font-weight:700;color:var(--green)}
+  .process h3{margin:2px 0 8px;font-size:19px}
+  .process p{margin:0;color:var(--muted);font-size:15.5px}
+
+  /* pricing */
+  .plans{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);overflow:hidden}
+  @media (max-width:1000px){.plans{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.plans{grid-template-columns:1fr}}
+  .plan{padding:28px 24px;border-right:1px solid var(--line);display:flex;flex-direction:column}
+  .plan:last-child{border-right:0}
+  @media (max-width:1000px){.plan:nth-child(2){border-right:0}.plan:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+  @media (max-width:560px){.plan{border-right:0;border-bottom:1px solid var(--line)}.plan:last-child{border-bottom:0}}
+  .plan.core{background:var(--forest);color:#E6F0E8}
+  .plan .type{font-size:13px;font-weight:700;color:var(--faint)}
+  .plan.core .type{color:#9CC7AF}
+  .plan h3{margin:4px 0 14px;font-size:20px}
+  .plan.core h3{color:#fff}
+  .plan .price{font-family:"Newsreader",Georgia,serif;font-size:42px;line-height:1;color:var(--forest);font-variant-numeric:lining-nums}
+  .plan.core .price{color:#fff}
+  .plan .unit{font-size:14px;color:var(--muted);margin-top:6px}
+  .plan.core .unit{color:#B4D3C0}
+  .plan ul{list-style:none;margin:20px 0 0;padding:16px 0 0;border-top:1px solid var(--line);font-size:15px}
+  .plan.core ul{border-top-color:#2D5A47}
+  .plan li{padding:4px 0}
+  .plan .rec{margin-top:auto;padding-top:20px;font-size:13px;color:var(--sun);font-weight:700}
+  .pricing-notes{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:18px;font-size:14px;color:var(--muted)}
+
+  /* about */
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  @media (max-width:900px){.about{grid-template-columns:1fr;gap:36px}}
+  .about p{margin:0 0 16px;max-width:56ch}
+  .founder{display:flex;gap:16px;align-items:center;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:28px}
+  .avatar{flex:none;width:56px;height:56px;border-radius:50%;background:var(--forest);color:var(--sun);display:grid;place-items:center;font-family:"Newsreader",Georgia,serif;font-size:26px}
+  .founder b{display:block;color:var(--forest)}
+  .founder span{font-size:15px;color:var(--muted)}
+  .standards{list-style:none;margin:0;padding:0;counter-reset:none}
+  .standards li{padding:20px 0;border-top:1px solid var(--line)}
+  .standards li:last-child{border-bottom:1px solid var(--line)}
+  .standards h3{margin:0 0 4px;font-size:17px;color:var(--forest)}
+  .standards p{margin:0;color:var(--muted);font-size:15.5px}
+
+  /* faq */
+  .faq{max-width:820px}
+  details{border-top:1px solid var(--line)}
+  details:last-child{border-bottom:1px solid var(--line)}
+  summary{list-style:none;cursor:pointer;padding:22px 40px 22px 0;font-weight:600;font-size:18px;color:var(--forest);position:relative}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"";position:absolute;right:6px;top:30px;width:10px;height:10px;border-right:2px solid var(--forest);border-bottom:2px solid var(--forest);transform:rotate(45deg);transition:transform .2s}
+  details[open] summary::after{transform:rotate(-135deg);top:34px}
+  details p{margin:0 0 22px;color:var(--muted);max-width:68ch}
+  @media (prefers-reduced-motion:reduce){summary::after{transition:none}}
+
+  /* contact */
+  .contact{background:var(--forest);color:#E6F0E8}
+  .contact .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:end;padding-top:96px;padding-bottom:96px}
+  @media (max-width:900px){.contact .wrap{grid-template-columns:1fr;gap:28px;padding-top:72px;padding-bottom:72px}}
+  .contact h2{color:#fff;font-size:clamp(34px,4.4vw,56px)}
+  .contact p{margin:0 0 24px;color:#B4D3C0;max-width:44ch}
+  .contact .btn{background:var(--sun);border-color:var(--sun);color:var(--forest)}
+  .contact .btn:hover{background:#F6CD68}
+  .contact .btn.secondary{background:transparent;color:#fff;border-color:#4C7562}
+
+  .contact .wrap{align-items:start}
+  .call-list{list-style:none;margin:0;padding:0;color:#D5E6DB}
+  .call-list li{padding:10px 0 10px 28px;border-top:1px solid #2D5A47;position:relative}
+  .call-list li::before{content:"";position:absolute;left:2px;top:17px;width:10px;height:6px;border-left:2px solid #3FCB86;border-bottom:2px solid #3FCB86;transform:rotate(-45deg)}
+  .book{background:#FFFFFF;color:var(--ink);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;gap:16px}
+  .f2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media (max-width:560px){.f2{grid-template-columns:1fr}.book{padding:20px}}
+  .field{display:flex;flex-direction:column;gap:6px;border:0;margin:0;padding:0;min-width:0}
+  .field label,.field legend{font-size:14px;font-weight:600;color:var(--forest);padding:0}
+  .field input:not([type=checkbox]),.field select,.field textarea{font:inherit;font-size:16px;color:var(--ink);background:#FAFCFA;border:1px solid var(--line-strong);border-radius:var(--radius-sm);padding:11px 12px;width:100%}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--green);outline-offset:1px;border-color:var(--green)}
+  .checks{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;margin-top:4px}
+  @media (max-width:560px){.checks{grid-template-columns:1fr}}
+  .checks label{font-weight:500;color:var(--ink);display:flex;gap:10px;align-items:center;font-size:15px;min-height:28px}
+  .checks input{width:18px;height:18px;accent-color:var(--forest)}
+  .book .btn{background:var(--forest);border-color:var(--forest);color:#fff;justify-content:center;cursor:pointer;font-family:inherit}
+  .book .btn:hover{background:var(--forest-2)}
+  .err{margin:0;color:var(--rose);font-size:14px;font-weight:600;min-height:0}
+  .err:empty{display:none}
+  .contact .book .form-note{margin:-6px 0 0;max-width:none;font-size:13px;color:var(--faint);text-align:center}
+  .contact .book .err{max-width:none;margin:0}
+  .contact h2{margin-bottom:20px}
+  .offer{margin-top:24px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;padding:22px 24px;border:1px dashed var(--green);border-radius:var(--radius);background:var(--surface)}
+  @media (max-width:640px){.offer{grid-template-columns:1fr;gap:8px}}
+  .offer b{font-family:"Newsreader",Georgia,serif;font-weight:500;font-size:24px;color:var(--forest)}
+  .offer p{margin:0;color:var(--muted);font-size:15.5px}
+  footer{background:#0A2E21;color:#9CB8A8;font-size:14px}
+  .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding:56px 0 40px}
+  @media (max-width:860px){.foot{grid-template-columns:1fr 1fr;gap:32px}}
+  .foot h4{color:#fff;font-size:14px;margin:0 0 12px}
+  .foot ul{list-style:none;margin:0;padding:0}
+  .foot li{padding:3px 0}
+  .foot a{text-decoration:none}
+  .foot a:hover{color:#fff}
+  .foot .brand{color:#fff;margin-bottom:12px}
+  .legal{border-top:1px solid #1E4A39;padding:20px 0 28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wrap">
+    <a class="brand logo" href="#" aria-label="WGY Labs home">
+      <span class="lw">wgy<span> labs</span></span>
+      <svg class="arc" viewBox="0 0 250 26" aria-hidden="true"><path d="M6 6Q125 34 244 6" fill="none" stroke="#16A05D" stroke-width="9" stroke-linecap="round"/></svg>
+    </a>
+    <nav class="main" aria-label="Main">
+      <details class="dd">
+        <summary>Services</summary>
+        <div class="dd-menu">
+          <a href="#services"><b>Build</b><span>New automations and AI support agents</span></a>
+          <a href="#services"><b>Test</b><span>Prove your AI agent works before launch</span></a>
+          <a href="#checks"><b>Monitor</b><span>Daily checks, fixes and monthly reports</span></a>
+          <a href="#pricing"><b>AI agent health check</b><span>Audit and tune an existing setup</span></a>
+        </div>
+      </details>
+      <a href="#cases">Case studies</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="btn" href="#contact">Book a call</a>
+  </div>
+</div>
+
+<main>
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <p class="kicker">We’ve got your back.</p>
+      <h1>Your automations shouldn’t fail quietly.</h1>
+      <p class="lead">WGY Labs builds AI support agents and operations automations for Shopify brands, then tests and monitors them every day, so you hear about problems before your customers do.</p>
+      <div class="ctas">
+        <a class="btn lg" href="#contact">Book a free 20-minute call</a>
+        <a class="btn lg secondary" href="#pricing">See pricing</a>
+      </div>
+      <p class="proof"><b>Founded by a test automation engineer.</b> Seven years of making sure software doesn’t break in front of users, now applied to your AI and automations.</p>
+    </div>
+
+    <figure>
+      <div class="app" role="img" aria-label="Sample health view for a store: six automations, five healthy and one order-sync incident caught and resolved; 99.4% successful runs over 30 days; 1,840 support tickets handled by AI this month.">
+        <div class="app-top"><span class="t">Automation health</span><span class="s">Sample store, today 09:00</span></div>
+        <div class="app-body">
+          <div class="wf-list">
+            <div class="wf"><span class="dot"></span><span class="n">Support agent<span class="m">Order status, returns, edits</span></span><span class="r">312 replies<br>checked</span></div>
+            <div class="wf incident"><span class="dot warn"></span><span class="n">Order sync to 3PL<span class="m">Stopped 03:12, fixed 08:40</span></span><span class="r">Resolved</span></div>
+            <div class="wf"><span class="dot"></span><span class="n">Refund approvals<span class="m">Limit $150, human above</span></span><span class="r">0 over limit</span></div>
+            <div class="wf"><span class="dot"></span><span class="n">Low-stock alerts<span class="m">14 SKUs watched</span></span><span class="r">Ran 08:00</span></div>
+            <div class="wf"><span class="dot"></span><span class="n">Review replies<span class="m">Drafts for approval</span></span><span class="r">Ran 08:15</span></div>
+            <div class="wf"><span class="dot"></span><span class="n">Weekly KPI report<span class="m">Sent Mondays</span></span><span class="r">Ran Mon</span></div>
+          </div>
+          <div class="side">
+            <div class="metric">
+              <div class="l">Successful runs, last 30 days</div>
+              <div class="v">99.4%</div>
+              <svg viewBox="0 0 200 44" preserveAspectRatio="none" aria-hidden="true">
+                <polyline fill="none" stroke="#16A05D" stroke-width="2" points="0,10 14,9 28,11 42,8 56,10 70,9 84,8 98,10 112,9 126,30 140,10 154,9 168,8 182,9 200,8"/>
+                <circle cx="126" cy="30" r="3.5" fill="#D99A12"/>
+              </svg>
+            </div>
+            <div class="metric">
+              <div class="l">Tickets handled by AI this month</div>
+              <div class="v">1,840</div>
+            </div>
+            <div class="note"><b>Incident report</b>Shopify app update changed a field name. Mapping fixed, 37 orders re-sent. No customer impact.</div>
+          </div>
+        </div>
+      </div>
+      <figcaption>Sample daily health view. Figures are illustrative.</figcaption>
+    </figure>
+  </div>
+</div>
+
+<div class="tools">
+  <div class="wrap">
+    <p>We work inside the tools you already use</p>
+    <ul><li>Shopify</li><li>Shopify Flow</li><li>Gorgias</li><li>Klaviyo</li><li>n8n</li><li>Make</li><li>Zapier</li></ul>
+  </div>
+</div>
+
+<section id="problem">
+  <div class="wrap">
+    <div class="head">
+      <h2>Most automations don’t fail at launch. They fail months later, and nobody notices.</h2>
+      <p>Apps update, APIs change and AI models drift. Without someone watching, a broken workflow can run for days before a customer complains.</p>
+    </div>
+    <div class="split">
+      <div>
+        <ul class="failures">
+          <li><span class="k">Silent failure</span><div><h3>It stopped, and nobody noticed</h3><p>A workflow fails at 3am. Orders don’t sync, emails don’t send, and you find out from an angry customer.</p></div></li>
+          <li><span class="k">No handover</span><div><h3>Only one freelancer understands it</h3><p>No documentation, built in someone else’s account. When they move on, nobody can fix it.</p></div></li>
+          <li><span class="k">Untested AI</span><div><h3>The AI agent says things it shouldn’t</h3><p>Wrong refund rules, invented policies, missed handovers. It was never tested against real customer messages.</p></div></li>
+        </ul>
+        <div class="stat">
+          <div class="big">40%+</div>
+          <p>of agentic AI projects are expected to be cancelled by the end of 2027, due to rising costs, unclear value or weak risk controls.</p>
+          <cite>Gartner, June 2025</cite>
+        </div>
+      </div>
+      <div class="timeline" aria-label="Example: the same broken order sync, with and without monitoring">
+        <div class="tl-head"><div>Without monitoring</div><div>With WGY Labs</div></div>
+        <div class="tl-row"><div><span class="w">Mon 03:12</span>Order sync to your warehouse stops</div><div><span class="w">Mon 03:12</span>Order sync to your warehouse stops</div></div>
+        <div class="tl-row"><div><span class="w">Tue to Fri</span>Orders pile up unshipped</div><div><span class="w">Mon 08:02</span>Daily check flags the failed runs</div></div>
+        <div class="tl-row"><div><span class="w">Day 9</span>Customers ask “Where is my order?”</div><div><span class="w">Mon 08:40</span>Cause found, fixed, orders re-sent</div></div>
+        <div class="tl-row"><div><span class="w">Day 10</span>You find the cause and start refunds</div><div><span class="w">Mon 09:00</span>You get a short incident note</div></div>
+        <div class="tl-foot"><div>Found after 9 days</div><div>Fixed before breakfast</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="surface">
+  <div class="wrap">
+    <div class="head">
+      <h2>We build it, test it, and keep it working.</h2>
+      <p>Our approach comes from software quality engineering. Every automation is treated like production software: tested before launch and monitored after it.</p>
+    </div>
+    <div class="services">
+      <div class="svc">
+        <h3>Build</h3>
+        <p class="sum">New automations for the work your team still does by hand.</p>
+        <h4>Typical work</h4>
+        <ul><li>AI support agents for order status, returns and edits</li><li>Order, inventory and 3PL workflows</li><li>Reporting and marketing operations</li></ul>
+      </div>
+      <div class="svc">
+        <h3>Test</h3>
+        <p class="sum">Evidence your AI agent works before customers see it.</p>
+        <h4>Typical work</h4>
+        <ul><li>Test sets built from your real tickets</li><li>Re-testing on every prompt or model change</li><li>Health checks for existing Gorgias, Shopify Flow and AI agent setups</li></ul>
+      </div>
+      <div class="svc">
+        <h3>Monitor</h3>
+        <p class="sum">Daily checks and monthly upkeep, so everything keeps working.</p>
+        <h4>Typical work</h4>
+        <ul><li>Alerts when anything stops or drifts</li><li>Monthly quality and savings report</li><li>Fixes when apps and APIs change</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cases">
+  <div class="wrap">
+    <div class="head">
+      <h2>Case studies</h2>
+      <p>Typical projects for Shopify brands. Our first client case studies, with real results, are being written up now.</p>
+    </div>
+    <div class="cases">
+      <article class="case">
+        <span class="lab">Example project</span>
+        <span class="who">Skincare brand, ~2,000 orders a month</span>
+        <h3>An AI agent for order status and returns</h3>
+        <dl>
+          <div><dt>Problem</dt><dd>Two people spend most of their day answering “where is my order?” and return requests.</dd></div>
+          <div><dt>What we do</dt><dd>Build an AI agent in their helpdesk, tested on past tickets, with refunds above a set limit sent to a person.</dd></div>
+          <div><dt>What we measure</dt><dd>Tickets resolved by AI, answer accuracy, hours saved each week.</dd></div>
+        </dl>
+      </article>
+      <article class="case">
+        <span class="lab">Example project</span>
+        <span class="who">Apparel brand using a 3PL warehouse</span>
+        <h3>Monitoring for order sync and stock alerts</h3>
+        <dl>
+          <div><dt>Problem</dt><dd>Order sync to the warehouse broke twice after app updates, and nobody noticed for days.</dd></div>
+          <div><dt>What we do</dt><dd>Add daily checks on every workflow, alerts on failures, and fixes when apps change.</dd></div>
+          <div><dt>What we measure</dt><dd>Time to detect and fix issues, missed orders, successful runs.</dd></div>
+        </dl>
+      </article>
+      <article class="case">
+        <span class="lab">Example project</span>
+        <span class="who">Home goods brand already using an AI agent</span>
+        <h3>A health check for an existing AI support setup</h3>
+        <dl>
+          <div><dt>Problem</dt><dd>The AI agent resolves fewer tickets than promised and sometimes gives wrong policy answers.</dd></div>
+          <div><dt>What we do</dt><dd>Build a test set from real tickets, find where it fails, and tune its rules and handovers.</dd></div>
+          <div><dt>What we measure</dt><dd>Automation rate and wrong answers, before and after.</dd></div>
+        </dl>
+      </article>
+    </div>
+    <p class="cases-note">These are illustrative examples of our work, not client results.</p>
+  </div>
+</section>
+
+<section id="checks">
+  <div class="wrap">
+    <div class="head">
+      <h2>What we monitor, and what it catches</h2>
+      <p>Monitoring isn’t only “is it running.” We check that each automation does the right thing, with the right data, inside the limits you set.</p>
+    </div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th scope="col">Check</th><th scope="col">What it catches</th><th scope="col">How often</th></tr></thead>
+        <tbody>
+          <tr><td>Run health</td><td>Workflows that stopped, failed or slowed down, including silent failures with no error message.</td><td class="freq">Continuous</td></tr>
+          <tr><td>AI answer quality</td><td>A sample of real AI replies scored for accuracy, tone and correct policy. Catches made-up answers early.</td><td class="freq">Daily</td></tr>
+          <tr><td>Money and limits</td><td>Refunds, discounts or credits outside the rules you approved. Anything above the limit goes to a person.</td><td class="freq">Every action</td></tr>
+          <tr><td>Data mapping</td><td>Field and API changes after app updates that send wrong or incomplete data between tools.</td><td class="freq">Daily</td></tr>
+          <tr><td>Regression tests</td><td>Changes in behaviour after a prompt, model or app update, tested against your saved test set.</td><td class="freq">Every change</td></tr>
+          <tr><td>Business results</td><td>Hours saved, tickets resolved and handover rate, reported so you can see what it’s worth.</td><td class="freq">Monthly</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="process" class="surface">
+  <div class="wrap">
+    <div class="head">
+      <h2>How an engagement runs</h2>
+      <p>Clear steps and fixed scopes. Everything is built in your accounts and documented, so you’re never locked in.</p>
+    </div>
+    <ol class="process">
+      <li><span class="when">Week 1</span><h3>Audit</h3><p>We review your tickets, tools and manual tasks, then give you a ranked plan with expected savings.</p></li>
+      <li><span class="when">Weeks 2 to 4</span><h3>Build</h3><p>We build the highest-value items in your accounts, with documentation as we go.</p></li>
+      <li><span class="when">Before launch</span><h3>Test</h3><p>We test against your real data and launch alongside your team, with limits and human approval where money is involved.</p></li>
+      <li><span class="when">Every month</span><h3>Monitor</h3><p>Daily checks, fixes when things change, and a monthly report on reliability and savings.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="head">
+      <h2>Published pricing</h2>
+      <p>Fixed prices, no surprise hours. Already running automations or an AI agent? Start with a health check.</p>
+    </div>
+    <div class="plans">
+      <div class="plan">
+        <span class="type">One-off</span><h3>Audit</h3>
+        <div class="price">$750</div><div class="unit">credited toward a build</div>
+        <ul><li>Ticket and task analysis</li><li>Ranked automation plan</li><li>Expected time and cost savings</li></ul>
+      </div>
+      <div class="plan">
+        <span class="type">Project</span><h3>Build</h3>
+        <div class="price">$2,500+</div><div class="unit">per workflow package</div>
+        <ul><li>Built in your accounts</li><li>Tested against your data</li><li>Full documentation and handover</li></ul>
+      </div>
+      <div class="plan core">
+        <span class="type">Monthly</span><h3>Monitor</h3>
+        <div class="price">$750</div><div class="unit">per month</div>
+        <ul><li>Daily checks and alerts</li><li>Fixes when apps change</li><li>Monthly reliability report</li></ul>
+        <span class="rec">Chosen by most clients</span>
+      </div>
+      <div class="plan">
+        <span class="type">Monthly</span><h3>Monitor and grow</h3>
+        <div class="price">$2,000</div><div class="unit">per month</div>
+        <ul><li>Everything in Monitor</li><li>One new automation each month</li><li>Regression tests on every change</li></ul>
+      </div>
+    </div>
+    <div class="offer"><b>Founding clients: 30% off</b><p>Our first five brands get 30% off their first build, in return for a short testimonial and permission to publish the results as a case study.</p></div>
+    <div class="pricing-notes"><span>AI agent health check for existing setups from $1,000.</span><span>All prices in USD, excluding your own software subscriptions.</span></div>
+  </div>
+</section>
+
+<section id="about" class="surface">
+  <div class="wrap">
+    <div class="about">
+      <div>
+        <h2>Built by testers, not hype.</h2>
+        <p style="margin-top:20px">WGY stands for “We Got You.” We started WGY Labs to fix the part of AI automation most providers skip: making sure it keeps working, and stays safe, long after launch.</p>
+        <p>We work with Shopify brands worldwide, remotely and in English.</p>
+        <div class="founder">
+          <span class="avatar" aria-hidden="true">K</span>
+          <div><b>Kat, founder</b><span>Seven years in QA and test automation, now building and evaluating AI systems.</span></div>
+        </div>
+      </div>
+      <ul class="standards">
+        <li><h3>A named owner for every client</h3><p>You always know who is responsible for your automations.</p></li>
+        <li><h3>Your accounts, your data, your documentation</h3><p>Nothing runs on our private infrastructure unless you ask for it. No lock-in.</p></li>
+        <li><h3>Tested before launch, checked every day</h3><p>The same standards used for production software.</p></li>
+        <li><h3>People approve anything involving money</h3><p>AI handles the routine. Refunds and credits above your limits always go to a person.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="head"><h2>Questions brands ask us</h2><p></p></div>
+    <div class="faq">
+      <details><summary>Do we need to have automations already?</summary><p>No. Most clients start with an audit and a first build. If you already have automations or an AI support agent, we start with a health check instead.</p></details>
+      <details><summary>Who owns what you build?</summary><p>You do. Everything is built in your own Shopify, helpdesk and automation accounts, with documentation your team can read.</p></details>
+      <details><summary>What happens when something breaks?</summary><p>Our checks flag it, we fix it, and you get a short note explaining what happened and what changed. Fixes for things we monitor are included in your plan.</p></details>
+      <details><summary>Which tools do you work with?</summary><p>Shopify and Shopify Flow, Gorgias, Klaviyo, n8n, Make and Zapier, plus custom AI agents where off-the-shelf tools fall short.</p></details>
+      <details><summary>Can we cancel the monthly plan?</summary><p>Yes, with 30 days’ notice. Because everything lives in your accounts with documentation, you keep it all.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Find out what’s failing quietly in your store.</h2>
+      <p>Start with a free 20-minute intro call. We check whether we’re a good fit and outline the next steps. The in-depth review of your setup happens in the paid audit.</p>
+      <ul class="call-list">
+        <li>Answer four quick questions so we can prepare</li>
+        <li>We reply within one business day to set a time</li>
+        <li>No obligation, no sales pressure</li>
+      </ul>
+    </div>
+    <form class="book" id="book" novalidate>
+      <div class="f2">
+        <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+      </div>
+      <div class="field"><label for="f-store">Store website</label><input id="f-store" name="store" type="url" placeholder="https://yourstore.com" autocomplete="url"></div>
+      <div class="field"><label for="f-orders">Orders per month</label>
+        <select id="f-orders" name="orders" required>
+          <option value="">Choose one</option>
+          <option>Under 500</option><option>500 to 2,000</option><option>2,000 to 10,000</option><option>Over 10,000</option>
+        </select></div>
+      <fieldset class="field"><legend>What do you need help with?</legend>
+        <div class="checks">
+          <label><input type="checkbox" name="need" value="New automations"> New automations</label>
+          <label><input type="checkbox" name="need" value="AI support agent"> AI support agent</label>
+          <label><input type="checkbox" name="need" value="Fix or monitor existing setup"> Fix or monitor setup</label>
+          <label><input type="checkbox" name="need" value="Not sure yet"> Not sure yet</label>
+        </div>
+      </fieldset>
+      <div class="field"><label for="f-msg">What does your team still do by hand?</label><textarea id="f-msg" name="message" rows="3"></textarea></div>
+      <p class="err" id="f-err" role="alert"></p>
+      <button class="btn lg" type="submit">Request a free intro call</button>
+      <p class="form-note">Opens your email app with your answers filled in.</p>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand logo" href="#" aria-label="WGY Labs home"><span class="lw" style="color:#fff">wgy<span> labs</span></span><svg class="arc" viewBox="0 0 250 26" aria-hidden="true"><path d="M6 6Q125 34 244 6" fill="none" stroke="#3FCB86" stroke-width="9" stroke-linecap="round"/></svg></a>
+        <p style="margin:0;max-width:30ch">Reliable AI automations for Shopify brands. We’ve got your back.</p>
+      </div>
+      <div><h4>Services</h4><ul><li><a href="#services">Build</a></li><li><a href="#services">Test</a></li><li><a href="#checks">Monitor</a></li><li><a href="#pricing">Pricing</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#about">About</a></li><li><a href="#cases">Case studies</a></li><li><a href="#process">Process</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="mailto:hello@wgylabs.com">hello@wgylabs.com</a></li><li><a href="#contact">Book a call</a></li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 WGY Labs</span><span>Working with clients worldwide</span></div>
+  </div>
+</footer>
+<script>
+  (function(){var dd=document.querySelector('.dd');if(!dd)return;
+    dd.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){dd.removeAttribute('open');});});
+    document.addEventListener('click',function(e){if(!dd.contains(e.target))dd.removeAttribute('open');});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')dd.removeAttribute('open');});})();
+</script>
+<script>
+  (function(){var f=document.getElementById('book');if(!f)return;var err=document.getElementById('f-err');
+    f.addEventListener('submit',function(e){e.preventDefault();
+      var n=f.name.value.trim(),em=f.email.value.trim(),o=f.orders.value;
+      if(!n||!em||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)||!o){err.textContent='Please add your name, a valid email and your monthly orders.';(!n?f.name:(!em||!/@/.test(em))?f.email:f.orders).focus();return;}
+      err.textContent='';
+      var needs=[].slice.call(f.querySelectorAll('input[name=need]:checked')).map(function(c){return c.value;}).join(', ')||'Not specified';
+      var body='Name: '+n+'\nEmail: '+em+'\nStore: '+(f.store.value.trim()||'-')+'\nOrders per month: '+o+'\nNeeds: '+needs+'\n\nDone by hand today:\n'+(f.message.value.trim()||'-');
+      window.location.href='mailto:hello@wgylabs.com?subject='+encodeURIComponent('Intro call request: '+n)+'&body='+encodeURIComponent(body);
+    });})();
+</script>
+</body>
+</html>
