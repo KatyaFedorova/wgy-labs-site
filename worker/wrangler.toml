@@ -1,0 +1,18 @@
+name = "wgy-booking"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+account_id = "6cb7c2713b5f88e2e1fa9cef0ea37d23"
+workers_dev = false
+
+routes = [
+  { pattern = "wgylabs.com/api/book", zone_name = "wgylabs.com" },
+  { pattern = "www.wgylabs.com/api/book", zone_name = "wgylabs.com" },
+]
+
+# Cloudflare Email Routing: can only send to verified destination addresses.
+# The recipient is the TO secret (set with `npx wrangler secret put TO`), kept out of this public repo.
+[[send_email]]
+name = "MAILER"
+
+[vars]
+FROM = "bookings@wgylabs.com"

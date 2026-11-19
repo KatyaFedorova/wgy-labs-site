@@ -314,6 +314,17 @@
   .err:empty{display:none}
   .contact .book .form-note{margin:-6px 0 0;max-width:none;font-size:13px;color:var(--faint);text-align:center}
   .contact .book .err{max-width:none;margin:0}
+  .contact .book .ferr{margin:0;max-width:none;color:var(--rose);font-size:13.5px;font-weight:600;line-height:1.4}
+  .ferr:empty{display:none}
+  [hidden]{display:none!important}
+  .field [aria-invalid=true]{border-color:var(--rose)!important;background:#FDF6F4!important}
+  fieldset.field[aria-invalid=true] .checks{outline:1px solid var(--rose);outline-offset:6px;border-radius:4px}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .book .btn[disabled]{opacity:.7;cursor:progress}
+  .book.sent{justify-content:center;min-height:320px}
+  .contact .book.sent p{color:var(--muted);margin:0;max-width:40ch}
+  .contact .book.sent .sent-k{color:var(--green);font-weight:700;font-size:14px}
+  .book.sent h3{font-family:"Newsreader",Georgia,serif;font-weight:500;font-size:30px;color:var(--forest);margin:0}
   .contact h2{margin-bottom:20px}
   .offer{margin-top:24px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;padding:22px 24px;border:1px dashed var(--green);border-radius:var(--radius);background:var(--surface)}
   @media (max-width:640px){.offer{grid-template-columns:1fr;gap:8px}}
@@ -651,28 +662,35 @@
     </div>
     <form class="book" id="book" novalidate>
       <div class="f2">
-        <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
-        <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" maxlength="100" required aria-describedby="e-name"><p class="ferr" id="e-name"></p></div>
+        <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" maxlength="200" required aria-describedby="e-email"><p class="ferr" id="e-email"></p></div>
       </div>
-      <div class="field"><label for="f-store">Store website</label><input id="f-store" name="store" type="url" placeholder="https://yourstore.com" autocomplete="url"></div>
+      <div class="field"><label for="f-store">Store website</label><input id="f-store" name="store" type="text" inputmode="url" placeholder="yourstore.com" autocomplete="url" maxlength="300" required aria-describedby="e-store"><p class="ferr" id="e-store"></p></div>
       <div class="field"><label for="f-orders">Orders per month</label>
-        <select id="f-orders" name="orders" required>
+        <select id="f-orders" name="orders" required aria-describedby="e-orders">
           <option value="">Choose one</option>
           <option>Under 500</option><option>500 to 2,000</option><option>2,000 to 10,000</option><option>Over 10,000</option>
-        </select></div>
-      <fieldset class="field"><legend>What do you need help with?</legend>
+        </select><p class="ferr" id="e-orders"></p></div>
+      <fieldset class="field" id="f-need" aria-describedby="e-need"><legend>What do you need help with?</legend>
         <div class="checks">
           <label><input type="checkbox" name="need" value="New automations"> New automations</label>
           <label><input type="checkbox" name="need" value="AI support agent"> AI support agent</label>
           <label><input type="checkbox" name="need" value="Fix or monitor existing setup"> Fix or monitor setup</label>
           <label><input type="checkbox" name="need" value="Not sure yet"> Not sure yet</label>
         </div>
+        <p class="ferr" id="e-need"></p>
       </fieldset>
-      <div class="field"><label for="f-msg">What does your team still do by hand?</label><textarea id="f-msg" name="message" rows="3"></textarea></div>
+      <div class="field"><label for="f-msg">What does your team still do by hand?</label><textarea id="f-msg" name="message" rows="3" maxlength="3000" required aria-describedby="e-message"></textarea><p class="ferr" id="e-message"></p></div>
+      <div class="hp" aria-hidden="true"><label for="f-company">Company</label><input id="f-company" name="company" tabindex="-1" autocomplete="off"></div>
       <p class="err" id="f-err" role="alert"></p>
-      <button class="btn lg" type="submit">Request a free intro call</button>
-      <p class="form-note">Opens your email app with your answers filled in.</p>
+      <button class="btn lg" type="submit" id="f-submit">Request a free intro call</button>
+      <p class="form-note">All fields are required. We reply within one business day.</p>
     </form>
+    <div class="book sent" id="book-sent" hidden tabindex="-1">
+      <p class="sent-k">Request received</p>
+      <h3>Thanks, we’ve got it.</h3>
+      <p>We’ll email you within one business day to set a time for your free 20-minute call.</p>
+    </div>
   </div>
 </div>
 
@@ -705,14 +723,43 @@
     window.matchMedia('(min-width:861px)').addEventListener('change',function(e){if(e.matches)set(false);});})();
 </script>
 <script>
-  (function(){var f=document.getElementById('book');if(!f)return;var err=document.getElementById('f-err');
-    f.addEventListener('submit',function(e){e.preventDefault();
-      var n=f.name.value.trim(),em=f.email.value.trim(),o=f.orders.value;
-      if(!n||!em||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)||!o){err.textContent='Please add your name, a valid email and your monthly orders.';(!n?f.name:(!em||!/@/.test(em))?f.email:f.orders).focus();return;}
-      err.textContent='';
-      var needs=[].slice.call(f.querySelectorAll('input[name=need]:checked')).map(function(c){return c.value;}).join(', ')||'Not specified';
-      var body='Name: '+n+'\nEmail: '+em+'\nStore: '+(f.store.value.trim()||'-')+'\nOrders per month: '+o+'\nNeeds: '+needs+'\n\nDone by hand today:\n'+(f.message.value.trim()||'-');
-      window.location.href='mailto:hello@wgylabs.com?subject='+encodeURIComponent('Intro call request: '+n)+'&body='+encodeURIComponent(body);
+  (function(){var f=document.getElementById('book');if(!f)return;
+    var err=document.getElementById('f-err'),btn=document.getElementById('f-submit'),done=document.getElementById('book-sent');
+    var EMAIL=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    function url(v){v=v.trim();if(!v)return'';return/^https?:\/\//i.test(v)?v:'https://'+v;}
+    function okUrl(v){try{var u=new URL(v);return(u.protocol==='https:'||u.protocol==='http:')&&/\.[a-z]{2,}$/i.test(u.hostname);}catch(e){return false;}}
+    function needs(){return[].slice.call(f.querySelectorAll('input[name=need]:checked')).map(function(c){return c.value;});}
+    var rules={
+      name:function(){var v=f.elements.name.value.trim();return v.length<2?'Please enter your name.':'';},
+      email:function(){var v=f.email.value.trim();return!v?'Please enter your work email.':!EMAIL.test(v)?'Please enter a valid email, like name@yourstore.com.':'';},
+      store:function(){var v=url(f.store.value);return!v?'Please enter your store website.':!okUrl(v)?'Please enter a valid website, like yourstore.com.':'';},
+      orders:function(){return f.orders.value?'':'Please choose your monthly orders.';},
+      need:function(){return needs().length?'':'Please choose at least one option.';},
+      message:function(){var v=f.message.value.trim();return v.length<10?'Please tell us a little more (at least 10 characters).':'';}
+    };
+    var target={name:f.elements.name,email:f.email,store:f.store,orders:f.orders,need:document.getElementById('f-need'),message:f.message};
+    var touched={};
+    function show(k,msg){var el=target[k];document.getElementById('e-'+k).textContent=msg;if(msg)el.setAttribute('aria-invalid','true');else el.removeAttribute('aria-invalid');}
+    function check(k){var m=rules[k]();show(k,m);return m;}
+    Object.keys(target).forEach(function(k){
+      var el=target[k];
+      el.addEventListener(k==='need'||k==='orders'?'change':'blur',function(){touched[k]=true;check(k);});
+      el.addEventListener('input',function(){if(touched[k])check(k);});
+    });
+    f.addEventListener('submit',function(e){e.preventDefault();err.textContent='';
+      var first=null;Object.keys(rules).forEach(function(k){touched[k]=true;if(check(k)&&!first)first=k;});
+      if(first){var el=target[first];(first==='need'?el.querySelector('input'):el).focus();return;}
+      var data={name:f.elements.name.value.trim(),email:f.email.value.trim(),store:url(f.store.value),orders:f.orders.value,need:needs(),message:f.message.value.trim(),company:f.company.value};
+      btn.disabled=true;btn.textContent='Sending…';
+      fetch('/api/book',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(data)})
+        .then(function(r){return r.json().catch(function(){return{ok:false};}).then(function(j){return{status:r.status,j:j};});})
+        .then(function(res){
+          if(res.j.ok){f.hidden=true;done.hidden=false;done.focus();return;}
+          if(res.j.errors){var k1=null;Object.keys(res.j.errors).forEach(function(k){if(target[k]){show(k,res.j.errors[k]);if(!k1)k1=k;}});if(k1){var el=target[k1];(k1==='need'?el.querySelector('input'):el).focus();}}
+          else throw new Error('send');
+        })
+        .catch(function(){err.textContent='Sorry, your request didn’t go through. Please try again, or email hello@wgylabs.com.';})
+        .then(function(){btn.disabled=false;btn.textContent='Request a free intro call';});
     });})();
 </script>
 </body>

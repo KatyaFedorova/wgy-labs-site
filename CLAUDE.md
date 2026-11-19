@@ -6,7 +6,7 @@ This repo holds the marketing site for **WGY Labs** (short for "We Got You"), Ka
 - Live site: https://wgylabs.com (and www), served by **Cloudflare Pages** project `wgy-labs-site` in Kat's own Cloudflare account (`6cb7c2713b5f88e2e1fa9cef0ea37d23`). Never use Ash's account.
 - Deploy: `CLOUDFLARE_ACCOUNT_ID=6cb7c2713b5f88e2e1fa9cef0ea37d23 npx wrangler pages deploy <dir with index.html> --project-name wgy-labs-site --branch main`. Pushing to GitHub does NOT deploy.
 - Domain: wgylabs.com registered at Cloudflare Registrar, $11.17/yr, auto-renews 2027-11-18. DNS is Cloudflare.
-- Email: hello@wgylabs.com on Zoho Mail Forever Free plan (web/mobile apps only, no IMAP). DNS has Zoho MX, SPF, DKIM (`zmail._domainkey`) and DMARC (p=none).
+- Email: incoming mail to hello@wgylabs.com is forwarded to Kat's Gmail by Cloudflare Email Routing (MX = Cloudflare). Sending is from Zoho Mail Forever Free (mail.zoho.com, display name "Kat at WGY Labs"). SPF includes zohomail.com and _spf.mx.cloudflare.net; DKIM for Zoho (`zmail._domainkey`) and Cloudflare (`cf2024-1._domainkey`); DMARC p=none.
 - GitHub Pages is switched off for this repo. Do NOT touch `KatyaFedorova/KatyaFedorova.github.io` (Kat's personal site, katfedorova.com).
 
 ## Approved decisions (keep these)
@@ -24,7 +24,7 @@ This repo holds the marketing site for **WGY Labs** (short for "We Got You"), Ka
 ## Open to-dos (in priority order)
 1. ~~Publish~~ done (see Hosting).
 2. ~~Mobile menu~~ done.
-3. **Booking form:** currently opens the visitor's email app (mailto to hello@wgylabs.com). Replace with Calendly and/or a form service (e.g. Formspree) once Kat has accounts.
+3. ~~Booking form~~ done: posts to the `worker/` Worker (`wgy-booking`, route wgylabs.com/api/book), which validates and emails Kat via Cloudflare Email Routing `send_email` (from bookings@wgylabs.com; recipient is the `TO` Worker secret, never commit it). Deploy with `cd worker && npx wrangler deploy`. All fields required; validation rules live in both `index.html` and `worker/src/validate.js`, keep them in sync.
 4. ~~Domain + email~~ done.
 5. **Real case study:** Kat did one free project; add it once she gives details + client permission.
 6. **Confirm placeholders with Kat:** 30-day cancellation (FAQ), "reply within one business day", 30% / 5 founding clients, all prices, $150 refund limit in the sample dashboard.
