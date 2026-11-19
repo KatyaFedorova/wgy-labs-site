@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>WGY Labs — Reliable AI automations for Shopify brands</title>
-<meta name="description" content="WGY Labs builds AI support agents and operations automations for Shopify brands, then tests and monitors them every day so nothing fails quietly.">
+<meta name="description" content="WGY Labs automates operations for Shopify brands: we cut the steps you don’t need, automate the rest, and test and monitor it every day so nothing fails quietly. Full handover, yours to keep.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%230D3B2B%27/%3E%3Ctext x=%2732%27 y=%2742%27 text-anchor=%27middle%27 font-family=%27Arial,sans-serif%27 font-weight=%27800%27 font-size=%2734%27 fill=%27%23fff%27%3Ew%3C/text%3E%3Cpath d=%27M17 50Q32 56 47 50%27 fill=%27none%27 stroke=%27%233FCB86%27 stroke-width=%274%27 stroke-linecap=%27round%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -139,6 +139,14 @@
   h2{font-size:clamp(32px,3.8vw,48px);line-height:1.08;margin:0}
   .head p{margin:0;color:var(--muted);max-width:52ch}
 
+  /* where the hours go */
+  .hours-h{max-width:18ch;margin-bottom:48px}
+  .pains{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media (max-width:900px){.pains{grid-template-columns:1fr}}
+  .pain{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+  .pain h3{margin:0 0 8px;font-size:20px;color:var(--forest)}
+  .pain p{margin:0;color:var(--muted);font-size:16px}
+  .hours-foot{margin:32px 0 0;font-size:19px;color:var(--muted);max-width:60ch}
   /* problem */
   .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
   @media (max-width:900px){.split{grid-template-columns:1fr;gap:40px}}
@@ -204,6 +212,11 @@
   .case dl{margin:0;display:grid;gap:12px}
   .case dt{font-size:13px;font-weight:700;color:var(--faint)}
   .case dd{margin:2px 0 0;font-size:15.5px}
+  .case.real{border-color:var(--green);box-shadow:inset 0 3px 0 var(--green);grid-column:1/-1}
+  .case.real h3{font-size:30px;max-width:30ch}
+  .case.real dl{grid-template-columns:repeat(3,1fr);gap:28px}
+  @media (max-width:960px){.case.real dl{grid-template-columns:1fr;gap:12px}.case.real h3{font-size:25px}}
+  .case.real .lab{color:#0B6B3D;background:var(--tint)}
   .cases-note{margin-top:18px;font-size:14px;color:var(--muted)}
   /* checks table */
   table{width:100%;border-collapse:collapse;font-size:15.5px}
@@ -222,6 +235,26 @@
     td.freq{font-size:14px}
   }
 
+  /* stages */
+  .stages{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--bg)}
+  @media (max-width:1100px){.stages{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:600px){.stages{grid-template-columns:1fr}}
+  .stage{padding:26px 22px;display:flex;flex-direction:column;gap:10px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);margin:0 -1px -1px 0}
+  .stage h3{margin:0;font-family:"Newsreader",Georgia,serif;font-weight:500;font-size:26px;line-height:1.1;color:var(--forest)}
+  .stage p{margin:0;color:var(--muted);font-size:15.5px}
+  .st-n{font-size:13px;font-weight:700;color:var(--green)}
+  .st-f{margin-top:auto;padding-top:14px;font-size:13.5px;font-weight:700;color:var(--forest)}
+  .lead-stage{background:var(--forest)}
+  .lead-stage h3{color:#fff}.lead-stage p{color:#C9DDD1}.lead-stage .st-n{color:#3FCB86}.lead-stage .st-f{color:var(--sun)}
+  .care{margin-top:24px;padding:28px;border-radius:var(--radius);background:var(--tint)}
+  .care h3{margin:0 0 16px;font-size:18px;color:var(--forest)}
+  .care-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;counter-reset:c}
+  @media (max-width:1000px){.care-steps{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.care-steps{grid-template-columns:1fr}}
+  .care-steps li{counter-increment:c}
+  .care-steps b{display:block;color:var(--forest);margin-bottom:4px}
+  .care-steps b::before{content:counter(c) ". ";color:var(--green)}
+  .care-steps span{display:block;color:var(--muted);font-size:15px}
   /* process */
   .process{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s;position:relative}
   @media (max-width:900px){.process{grid-template-columns:1fr 1fr;row-gap:36px}}
@@ -391,9 +424,9 @@
     <div>
       <p class="kicker">We’ve got your back.</p>
       <h1>Your automations shouldn’t fail quietly.</h1>
-      <p class="lead">WGY Labs builds AI support agents and operations automations for Shopify brands, then tests and monitors them every day, so you hear about problems before your customers do.</p>
+      <p class="lead">WGY Labs automates the day-to-day operations of Shopify brands. We cut the steps you don’t need, automate the rest, then test and monitor it every day, so you hear about problems before your customers do.</p>
       <div class="ctas">
-        <a class="btn lg" href="#contact">Book a free 20-minute call</a>
+        <a class="btn lg" href="#contact">Book a free 30-minute call</a>
         <a class="btn lg secondary" href="#pricing">See pricing</a>
       </div>
       <p class="proof"><b>Founded by a test automation engineer.</b> Seven years of making sure software doesn’t break in front of users, now applied to your AI and automations.</p>
@@ -440,6 +473,19 @@
   </div>
 </div>
 
+<section id="hours" class="surface">
+  <div class="wrap">
+    <p class="kicker">Where the hours go</p>
+    <h2 class="hours-h">Small manual steps add up to a full-time job.</h2>
+    <div class="pains">
+      <div class="pain"><h3>Every order handled twice</h3><p>Order details are copied by hand from Shopify into the 3PL, the helpdesk and a spreadsheet. Every copy is a chance for a typo.</p></div>
+      <div class="pain"><h3>It lives in one person’s head</h3><p>The process works because one person knows the steps. When they’re off sick or move on, it stops.</p></div>
+      <div class="pain"><h3>More orders, more people</h3><p>Each new channel or busy season means another hire, so costs grow as fast as revenue.</p></div>
+    </div>
+    <p class="hours-foot">No two brands lose time in the same place, so we don’t sell a fixed package. We start by looking at how the work really gets done.</p>
+  </div>
+</section>
+
 <section id="problem">
   <div class="wrap">
     <div class="head">
@@ -475,14 +521,14 @@
   <div class="wrap">
     <div class="head">
       <h2>We build it, test it, and keep it working.</h2>
-      <p>Our approach comes from software quality engineering. Every automation is treated like production software: tested before launch and monitored after it.</p>
+      <p>First we spend a week inside your operations and hand you a ranked plan: what to change, and in what order. Then we build it one phase at a time, on n8n or custom code, with AI agents only where they take real work off your team. Each phase is tested before launch and monitored after it.</p>
     </div>
     <div class="services">
       <div class="svc">
         <h3>Build</h3>
-        <p class="sum">New automations for the work your team still does by hand.</p>
+        <p class="sum">Operations automation for the work your team still does by hand.</p>
         <h4>Typical work</h4>
-        <ul><li>AI support agents for order status, returns and edits</li><li>Order, inventory and 3PL workflows</li><li>Reporting and marketing operations</li></ul>
+        <ul><li>Operations review: map the flow and cut steps you don’t need</li><li>Order, inventory and 3PL workflows</li><li>AI support agents for order status, returns and edits</li><li>Reporting and marketing operations</li></ul>
       </div>
       <div class="svc">
         <h3>Test</h3>
@@ -504,17 +550,17 @@
   <div class="wrap">
     <div class="head">
       <h2>Case studies</h2>
-      <p>Typical projects for Shopify brands. Our first client case studies, with real results, are being written up now.</p>
+      <p>Our first client project in full, plus two typical projects for Shopify brands.</p>
     </div>
     <div class="cases">
-      <article class="case">
-        <span class="lab">Example project</span>
-        <span class="who">Skincare brand, ~2,000 orders a month</span>
-        <h3>An AI agent for order status and returns</h3>
+      <article class="case real">
+        <span class="lab">Client project</span>
+        <span class="who">Easi Breezi</span>
+        <h3>The founder needed time to build product. We started with his biggest manual task.</h3>
         <dl>
-          <div><dt>Problem</dt><dd>Two people spend most of their day answering “where is my order?” and return requests.</dd></div>
-          <div><dt>What we do</dt><dd>Build an AI agent in their helpdesk, tested on past tickets, with refunds above a set limit sent to a person.</dd></div>
-          <div><dt>What we measure</dt><dd>Tickets resolved by AI, answer accuracy, hours saved each week.</dd></div>
+          <div><dt>Problem</dt><dd>Easi Breezi’s founder had no time left to develop new versions of the product, so they planned to hire someone for logistics and installation. Some work was already automated, but gaps were still handled by hand, and customers in different countries got a different experience, which was hard to manage and sustain.</dd></div>
+          <div><dt>What we did</dt><dd>We started with one question: which manual task takes most of your day? The answer was arranging installations for customers, so we tackled that first with AI agents and automation, then covered warehouse, logistics and customer updates. Stepping up to the business rules, we found part of the flow didn’t need to exist at all, and removed it.</dd></div>
+          <div><dt>Result</dt><dd>A complicated setup became a much smaller one, with about five steps cut. Easi Breezi got working automation and a clear review of how their operations should run, built to need very few changes as they grow.</dd></div>
         </dl>
       </article>
       <article class="case">
@@ -538,7 +584,7 @@
         </dl>
       </article>
     </div>
-    <p class="cases-note">These are illustrative examples of our work, not client results.</p>
+    <p class="cases-note">The cards marked “Example project” are illustrative examples of our work, not client results.</p>
   </div>
 </section>
 
@@ -566,16 +612,28 @@
 
 <section id="process" class="surface">
   <div class="wrap">
+    <p class="kicker">How we work</p>
     <div class="head">
-      <h2>How an engagement runs</h2>
-      <p>Clear steps and fixed scopes. Everything is built in your accounts and documented, so you’re never locked in.</p>
+      <h2>From first look to looked after</h2>
+      <p>We only build what the audit shows is worth building. Everything lives in your accounts and is documented, so you’re never locked in.</p>
     </div>
-    <ol class="process">
-      <li><span class="when">Week 1</span><h3>Audit</h3><p>We review your tickets, tools and manual tasks, then give you a ranked plan with expected savings.</p></li>
-      <li><span class="when">Weeks 2 to 4</span><h3>Build</h3><p>We build the highest-value items in your accounts, with documentation as we go.</p></li>
-      <li><span class="when">Before launch</span><h3>Test</h3><p>We test against your real data and launch alongside your team, with limits and human approval where money is involved.</p></li>
-      <li><span class="when">Every month</span><h3>Monitor</h3><p>Daily checks, fixes when things change, and a monthly report on reliability and savings.</p></li>
+    <ol class="stages">
+      <li class="stage lead-stage"><span class="st-n">Stage 1</span><h3>Audit week</h3><p>We spend a week with the people who do the work and find where the hours and the money go.</p><span class="st-f">1 week · $750, credited to your build</span></li>
+      <li class="stage"><span class="st-n">Stage 2</span><h3>Your plan</h3><p>A map of how your operations run today and a ranked list of changes, each with the time or money it saves. The plan is yours, whether or not we build it.</p><span class="st-f">End of week 1</span></li>
+      <li class="stage"><span class="st-n">Stage 3</span><h3>Build in phases</h3><p>One process at a time: an automation layer on n8n, custom code, or AI agents where they take real work off your team. Each phase is sized to pay for itself.</p><span class="st-f">From $2,500 per phase</span></li>
+      <li class="stage"><span class="st-n">Stage 4</span><h3>Test and launch</h3><p>Tested against your real data and launched alongside your team, with limits and human approval wherever money is involved.</p><span class="st-f">Included in every build</span></li>
+      <li class="stage"><span class="st-n">Stage 5</span><h3>Support and maintenance</h3><p>We keep everything running after launch, and take on the next process when you’re ready.</p><span class="st-f">$750 / month · optional</span></li>
     </ol>
+    <div class="care">
+      <h3>What support and maintenance covers</h3>
+      <ol class="care-steps">
+        <li><b>Watch</b><span>Daily checks on every automation and AI reply, with alerts the moment something stops or drifts.</span></li>
+        <li><b>Fix</b><span>When an app, API or model changes, we repair it, usually before your team notices. Included in the plan.</span></li>
+        <li><b>Support</b><span>A named person your team can message with questions, small changes and new ideas.</span></li>
+        <li><b>Report</b><span>A short monthly report on what ran, what broke, what we fixed and the time saved.</span></li>
+        <li><b>Grow</b><span>On Monitor and grow ($2,000 / month), we also build one new automation for you each month.</span></li>
+      </ol>
+    </div>
   </div>
 </section>
 
@@ -594,7 +652,7 @@
       <div class="plan">
         <span class="type">Project</span><h3>Build</h3>
         <div class="price">$2,500+</div><div class="unit">per workflow package</div>
-        <ul><li>Built in your accounts</li><li>Tested against your data</li><li>Full documentation and handover</li></ul>
+        <ul><li>Built in your accounts</li><li>Tested against your data</li><li>Full handover, yours to keep</li></ul>
       </div>
       <div class="plan core">
         <span class="type">Monthly</span><h3>Monitor</h3>
@@ -627,8 +685,10 @@
       </div>
       <ul class="standards">
         <li><h3>A named owner for every client</h3><p>You always know who is responsible for your automations.</p></li>
-        <li><h3>Your accounts, your data, your documentation</h3><p>Nothing runs on our private infrastructure unless you ask for it. No lock-in.</p></li>
+        <li><h3>Full handover, yours to keep</h3><p>Built in your accounts, with your data and documentation your team can read. Nothing runs on our private infrastructure unless you ask for it. No lock-in.</p></li>
         <li><h3>Tested before launch, checked every day</h3><p>The same standards used for production software.</p></li>
+        <li><h3>AI only where it earns its place</h3><p>We don’t put AI into every step. Where a simple rule or automation does the job, we use that, and save AI for work that really needs judgement.</p></li>
+        <li><h3>Built to be cheap to run</h3><p>We design for low running costs, including AI token spend: the right-sized model for each task and no wasted calls. We watch your running costs as closely as reliability.</p></li>
         <li><h3>People approve anything involving money</h3><p>AI handles the routine. Refunds and credits above your limits always go to a person.</p></li>
       </ul>
     </div>
@@ -643,6 +703,7 @@
       <details><summary>Who owns what you build?</summary><p>You do. Everything is built in your own Shopify, helpdesk and automation accounts, with documentation your team can read.</p></details>
       <details><summary>What happens when something breaks?</summary><p>Our checks flag it, we fix it, and you get a short note explaining what happened and what changed. Fixes for things we monitor are included in your plan.</p></details>
       <details><summary>Which tools do you work with?</summary><p>Shopify and Shopify Flow, Gorgias, Klaviyo, n8n, Make and Zapier, plus custom AI agents where off-the-shelf tools fall short.</p></details>
+      <details><summary>Will AI make this expensive to run?</summary><p>Not when it’s designed well. We only use AI where it does real work, choose the smallest model that does the job reliably, and keep calls to a minimum, so your monthly running costs stay low.</p></details>
       <details><summary>Can we cancel the monthly plan?</summary><p>Yes, with 30 days’ notice. Because everything lives in your accounts with documentation, you keep it all.</p></details>
     </div>
   </div>
@@ -653,7 +714,7 @@
   <div class="wrap">
     <div>
       <h2>Find out what’s failing quietly in your store.</h2>
-      <p>Start with a free 20-minute intro call. We check whether we’re a good fit and outline the next steps. The in-depth review of your setup happens in the paid audit.</p>
+      <p>Start with a free 30-minute intro call. We check whether we’re a good fit and outline the next steps. The in-depth review of your setup happens in the paid audit.</p>
       <ul class="call-list">
         <li>Answer four quick questions so we can prepare</li>
         <li>We reply within one business day to set a time</li>
@@ -689,7 +750,7 @@
     <div class="book sent" id="book-sent" hidden tabindex="-1">
       <p class="sent-k">Request received</p>
       <h3>Thanks, we’ve got it.</h3>
-      <p>We’ll email you within one business day to set a time for your free 20-minute call.</p>
+      <p>We’ll email you within one business day to set a time for your free 30-minute call.</p>
     </div>
   </div>
 </div>

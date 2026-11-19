@@ -17,7 +17,7 @@ This repo holds the marketing site for **WGY Labs** (short for "We Got You"), Ka
 - **Header:** Services (dropdown: Build, Test, Monitor, AI agent health check) · Case studies · Pricing · About · Book a call.
 - **Pricing (USD):** Audit $750 (credited to a build) · Build from $2,500 per workflow package · Monitor $750/mo (core product, "chosen by most clients") · Monitor and grow $2,000/mo · AI agent health check from $1,000.
 - **Founding client offer:** first 5 brands get 30% off their first build in exchange for a testimonial + case study rights. No more free projects.
-- **Free 20-min intro call:** it's a fit/sales call, not free consulting. Deep analysis = the paid audit. A qualifying form sits in front of it.
+- **Free 30-min intro call:** it's a fit/sales call, not free consulting. Deep analysis = the paid audit. A qualifying form sits in front of it.
 - **Case studies:** currently 3 "Example project" cards, clearly labeled illustrative. Never present them as real client results. Replace with real ones as they come.
 - **Honesty rules:** no fake testimonials, logos, client names or results. The hero dashboard and monthly figures are labeled as sample data; keep those labels.
 
