@@ -418,10 +418,8 @@
   /* ===== contact ===== */
   .contact{background:var(--night);color:var(--bone);padding:104px 0}
   @media (max-width:640px){.contact{padding:72px 0}}
-  .contact .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:96px;align-items:stretch}
-  .contact .grid>div:first-child{display:flex;flex-direction:column}
-  .contact .grid>div:first-child .call-list{margin-top:auto;padding-top:0}
-  .contact .grid>div:first-child .lede{margin-bottom:32px}
+  .contact .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:96px;align-items:start}
+  .contact .grid>div:first-child .call-list{margin-top:36px}
   .contact h2{margin-top:-.12em}
   @media (max-width:960px){.contact .grid{grid-template-columns:1fr;gap:56px}}
   .contact .orb{width:110px;margin:0 0 44px}
@@ -430,15 +428,15 @@
   .call-list{list-style:none;margin:32px 0 0;padding:0;border-top:1px solid var(--rule-d)}
   .call-list li{padding:16px 0;border-bottom:1px solid var(--rule-d);font-weight:300;color:#CFCFD4;display:grid;grid-template-columns:40px 1fr}
   .call-list li span{font-family:"Geist Mono",monospace;font-size:11.5px;letter-spacing:.14em;color:var(--soft);padding-top:4px}
-  .book{display:flex;flex-direction:column;gap:22px}
-  .f2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .book{display:flex;flex-direction:column;gap:18px}
+  .f2{display:grid;grid-template-columns:1fr 1fr;gap:18px 22px}
   @media (max-width:560px){.f2{grid-template-columns:1fr}}
   .field{display:flex;flex-direction:column;gap:8px;border:0;margin:0;padding:0;min-width:0}
   .field label,.field legend{font-family:"Geist Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);padding:0}
   .field input:not([type=checkbox]),.field select,.field textarea{font:inherit;font-size:16px;font-weight:300;color:var(--bone);background:transparent;border:0;border-bottom:1px solid rgba(244,244,245,.28);border-radius:0;padding:10px 0;width:100%;transition:border-color .2s}
   .field select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--soft) 50%),linear-gradient(135deg,var(--soft) 50%,transparent 50%);background-position:calc(100% - 10px) 52%,calc(100% - 5px) 52%;background-size:5px 5px;background-repeat:no-repeat;padding-right:24px}
   .field select option{background:var(--night);color:var(--bone)}
-  .field textarea{resize:vertical;min-height:84px}
+  .field textarea{resize:vertical;min-height:52px}
   .field input::placeholder,.field textarea::placeholder{color:#5E5E64}
   .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-bottom-color:var(--bone)}
   .checks{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;margin-top:6px}
@@ -723,7 +721,8 @@
       <ul class="call-list">
         <li><span>01</span>You’ll talk to Kat, the founder, not a sales rep</li>
         <li><span>02</span>Answer four quick questions so we can prepare</li>
-        <li><span>03</span>No obligation, no sales pressure</li>
+        <li><span>03</span>We reply within one business day</li>
+        <li><span>04</span>No obligation, no sales pressure</li>
       </ul>
     </div>
     <div>
@@ -749,11 +748,10 @@
           </div>
           <p class="ferr" id="e-need"></p>
         </fieldset>
-        <div class="field"><label for="f-msg">What do you still check or do by hand?</label><textarea id="f-msg" name="message" rows="3" maxlength="3000" required aria-describedby="e-message"></textarea><p class="ferr" id="e-message"></p></div>
+        <div class="field"><label for="f-msg">What do you still check or do by hand?</label><textarea id="f-msg" name="message" rows="2" maxlength="3000" required aria-describedby="e-message"></textarea><p class="ferr" id="e-message"></p></div>
         <div class="hp" aria-hidden="true"><label for="f-company">Company</label><input id="f-company" name="company" tabindex="-1" autocomplete="off"></div>
         <p class="err" id="f-err" role="alert"></p>
         <button class="btn" type="submit" id="f-submit"><span class="bl">Request a free intro call</span> <span class="ar" aria-hidden="true"></span></button>
-        <p class="form-note cap">We reply within one business day</p>
       </form>
       <div class="sent" id="book-sent" hidden tabindex="-1">
         <p class="cap">Request received</p>
