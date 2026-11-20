@@ -1,6 +1,6 @@
 # WGY Labs website: handoff brief
 
-This repo holds the marketing site for **WGY Labs** (short for "We Got You"), Kat's AI ops automation company. The site is already built: `index.html` is a single self-contained page (HTML + CSS + a little JS, Google Fonts only). Don't redesign it; the design is approved.
+This repo holds the marketing site for **WGY Labs** (short for "We Got You"), Kat's AI ops automation company. The site is already built: `index.html` is a single self-contained page (HTML + CSS + a little JS, Google Fonts only). Don't redesign it; the design ("Style D", approved 2026-11-19) is approved.
 
 ## Hosting and email (live since 2026-11-18)
 - Live site: https://wgylabs.com (and www), served by **Cloudflare Pages** project `wgy-labs-site` in Kat's own Cloudflare account (`6cb7c2713b5f88e2e1fa9cef0ea37d23`). Never use Ash's account.
@@ -12,8 +12,8 @@ This repo holds the marketing site for **WGY Labs** (short for "We Got You"), Ka
 ## Approved decisions (keep these)
 - **Name:** WGY Labs. Tagline: "We've got your back." Company voice ("we"), founder = Kat. Don't show her surname on the site.
 - **Positioning:** reliability-first AI ops automation for Shopify brands (~$1–20M GMV). Build, Test, Monitor. Main buyer pain: automations that "fail quietly". Future scope: AI agent security and governance.
-- **Look:** green palette (forest #0D3B2B, green #16A05D, mint backgrounds, yellow accent #F2C14E), Newsreader serif headlines + Manrope body. Detailed and serious, not template-like.
-- **Logo:** lowercase "wgy labs" wordmark with a green curve underneath ("held up"). Currently built in HTML/CSS; favicon is a "w" on dark green.
+- **Look ("Style D", quiet premium, replaced the green design on 2026-11-19):** black #0A0A0B hero/contact/footer, pure white sections, no colour accent. Geist Light headlines with a grey second half, Geist Mono small caps for labels. Editorial layout: hairline rules and columns, no cards, no glows, no green. Hero = full-height black with a "particle core": a canvas sphere of ~2,000 points that breathes, turns and is scanned by light (Kat picked it from 5 options on 2026-11-19); a smaller one sits in the contact section. Buttons are rectangular (2px radius) with mono caps and a thin arrow. "AI at work" touches (added 2026-11-19): a typed "AI agent at work · <task>" line with a blinking cursor in the hero (Kat prefers this typing version over a streaming/shimmer one), and the sample order timeline plays step by step (Running → Done). All light sections are pure white #FFFFFF, separated by hairlines; all greys are neutral. Kat dislikes both warm/beige (reads yellow) and grey section backgrounds. Kat rejected the orb with orbits ("solar system", not current tech). Kat rejected: dark green, pure black-to-grey gradients, sharp 0-radius minimalism, curvy serif, pill buttons, "techy" glow/grain details.
+- **Logo:** lowercase "wgy labs" wordmark with a curve underneath ("held up"), in the current text colour. Built in HTML/CSS; favicon is a bone "w" on warm black.
 - **Header:** Services (dropdown: Build, Test, Monitor, AI agent health check) · Case studies · Pricing · About · Book a call.
 - **Pricing (USD):** Audit $750 (credited to a build) · Build from $2,500 per workflow package · Monitor $750/mo (core product, "chosen by most clients") · Monitor and grow $2,000/mo · AI agent health check from $1,000.
 - **Founding client offer:** first 5 brands get 30% off their first build in exchange for a testimonial + case study rights. No more free projects.
@@ -22,6 +22,10 @@ This repo holds the marketing site for **WGY Labs** (short for "We Got You"), Ka
 - **Honesty rules:** no fake testimonials, logos, client names or results. The hero dashboard and monthly figures are labeled as sample data; keep those labels.
 
 ## Open to-dos (in priority order)
+0. **Next up (Kat, 2026-11-19): pain-language copy + chapter breaks.**
+   - Rewrite copy so it speaks the founder's daily pain in their own words: "the automation is there, but you still have to be involved", keeping everything in your head so nothing gets forgotten, checking that things actually ran, being the backup for every tool. Lead with their reality, not our services.
+   - Split the long page into clear chapters by switching some sections to the black background (like the hero/contact), alternating with white. Keep Style D otherwise (no grey, no beige).
+   - Show Kat on the preview before publishing.
 1. ~~Publish~~ done (see Hosting).
 2. ~~Mobile menu~~ done.
 3. ~~Booking form~~ done: posts to the `worker/` Worker (`wgy-booking`, route wgylabs.com/api/book), which validates and emails Kat via Cloudflare Email Routing `send_email` (from bookings@wgylabs.com; recipient is the `TO` Worker secret, never commit it). Deploy with `cd worker && npx wrangler deploy`. All fields required; validation rules live in both `index.html` and `worker/src/validate.js`, keep them in sync.

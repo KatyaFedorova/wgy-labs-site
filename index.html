@@ -3,391 +3,401 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>WGY Labs — Reliable AI automations for Shopify brands</title>
+<title>WGY Labs — Operations automation for Shopify brands</title>
 <meta name="description" content="WGY Labs automates operations for Shopify brands: we cut the steps you don’t need, automate the rest, and test and monitor it every day so nothing fails quietly. Full handover, yours to keep.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%230D3B2B%27/%3E%3Ctext x=%2732%27 y=%2742%27 text-anchor=%27middle%27 font-family=%27Arial,sans-serif%27 font-weight=%27800%27 font-size=%2734%27 fill=%27%23fff%27%3Ew%3C/text%3E%3Cpath d=%27M17 50Q32 56 47 50%27 fill=%27none%27 stroke=%27%233FCB86%27 stroke-width=%274%27 stroke-linecap=%27round%27/%3E%3C/svg%3E">
+<meta name="theme-color" content="#0A0A0B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2712%27 fill=%27%230A0A0B%27/%3E%3Ctext x=%2732%27 y=%2741%27 text-anchor=%27middle%27 font-family=%27Arial,sans-serif%27 font-weight=%27500%27 font-size=%2732%27 fill=%27%23F4F4F5%27%3Ew%3C/text%3E%3Cpath d=%27M18 49Q32 55 46 49%27 fill=%27none%27 stroke=%27%23F4F4F5%27 stroke-opacity=%27.6%27 stroke-width=%273%27 stroke-linecap=%27round%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#F3F7F3;
-    --surface:#FFFFFF;
-    --tint:#E6F0E8;
-    --line:#D3E0D6;
-    --line-strong:#AFC4B5;
-    --forest:#0D3B2B;
-    --forest-2:#164A37;
-    --green:#16A05D;
-    --ink:#10241B;
-    --muted:#526459;
-    --faint:#7A8B81;
-    --sun:#F2C14E;
-    --amber-bg:#FDF1D8;
-    --amber:#8A5A00;
-    --rose:#B8452F;
-    --radius:10px;
-    --radius-sm:6px;
-  }
+  :root{--night:#0A0A0B;--night-2:#141416;--bone:#F4F4F5;--light:#F5F6F7;--paper:#FFFFFF;--ink:#111113;--mute:#64646B;--soft:#9898A0;--rule:#E5E6E9;--rule-d:rgba(244,244,245,.12);--rose:#B2432D;--rose-d:#F0A08C}
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;overflow-x:clip}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Manrope",system-ui,sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
-  a{color:inherit}
-  :focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:4px}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
-  @media (max-width:640px){.wrap{padding:0 16px}}
-  .serif{font-family:"Newsreader",Georgia,serif}
-  h1,h2{font-family:"Newsreader",Georgia,serif;font-weight:500;letter-spacing:-.015em;color:var(--forest)}
-  h3{font-weight:700;letter-spacing:-.01em}
-  .muted{color:var(--muted)}
-
-  .logo{flex-direction:column;align-items:flex-start;gap:0}
-  .logo .lw{font-size:24px;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--forest)}
-  .logo .lw span{font-weight:500}
-  .logo .arc{display:block;width:100%;height:9px;margin-top:2px}
-  .foot .logo{margin-bottom:14px;display:inline-flex}
-  /* header */
-  .bar{border-bottom:1px solid var(--line);background:rgba(243,247,243,.92);backdrop-filter:saturate(1.2) blur(6px);position:sticky;top:0;z-index:10}
-  .bar .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
-  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:18px;color:var(--forest)}
-  nav.main{display:flex;gap:30px;font-size:15px;font-weight:600}
-  nav.main a{text-decoration:none;color:var(--muted)}
-  nav.main a:hover{color:var(--forest)}
-  @media (max-width:860px){nav.main{display:none}}
-  /* mobile menu */
-  .bar-actions{display:flex;align-items:center;gap:10px}
-  .menu-btn{display:none;align-items:center;gap:8px;font:inherit;font-size:15px;font-weight:600;color:var(--forest);background:transparent;border:1px solid var(--line-strong);border-radius:var(--radius-sm);padding:11px 14px;cursor:pointer;min-height:44px}
-  .menu-btn:hover{border-color:var(--forest)}
-  .menu-ico,.menu-ico::before,.menu-ico::after{display:block;width:16px;height:2px;background:currentColor;border-radius:2px;position:relative;transition:transform .2s,background .2s}
-  .menu-ico::before,.menu-ico::after{content:"";position:absolute;left:0}
-  .menu-ico::before{top:-5px}.menu-ico::after{top:5px}
-  .menu-btn[aria-expanded=true] .menu-ico{background:transparent}
-  .menu-btn[aria-expanded=true] .menu-ico::before{transform:translateY(5px) rotate(45deg)}
-  .menu-btn[aria-expanded=true] .menu-ico::after{transform:translateY(-5px) rotate(-45deg)}
-  @media (prefers-reduced-motion:reduce){.menu-ico,.menu-ico::before,.menu-ico::after{transition:none}}
-  .mnav{border-top:1px solid var(--line);background:var(--bg);max-height:calc(100vh - 68px);overflow-y:auto}
-  .bar .mnav .wrap{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;height:auto;padding-top:12px;padding-bottom:20px}
-  .mnav-h{margin:4px 0 4px;font-size:13px;font-weight:700;color:var(--faint)}
-  .mnav a{display:block;text-decoration:none;padding:10px 0;border-bottom:1px solid var(--line)}
-  .mnav a b{display:block;color:var(--forest);font-size:16px}
-  .mnav a span{display:block;color:var(--muted);font-size:14px}
-  .mnav-links{display:flex;flex-direction:column;margin-top:16px}
-  .mnav-links a{font-weight:700;color:var(--forest);font-size:17px;padding:12px 0}
-  .mnav-links a:last-child{border-bottom:0}
-  @media (max-width:860px){.menu-btn{display:inline-flex}}
-  @media (min-width:861px){.mnav{display:none!important}}
-  .logo .lw{white-space:nowrap}
-  [id]{scroll-margin-top:84px}
-  @media (max-width:400px){.bar .btn{padding:11px 12px;font-size:14px}.menu-btn{padding:11px 12px}.bar-actions{gap:8px}}
-  @media (max-width:350px){.bar .logo .lw{font-size:21px}.menu-btn{font-size:0;gap:0;padding:11px 13px}}
-  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:#fff;text-decoration:none;font-weight:600;font-size:15px;padding:12px 20px;border-radius:var(--radius-sm);border:1px solid var(--forest)}
-  .btn:hover{background:var(--forest-2)}
-  .btn.secondary{background:transparent;color:var(--forest);border-color:var(--line-strong)}
-  .btn.secondary:hover{border-color:var(--forest)}
-  .btn.lg{font-size:16px;padding:14px 24px}
-
-  /* hero */
-  .hero{display:grid;grid-template-columns:1fr 1.08fr;gap:64px;align-items:center;padding:72px 0 80px}
-  @media (max-width:1000px){.hero{grid-template-columns:1fr;gap:48px;padding:48px 0 64px}}
-  .kicker{font-size:15px;font-weight:600;color:var(--green);margin:0 0 18px;display:flex;align-items:center;gap:10px}
-  .kicker::before{content:"";width:28px;height:2px;background:var(--green)}
-  h1{font-size:clamp(42px,5.4vw,66px);line-height:1.04;margin:0 0 22px}
-  .lead{font-size:19px;color:var(--muted);max-width:46ch;margin:0 0 30px}
-  .ctas{display:flex;gap:12px;flex-wrap:wrap}
-  .proof{margin-top:32px;padding-top:20px;border-top:1px solid var(--line);font-size:14px;color:var(--muted);max-width:46ch}
-  .proof b{color:var(--ink);font-weight:600}
-
-  /* product figure */
-  figure{margin:0}
-  .app{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 1px 0 rgba(13,59,43,.04),0 30px 60px -36px rgba(13,59,43,.35);overflow:hidden;font-size:14px}
-  .app-top{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);background:#FAFCFA}
-  .app-top .t{font-weight:700;color:var(--forest)}
-  .app-top .s{color:var(--faint);font-size:13px}
-  .app-body{display:grid;grid-template-columns:1.35fr 1fr}
-  @media (max-width:560px){.app-body{grid-template-columns:1fr}}
-  .wf-list{border-right:1px solid var(--line)}
-  @media (max-width:560px){.wf-list{border-right:0;border-bottom:1px solid var(--line)}}
-  .wf{display:grid;grid-template-columns:10px 1fr auto;gap:12px;align-items:center;padding:12px 18px;border-bottom:1px solid #EDF3EE}
-  .wf:last-child{border-bottom:0}
-  .dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
-  .dot.warn{background:#D99A12}
-  .wf .n{font-weight:600;color:var(--ink);line-height:1.3}
-  .wf .m{display:block;font-weight:400;color:var(--faint);font-size:12.5px}
-  .wf .r{font-size:12.5px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
-  .wf.incident{background:#FFFAF0}
-  .side{padding:16px 18px;display:flex;flex-direction:column;gap:16px}
-  .metric .l{font-size:12.5px;color:var(--faint)}
-  .metric .v{font-size:26px;font-weight:700;color:var(--forest);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-  .metric svg{display:block;width:100%;height:44px;margin-top:4px}
-  .note{background:var(--amber-bg);border-radius:var(--radius-sm);padding:10px 12px;font-size:13px;color:#5C3D00;line-height:1.45}
-  .note b{display:block;color:var(--amber)}
-  figcaption{font-size:13px;color:var(--faint);margin-top:12px}
-
-  /* tools */
-  .tools{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .tools .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px 32px;flex-wrap:wrap}
-  .tools p{margin:0;font-size:14px;color:var(--muted)}
-  .tools ul{list-style:none;margin:0;padding:0;display:flex;gap:28px;flex-wrap:wrap;font-weight:700;color:var(--forest-2);font-size:15px}
-
-  /* sections */
-  section{padding:104px 0}
-  @media (max-width:640px){section{padding:72px 0}}
-  section.surface{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .head{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-bottom:56px}
-  @media (max-width:900px){.head{grid-template-columns:1fr;gap:16px;margin-bottom:40px}}
-  h2{font-size:clamp(32px,3.8vw,48px);line-height:1.08;margin:0}
-  .head p{margin:0;color:var(--muted);max-width:52ch}
-
-  /* where the hours go */
-  .hours-h{max-width:18ch;margin-bottom:48px}
-  .pains{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  @media (max-width:900px){.pains{grid-template-columns:1fr}}
-  .pain{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
-  .pain h3{margin:0 0 8px;font-size:20px;color:var(--forest)}
-  .pain p{margin:0;color:var(--muted);font-size:16px}
-  .hours-foot{margin:32px 0 0;font-size:19px;color:var(--muted);max-width:60ch}
-  /* problem */
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
-  @media (max-width:900px){.split{grid-template-columns:1fr;gap:40px}}
-  .failures{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-  .failures li{padding:22px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:150px 1fr;gap:20px}
-  @media (max-width:560px){.failures li{grid-template-columns:1fr;gap:4px}}
-  .failures .k{font-weight:700;color:var(--rose);font-size:15px}
-  .failures h3{margin:0 0 4px;font-size:18px}
-  .failures p{margin:0;color:var(--muted);font-size:16px}
-  .stat{margin-top:28px;padding:22px 24px;background:var(--tint);border-radius:var(--radius)}
-  .stat .big{font-family:"Newsreader",Georgia,serif;font-size:40px;line-height:1;color:var(--forest)}
-  .stat p{margin:8px 0 0;font-size:15px;color:var(--muted)}
-  .stat cite{font-style:normal;font-size:13px;color:var(--faint)}
-
-  .timeline{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);overflow:hidden}
-  .tl-head{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line);font-size:14px;font-weight:700}
-  .tl-head div{padding:14px 20px}
-  .tl-head div:first-child{color:var(--rose);border-right:1px solid var(--line)}
-  .tl-head div:last-child{color:var(--green)}
-  .tl-row{display:grid;grid-template-columns:1fr 1fr;font-size:15px}
-  .tl-row > div{padding:12px 20px;border-bottom:1px solid #EDF3EE}
-  .tl-row > div:first-child{border-right:1px solid var(--line)}
-  .tl-row .w{display:block;font-size:12.5px;color:var(--faint);font-weight:600;font-variant-numeric:tabular-nums}
-  .tl-foot{display:grid;grid-template-columns:1fr 1fr}
-  .tl-foot div{padding:16px 20px;font-family:"Newsreader",Georgia,serif;font-size:22px}
-  .tl-foot div:first-child{color:var(--rose);border-right:1px solid var(--line);background:#FCF5F3}
-  .tl-foot div:last-child{color:var(--forest);background:var(--tint)}
-
-  /* services */
-  .services{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--forest)}
-  @media (max-width:900px){.services{grid-template-columns:1fr}}
-  .svc{padding:32px 32px 8px 0}
-  .svc + .svc{padding-left:32px;border-left:1px solid var(--line)}
-  @media (max-width:900px){.svc,.svc + .svc{padding:28px 0;border-left:0;border-bottom:1px solid var(--line)}}
-  .svc h3{font-family:"Newsreader",Georgia,serif;font-weight:500;font-size:32px;color:var(--forest);margin:0 0 6px;letter-spacing:-.01em}
-  .svc .sum{margin:0 0 18px;color:var(--muted)}
-  .svc h4{font-size:13px;font-weight:700;color:var(--faint);margin:0 0 8px}
-  .svc ul{margin:0 0 20px;padding:0;list-style:none}
-  .svc li{padding:7px 0 7px 22px;position:relative;font-size:15.5px;border-top:1px dashed var(--line)}
-  .svc li::before{content:"";position:absolute;left:0;top:15px;width:10px;height:6px;border-left:2px solid var(--green);border-bottom:2px solid var(--green);transform:rotate(-45deg)}
-
-  nav.main{align-items:center}
-  details.dd,details.dd:last-child{position:relative;border:0}
-  .dd summary{padding:0;font-size:15px;font-weight:600}
-  .dd summary::after{position:static;right:auto;top:auto;border-width:0 2px 2px 0}
-  .dd[open] summary::after{top:auto;transform:rotate(-135deg) translateY(-1px)}
-  .dd summary{list-style:none;cursor:pointer;color:var(--muted);display:flex;align-items:center;gap:6px}
-  .dd summary::-webkit-details-marker{display:none}
-  .dd summary::after{content:"";width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px)}
-  .dd summary:hover,.dd[open] summary{color:var(--forest)}
-  .dd-menu{position:absolute;top:calc(100% + 14px);left:-16px;width:300px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 20px 40px -24px rgba(13,59,43,.35);padding:8px;display:flex;flex-direction:column}
-  .dd-menu a{display:block;padding:10px 12px;border-radius:var(--radius-sm);text-decoration:none}
-  .dd-menu a:hover{background:var(--tint)}
-  .dd-menu b{display:block;color:var(--forest);font-size:15px}
-  .dd-menu span{display:block;color:var(--muted);font-size:13.5px;font-weight:500}
-  /* case studies */
-  .cases{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  @media (max-width:960px){.cases{grid-template-columns:1fr}}
-  .case{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column}
-  .case .lab{align-self:flex-start;font-size:12.5px;font-weight:700;color:var(--amber);background:var(--amber-bg);padding:3px 10px;border-radius:99px;margin-bottom:14px}
-  .case .who{font-size:14px;color:var(--faint);font-weight:600}
-  .case h3{font-family:"Newsreader",Georgia,serif;font-weight:500;font-size:25px;line-height:1.15;color:var(--forest);margin:4px 0 16px;letter-spacing:-.01em}
-  .case dl{margin:0;display:grid;gap:12px}
-  .case dt{font-size:13px;font-weight:700;color:var(--faint)}
-  .case dd{margin:2px 0 0;font-size:15.5px}
-  .case.real{border-color:var(--green);box-shadow:inset 0 3px 0 var(--green);grid-column:1/-1}
-  .case.real h3{font-size:30px;max-width:30ch}
-  .case.real dl{grid-template-columns:repeat(3,1fr);gap:28px}
-  @media (max-width:960px){.case.real dl{grid-template-columns:1fr;gap:12px}.case.real h3{font-size:25px}}
-  .case.real .lab{color:#0B6B3D;background:var(--tint)}
-  .cases-note{margin-top:18px;font-size:14px;color:var(--muted)}
-  /* checks table */
-  table{width:100%;border-collapse:collapse;font-size:15.5px}
-  .tbl{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
-  th{text-align:left;font-size:13px;font-weight:700;color:var(--faint);padding:14px 20px;border-bottom:1px solid var(--line);background:#FAFCFA}
-  td{padding:16px 20px;border-bottom:1px solid #EDF3EE;vertical-align:top}
-  tr:last-child td{border-bottom:0}
-  td:first-child{font-weight:600;color:var(--forest);width:30%}
-  td.freq{white-space:nowrap;color:var(--muted);width:14%}
-  @media (max-width:720px){
-    .tbl table,.tbl tbody,.tbl tr,.tbl td{display:block;width:100%}
-    .tbl thead{display:none}
-    .tbl tr{padding:14px 18px;border-bottom:1px solid var(--line)}
-    .tbl tr:last-child{border-bottom:0}
-    .tbl td{padding:2px 0;border:0;width:auto}
-    td.freq{font-size:14px}
-  }
-
-  /* stages */
-  .stages{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--bg)}
-  @media (max-width:1100px){.stages{grid-template-columns:repeat(2,1fr)}}
-  @media (max-width:600px){.stages{grid-template-columns:1fr}}
-  .stage{padding:26px 22px;display:flex;flex-direction:column;gap:10px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);margin:0 -1px -1px 0}
-  .stage h3{margin:0;font-family:"Newsreader",Georgia,serif;font-weight:500;font-size:26px;line-height:1.1;color:var(--forest)}
-  .stage p{margin:0;color:var(--muted);font-size:15.5px}
-  .st-n{font-size:13px;font-weight:700;color:var(--green)}
-  .st-f{margin-top:auto;padding-top:14px;font-size:13.5px;font-weight:700;color:var(--forest)}
-  .lead-stage{background:var(--forest)}
-  .lead-stage h3{color:#fff}.lead-stage p{color:#C9DDD1}.lead-stage .st-n{color:#3FCB86}.lead-stage .st-f{color:var(--sun)}
-  .care{margin-top:24px;padding:28px;border-radius:var(--radius);background:var(--tint)}
-  .care h3{margin:0 0 16px;font-size:18px;color:var(--forest)}
-  .care-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;counter-reset:c}
-  @media (max-width:1000px){.care-steps{grid-template-columns:1fr 1fr}}
-  @media (max-width:560px){.care-steps{grid-template-columns:1fr}}
-  .care-steps li{counter-increment:c}
-  .care-steps b{display:block;color:var(--forest);margin-bottom:4px}
-  .care-steps b::before{content:counter(c) ". ";color:var(--green)}
-  .care-steps span{display:block;color:var(--muted);font-size:15px}
-  /* process */
-  .process{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s;position:relative}
-  @media (max-width:900px){.process{grid-template-columns:1fr 1fr;row-gap:36px}}
-  @media (max-width:560px){.process{grid-template-columns:1fr}}
-  .process li{counter-increment:s;padding:0 28px 0 0;position:relative}
-  .process li::before{content:counter(s);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--forest);color:#fff;font-weight:700;font-size:15px;position:relative;z-index:1;margin-bottom:18px}
-  .process li::after{content:"";position:absolute;left:36px;right:0;top:18px;height:1px;background:var(--line-strong)}
-  .process li:last-child::after{display:none}
-  @media (max-width:900px){.process li::after{display:none}}
-  .process .when{font-size:13px;font-weight:700;color:var(--green)}
-  .process h3{margin:2px 0 8px;font-size:19px}
-  .process p{margin:0;color:var(--muted);font-size:15.5px}
-
-  /* pricing */
-  .plans{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);overflow:hidden}
-  @media (max-width:1000px){.plans{grid-template-columns:repeat(2,1fr)}}
-  @media (max-width:560px){.plans{grid-template-columns:1fr}}
-  .plan{padding:28px 24px;border-right:1px solid var(--line);display:flex;flex-direction:column}
-  .plan:last-child{border-right:0}
-  @media (max-width:1000px){.plan:nth-child(2){border-right:0}.plan:nth-child(-n+2){border-bottom:1px solid var(--line)}}
-  @media (max-width:560px){.plan{border-right:0;border-bottom:1px solid var(--line)}.plan:last-child{border-bottom:0}}
-  .plan.core{background:var(--forest);color:#E6F0E8}
-  .plan .type{font-size:13px;font-weight:700;color:var(--faint)}
-  .plan.core .type{color:#9CC7AF}
-  .plan h3{margin:4px 0 14px;font-size:20px}
-  .plan.core h3{color:#fff}
-  .plan .price{font-family:"Newsreader",Georgia,serif;font-size:42px;line-height:1;color:var(--forest);font-variant-numeric:lining-nums}
-  .plan.core .price{color:#fff}
-  .plan .unit{font-size:14px;color:var(--muted);margin-top:6px}
-  .plan.core .unit{color:#B4D3C0}
-  .plan ul{list-style:none;margin:20px 0 0;padding:16px 0 0;border-top:1px solid var(--line);font-size:15px}
-  .plan.core ul{border-top-color:#2D5A47}
-  .plan li{padding:4px 0}
-  .plan .rec{margin-top:auto;padding-top:20px;font-size:13px;color:var(--sun);font-weight:700}
-  .pricing-notes{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:18px;font-size:14px;color:var(--muted)}
-
-  /* about */
-  .about{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
-  @media (max-width:900px){.about{grid-template-columns:1fr;gap:36px}}
-  .about p{margin:0 0 16px;max-width:56ch}
-  .founder{display:flex;gap:16px;align-items:center;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:28px}
-  .avatar{flex:none;width:56px;height:56px;border-radius:50%;background:var(--forest);color:var(--sun);display:grid;place-items:center;font-family:"Newsreader",Georgia,serif;font-size:26px}
-  .founder b{display:block;color:var(--forest)}
-  .founder span{font-size:15px;color:var(--muted)}
-  .standards{list-style:none;margin:0;padding:0;counter-reset:none}
-  .standards li{padding:20px 0;border-top:1px solid var(--line)}
-  .standards li:last-child{border-bottom:1px solid var(--line)}
-  .standards h3{margin:0 0 4px;font-size:17px;color:var(--forest)}
-  .standards p{margin:0;color:var(--muted);font-size:15.5px}
-
-  /* faq */
-  .faq{max-width:820px}
-  details{border-top:1px solid var(--line)}
-  details:last-child{border-bottom:1px solid var(--line)}
-  summary{list-style:none;cursor:pointer;padding:22px 40px 22px 0;font-weight:600;font-size:18px;color:var(--forest);position:relative}
-  summary::-webkit-details-marker{display:none}
-  summary::after{content:"";position:absolute;right:6px;top:30px;width:10px;height:10px;border-right:2px solid var(--forest);border-bottom:2px solid var(--forest);transform:rotate(45deg);transition:transform .2s}
-  details[open] summary::after{transform:rotate(-135deg);top:34px}
-  details p{margin:0 0 22px;color:var(--muted);max-width:68ch}
-  @media (prefers-reduced-motion:reduce){summary::after{transition:none}}
-
-  /* contact */
-  .contact{background:var(--forest);color:#E6F0E8}
-  .contact .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:end;padding-top:96px;padding-bottom:96px}
-  @media (max-width:900px){.contact .wrap{grid-template-columns:1fr;gap:28px;padding-top:72px;padding-bottom:72px}}
-  .contact h2{color:#fff;font-size:clamp(34px,4.4vw,56px)}
-  .contact p{margin:0 0 24px;color:#B4D3C0;max-width:44ch}
-  .contact .btn{background:var(--sun);border-color:var(--sun);color:var(--forest)}
-  .contact .btn:hover{background:#F6CD68}
-  .contact .btn.secondary{background:transparent;color:#fff;border-color:#4C7562}
-
-  .contact .wrap{align-items:start}
-  .call-list{list-style:none;margin:0;padding:0;color:#D5E6DB}
-  .call-list li{padding:10px 0 10px 28px;border-top:1px solid #2D5A47;position:relative}
-  .call-list li::before{content:"";position:absolute;left:2px;top:17px;width:10px;height:6px;border-left:2px solid #3FCB86;border-bottom:2px solid #3FCB86;transform:rotate(-45deg)}
-  .book{background:#FFFFFF;color:var(--ink);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;gap:16px}
-  .f2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  @media (max-width:560px){.f2{grid-template-columns:1fr}.book{padding:20px}}
-  .field{display:flex;flex-direction:column;gap:6px;border:0;margin:0;padding:0;min-width:0}
-  .field label,.field legend{font-size:14px;font-weight:600;color:var(--forest);padding:0}
-  .field input:not([type=checkbox]),.field select,.field textarea{font:inherit;font-size:16px;color:var(--ink);background:#FAFCFA;border:1px solid var(--line-strong);border-radius:var(--radius-sm);padding:11px 12px;width:100%}
-  .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--green);outline-offset:1px;border-color:var(--green)}
-  .checks{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;margin-top:4px}
-  @media (max-width:560px){.checks{grid-template-columns:1fr}}
-  .checks label{font-weight:500;color:var(--ink);display:flex;gap:10px;align-items:center;font-size:15px;min-height:28px}
-  .checks input{width:18px;height:18px;accent-color:var(--forest)}
-  .book .btn{background:var(--forest);border-color:var(--forest);color:#fff;justify-content:center;cursor:pointer;font-family:inherit}
-  .book .btn:hover{background:var(--forest-2)}
-  .err{margin:0;color:var(--rose);font-size:14px;font-weight:600;min-height:0}
-  .err:empty{display:none}
-  .contact .book .form-note{margin:-6px 0 0;max-width:none;font-size:13px;color:var(--faint);text-align:center}
-  .contact .book .err{max-width:none;margin:0}
-  .contact .book .ferr{margin:0;max-width:none;color:var(--rose);font-size:13.5px;font-weight:600;line-height:1.4}
-  .ferr:empty{display:none}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:Geist,system-ui,sans-serif;font-weight:400;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:clip}
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:1px solid currentColor;outline-offset:4px}
   [hidden]{display:none!important}
-  .field [aria-invalid=true]{border-color:var(--rose)!important;background:#FDF6F4!important}
-  fieldset.field[aria-invalid=true] .checks{outline:1px solid var(--rose);outline-offset:6px;border-radius:4px}
+  [id]{scroll-margin-top:80px}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+  @media (max-width:640px){.wrap{padding:0 20px}}
+  .cap{font-family:"Geist Mono",ui-monospace,monospace;font-size:11.5px;font-weight:400;letter-spacing:.14em;text-transform:uppercase}
+
+  /* ===== header ===== */
+  .bar{position:fixed;top:0;left:0;right:0;z-index:20;color:var(--bone);border-bottom:1px solid transparent;transition:background .5s,color .5s,border-color .5s}
+  .bar.solid{background:rgba(11,11,10,.7);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom-color:var(--rule-d)}
+  .bar.light{background:rgba(255,255,255,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:var(--ink);border-bottom-color:var(--rule)}
+  .bar.open{background:var(--night);color:var(--bone);border-bottom-color:var(--rule-d)}
+  .bar>.wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{display:inline-flex;flex-direction:column;line-height:1;white-space:nowrap}
+  .logo .lw{font-weight:500;font-size:19px;letter-spacing:-.04em}
+  .logo .lw span{font-weight:300}
+  .logo svg{width:100%;height:6px;margin-top:3px}
+  .logo path{stroke:currentColor;opacity:.55}
+  nav.main{display:flex;align-items:center;gap:36px;font-size:13.5px}
+  nav.main>a,.dd summary{opacity:.62;transition:opacity .2s}
+  nav.main>a:hover,.dd summary:hover,.dd[open] summary{opacity:1}
+  .dd{position:relative}
+  .dd summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px}
+  .dd summary::-webkit-details-marker{display:none}
+  .dd summary::after{content:"";width:5px;height:5px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translateY(-2px)}
+  .dd-menu{position:absolute;top:calc(100% + 22px);left:-24px;width:320px;background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:2px;box-shadow:0 30px 60px -30px rgba(0,0,0,.35);padding:8px 0}
+  .dd-menu a{display:block;padding:14px 24px;border-bottom:1px solid var(--rule)}
+  .dd-menu a:last-child{border-bottom:0}
+  .dd-menu a:hover{background:#FAFAFB}
+  .dd-menu b{display:block;font-weight:400;font-size:15px}
+  .dd-menu span{display:block;color:var(--mute);font-size:13px;font-weight:300}
+  .bar-actions{display:flex;align-items:center;gap:12px}
+  .menu-btn{display:none;align-items:center;gap:10px;height:38px;padding:0 14px;background:transparent;color:inherit;border:1px solid currentColor;border-radius:2px;font-family:"Geist Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;opacity:.85}
+  .menu-ico,.menu-ico::before,.menu-ico::after{display:block;width:14px;height:1px;background:currentColor;position:relative;transition:transform .2s,background .2s}
+  .menu-ico::before,.menu-ico::after{content:"";position:absolute;left:0}
+  .menu-ico::before{top:-4px}.menu-ico::after{top:4px}
+  .menu-btn[aria-expanded=true] .menu-ico{background:transparent}
+  .menu-btn[aria-expanded=true] .menu-ico::before{transform:translateY(4px) rotate(45deg)}
+  .menu-btn[aria-expanded=true] .menu-ico::after{transform:translateY(-4px) rotate(-45deg)}
+  .mnav{background:var(--night);color:var(--bone);border-top:1px solid var(--rule-d);max-height:calc(100vh - 72px);overflow-y:auto}
+  .mnav .wrap{padding-top:16px;padding-bottom:28px}
+  .mnav .cap{color:var(--soft);margin:12px 0 6px}
+  .mnav a{display:block;padding:14px 0;border-bottom:1px solid var(--rule-d)}
+  .mnav a b{display:block;font-weight:400;font-size:17px}
+  .mnav a span{display:block;color:var(--soft);font-size:14px;font-weight:300}
+  .mnav-links{margin-top:18px}
+  .mnav-links a{font-size:20px;font-weight:300;letter-spacing:-.02em}
+  @media (max-width:1000px){nav.main{gap:24px}}
+  @media (max-width:720px){nav.main{display:none}.menu-btn{display:inline-flex}}
+  @media (min-width:721px){.mnav{display:none!important}}
+  @media (max-width:400px){.bar .btn .bl{display:none}.bar .btn::after{content:"Call"}}
+
+  /* ===== buttons ===== */
+  .btn{position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:18px;height:54px;padding:0 26px 0 30px;border-radius:2px;cursor:pointer;
+    font-family:"Geist Mono",monospace;font-size:12px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;
+    background:var(--bone);color:var(--night);border:1px solid var(--bone);transition:color .45s cubic-bezier(.6,0,.2,1)}
+  .btn::before{content:"";position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.6,0,.2,1);z-index:-1}
+  .btn:hover::before{transform:scaleX(1)}
+  .btn .ar{display:inline-block;width:22px;height:1px;background:currentColor;position:relative;transition:width .35s cubic-bezier(.6,0,.2,1)}
+  .btn .ar::after{content:"";position:absolute;right:0;top:-3px;width:7px;height:7px;border-top:1px solid currentColor;border-right:1px solid currentColor;transform:rotate(45deg)}
+  .btn:hover .ar{width:32px}
+  .btn.dark{background:var(--ink);color:var(--bone);border-color:var(--ink)}
+  .btn.dark::before{background:#2A2A2E}
+  .bar .btn{height:38px;padding:0 16px;gap:0;background:transparent;color:inherit;border-color:currentColor;font-size:11px;opacity:.9}
+  .bar .btn::before{background:var(--bone)}
+  .bar .btn:hover{color:var(--night)}
+  .bar.light .btn::before{background:var(--ink)}
+  .bar.light .btn:hover{color:var(--bone)}
+  .link{display:inline-flex;align-items:center;gap:10px;padding-bottom:3px;border-bottom:1px solid currentColor;font-family:"Geist Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;transition:gap .25s}
+  .link:hover{gap:14px}
+  @media (prefers-reduced-motion:reduce){.btn,.btn::before,.btn .ar,.link{transition:none}}
+
+  /* ===== hero ===== */
+  .hero{position:relative;min-height:100svh;background:var(--night);color:var(--bone);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:128px 0 96px;overflow:hidden}
+  .hero::before{content:"";position:absolute;left:50%;top:44%;width:900px;height:900px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(244,244,245,.06),transparent);pointer-events:none}
+  .orb{position:relative;width:min(240px,52vw);aspect-ratio:1;margin:0 auto 48px;border-radius:50%;
+    background:radial-gradient(circle at var(--x,34%) var(--y,28%),rgba(255,255,255,.95) 0,rgba(255,255,255,.35) 6%,transparent 22%),radial-gradient(circle at 70% 78%,rgba(244,244,245,.22),transparent 38%),radial-gradient(circle at 50% 50%,#3A3936 0,#1A1918 52%,#0B0B0A 74%);
+    -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 38%,rgba(0,0,0,.55) 52%,transparent 70%);mask-image:radial-gradient(circle at 50% 50%,#000 38%,rgba(0,0,0,.55) 52%,transparent 70%);
+    animation:drift 5s ease-in-out infinite alternate,float 6s ease-in-out infinite}
+  @property --x{syntax:'<percentage>';inherits:false;initial-value:34%}
+  @property --y{syntax:'<percentage>';inherits:false;initial-value:28%}
+  @keyframes drift{0%{--x:24%;--y:22%}50%{--x:46%;--y:20%}100%{--x:60%;--y:38%}}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  .core{position:relative;width:min(240px,52vw);margin:0 auto 48px}
+  .core .orb{margin:0}
+  .orbit{position:absolute;left:50%;top:50%;width:170%;aspect-ratio:1;transform:translate(-50%,-50%) rotate(-16deg) scaleY(.32);pointer-events:none}
+  .orbit::before{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid rgba(244,244,245,.24)}
+  .orbit .spin{position:absolute;inset:0;animation:spin 7s linear infinite}
+  .orbit .p{position:absolute;left:50%;top:-3px;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:#fff;box-shadow:0 0 12px 3px rgba(255,255,255,.55)}
+  .orbit.o2{width:128%;transform:translate(-50%,-50%) rotate(24deg) scaleY(.26)}
+  .orbit.o2::before{border-color:rgba(244,244,245,.14)}
+  .orbit.o2 .spin{animation-duration:11s;animation-direction:reverse}
+  .orbit.o2 .p{width:4px;height:4px;margin-left:-2px;top:-2px;opacity:.7}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .wave{display:block;position:relative;width:min(520px,92vw);height:300px;margin:-24px auto 20px}
+  @media (max-width:640px){.wave{height:240px;margin-bottom:12px}}
+  .contact .wave{width:220px;height:200px;margin:-20px 0 28px -20px}
+  .hero .cap{color:var(--soft);margin:0 0 28px;position:relative}
+  .now{min-height:1.4em}
+  @media (max-width:620px){.now{min-height:2.9em}}
+  .now .task{color:var(--bone)}
+  .cur{display:inline-block;width:7px;height:12px;margin-left:3px;vertical-align:-1px;background:var(--bone);animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  h1{position:relative;font-weight:300;font-size:clamp(44px,7.2vw,92px);line-height:1.02;letter-spacing:-.05em;margin:0 auto 28px;max-width:14ch}
+  h1 span{color:#8C8C93}
+  .hero .sub{position:relative;font-size:17px;font-weight:300;color:#A6A6AD;max-width:48ch;margin:0 auto 44px}
+  .ctas{position:relative;display:flex;gap:36px;align-items:center;justify-content:center;flex-wrap:wrap}
+  @media (max-width:520px){.ctas{flex-direction:column;gap:24px}.ctas .btn{width:100%}}
+  .proof{position:relative;margin:56px auto 0;max-width:52ch;font-size:13.5px;font-weight:300;color:#7C7C83}
+  .proof b{font-weight:400;color:#CBCBD0}
+  .scroll{position:absolute;bottom:28px;left:50%;width:1px;height:44px;background:linear-gradient(var(--soft),transparent);opacity:.6}
+
+  /* ===== shared section type ===== */
+  section{padding:150px 0}
+  @media (max-width:640px){section{padding:96px 0}}
+  .bone{background:var(--paper)}
+  .light-sec+.light-sec{border-top:1px solid var(--rule)}
+  /* black chapters: same layout, colours flipped through the variables */
+  .dark-sec{--ink:#F4F4F5;--mute:#A6A6AD;--soft:#75757C;--rule:rgba(244,244,245,.12);--paper:#0A0A0B;background:var(--night);color:var(--ink)}
+  .dark-sec .fails .cap{color:var(--rose-d)}
+  .dark-sec .avatar{background:#F4F4F5;color:#0A0A0B}
+  .dark-sec .compare>div:first-child .end{color:#75757C}
+  /* founder thoughts */
+  .quotes{list-style:none;margin:72px 0 0;padding:0;border-top:1px solid var(--ink);display:grid;grid-template-columns:1fr 1fr}
+  .quotes li{padding:30px 32px 30px 0;border-bottom:1px solid var(--rule);font-weight:300;font-size:clamp(20px,2.2vw,27px);line-height:1.3;letter-spacing:-.035em}
+  .quotes li:nth-child(even){padding-left:32px;border-left:1px solid var(--rule)}
+  .quotes li:last-child{color:var(--ink)}
+  .quotes li:not(:last-child){color:var(--mute)}
+  @media (max-width:760px){.quotes{grid-template-columns:1fr}.quotes li,.quotes li:nth-child(even){padding:24px 0;border-left:0}}
+  .closing{margin:56px 0 0;font-weight:300;font-size:clamp(24px,2.8vw,36px);line-height:1.2;letter-spacing:-.04em;max-width:30ch}
+  .closing span{color:var(--soft)}
+  .cols.four{grid-template-columns:repeat(4,1fr)}
+  @media (max-width:1000px){.cols.four{grid-template-columns:1fr 1fr}.cols.four>*:nth-child(3){padding-left:0;border-left:0}.cols.four>*:nth-child(n+3){margin-top:28px}}
+  @media (max-width:860px){.cols.four{grid-template-columns:1fr}.cols.four>*,.cols.four>*:nth-child(3){margin:0}}
+  .label{display:flex;gap:16px;align-items:baseline;color:var(--mute);margin:0 0 40px}
+  .label .n{color:var(--ink)}
+  h2{font-weight:300;font-size:clamp(34px,4.6vw,60px);line-height:1.06;letter-spacing:-.045em;margin:0;max-width:18ch}
+  h2 span{color:var(--soft)}
+  h3{font-weight:400;letter-spacing:-.025em;margin:0}
+  .lede{font-weight:300;font-size:18px;color:var(--mute);max-width:54ch;margin:28px 0 0}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end}
+  .two .lede{margin:0}
+  @media (max-width:900px){.two{grid-template-columns:1fr;gap:28px}}
+  .note{margin-top:28px;color:var(--soft)}
+  .cols{display:grid;grid-template-columns:repeat(3,1fr);margin-top:80px;border-top:1px solid var(--ink)}
+  .cols>*{padding:32px 32px 0 0}
+  .cols>*+*{padding-left:32px;border-left:1px solid var(--rule)}
+  .cols h3{font-size:22px;margin:18px 0 10px}
+  .cols p{margin:0;color:var(--mute);font-weight:300;font-size:15.5px}
+  .cols .cap{color:var(--soft)}
+  @media (max-width:860px){.cols{grid-template-columns:1fr}.cols>*,.cols>*+*{padding:28px 0;border-left:0;border-bottom:1px solid var(--rule)}}
+
+  /* ===== order plate ===== */
+  .plate{margin:80px auto 0;max-width:880px;background:var(--paper);border:1px solid var(--rule);border-radius:4px;box-shadow:0 40px 80px -50px rgba(17,17,19,.25)}
+  .plate .top{display:flex;justify-content:space-between;padding:18px 24px;border-bottom:1px solid var(--rule);color:var(--mute)}
+  .plate .r{display:grid;grid-template-columns:130px 1fr auto;gap:20px;padding:18px 24px;border-bottom:1px solid var(--rule);font-size:15px;font-weight:300}
+  .plate .r:last-child{border-bottom:0}
+  .plate .t{font-family:"Geist Mono",monospace;font-size:12px;color:var(--soft);padding-top:3px}
+  .plate .s{font-family:"Geist Mono",monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);padding-top:3px}
+  .plate .r.k{background:linear-gradient(90deg,rgba(17,17,19,.04),transparent)}
+  .plate .live{display:inline-flex;align-items:center;gap:8px}
+  .plate .live i{width:6px;height:6px;border-radius:50%;background:var(--ink);animation:pulse 1.6s ease-out infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(18,18,18,.35)}100%{box-shadow:0 0 0 8px rgba(18,18,18,0)}}
+  .js .plate.play .r{opacity:.25;transition:opacity .4s}
+  .js .plate.play .r.on{opacity:1}
+  .plate .r .s.run{color:var(--ink)}
+  .plate .r .s.run::before{content:"";display:inline-block;width:6px;height:6px;margin-right:8px;border-radius:50%;background:var(--ink);vertical-align:1px;animation:pulse 1s ease-out infinite}
+  .plate .r.k .s{color:var(--ink)}
+  @media (max-width:600px){.plate .r{grid-template-columns:1fr auto}.plate .t{grid-column:1/-1;padding:0}}
+  .tools{display:flex;justify-content:center;gap:12px 48px;flex-wrap:wrap;margin:72px 0 0;padding:0;list-style:none;color:var(--soft);font-size:15px;letter-spacing:-.01em}
+  .tools-l{text-align:center;color:var(--mute);margin:80px 0 0}
+  .tools-l+.tools{margin-top:24px}
+
+  /* ===== problem ===== */
+  .fails{list-style:none;margin:80px 0 0;padding:0;border-top:1px solid var(--ink)}
+  .fails li{display:grid;grid-template-columns:200px 1fr 1.3fr;gap:24px;padding:28px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+  .fails .cap{color:var(--rose)}
+  .fails h3{font-size:22px}
+  .fails p{margin:0;color:var(--mute);font-weight:300}
+  @media (max-width:860px){.fails li{grid-template-columns:1fr;gap:8px}}
+  .compare{display:grid;grid-template-columns:1fr 1fr;margin-top:96px;border-top:1px solid var(--ink)}
+  .compare>div{padding:28px 32px 0 0}
+  .compare>div+div{padding-left:32px;border-left:1px solid var(--rule)}
+  .compare .cap{display:block;color:var(--mute);margin-bottom:12px}
+  .compare .ev{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--rule);font-weight:300}
+  .compare .ev .t{font-family:"Geist Mono",monospace;font-size:12px;color:var(--soft);padding-top:3px}
+  .compare .end{display:block;font-weight:300;font-size:clamp(28px,3vw,38px);letter-spacing:-.04em;margin-top:24px}
+  .compare>div:first-child .end{color:var(--soft)}
+  @media (max-width:760px){.compare{grid-template-columns:1fr}.compare>div,.compare>div+div{padding:28px 0;border-left:0}}
+  .stat{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;margin-top:96px;padding-top:40px;border-top:1px solid var(--rule)}
+  .stat strong{font-weight:300;font-size:clamp(64px,8vw,112px);letter-spacing:-.06em;line-height:.9}
+  .stat p{margin:0;color:var(--mute);font-weight:300;font-size:17px;max-width:46ch}
+  .stat cite{display:block;margin-top:10px;font-style:normal;color:var(--soft)}
+  @media (max-width:700px){.stat{grid-template-columns:1fr;gap:16px}}
+
+  /* ===== services ===== */
+  .svc ul{list-style:none;margin:22px 0 0;padding:0}
+  .svc li{padding:10px 0;border-top:1px solid var(--rule);font-size:15px;font-weight:300;color:var(--ink)}
+  .svc h3{font-size:clamp(30px,3vw,40px);font-weight:300;letter-spacing:-.045em;margin:18px 0 10px}
+
+  /* ===== case studies ===== */
+  .feature{margin-top:80px;border-top:1px solid var(--ink);padding-top:40px}
+  .feature .who{color:var(--mute)}
+  .feature h3{font-weight:300;font-size:clamp(28px,3.4vw,44px);letter-spacing:-.045em;line-height:1.1;max-width:22ch;margin:16px 0 0}
+  .figs{display:grid;grid-template-columns:repeat(3,1fr);margin-top:56px;border-top:1px solid var(--rule)}
+  .figs div{padding:28px 32px 0 0}
+  .figs div+div{padding-left:32px;border-left:1px solid var(--rule)}
+  .figs strong{display:block;font-weight:300;font-size:clamp(56px,7vw,96px);letter-spacing:-.06em;line-height:1}
+  .figs span{display:block;margin-top:10px;color:var(--mute);font-weight:300}
+  @media (max-width:760px){.figs{grid-template-columns:1fr}.figs div,.figs div+div{padding:24px 0;border-left:0;border-bottom:1px solid var(--rule)}}
+  .story{display:grid;grid-template-columns:repeat(4,1fr);margin:56px 0 0;border-top:1px solid var(--rule)}
+  .story>div{padding:28px 28px 0 0}
+  .story>div+div{padding-left:28px;border-left:1px solid var(--rule)}
+  .story dt{color:var(--soft)}
+  .story dd{margin:12px 0 0;font-weight:300;font-size:15px;color:var(--ink)}
+  @media (max-width:1000px){.story{grid-template-columns:1fr 1fr}.story>div:nth-child(3){padding-left:0;border-left:0}.story>div:nth-child(n+3){margin-top:28px}}
+  @media (max-width:640px){.story{grid-template-columns:1fr}.story>div,.story>div+div{padding:24px 0;border-left:0;margin:0;border-bottom:1px solid var(--rule)}}
+  .examples{display:grid;grid-template-columns:1fr 1fr;margin-top:96px;border-top:1px solid var(--ink)}
+  .examples article{padding:32px 32px 0 0}
+  .examples article+article{padding-left:32px;border-left:1px solid var(--rule)}
+  .examples .cap{color:var(--soft)}
+  .examples .who{display:block;color:var(--mute);margin-top:12px;font-size:14px}
+  .examples h3{font-size:24px;font-weight:300;letter-spacing:-.035em;margin:8px 0 18px}
+  .examples dl{margin:0}
+  .examples dl div{display:grid;grid-template-columns:140px 1fr;gap:16px;padding:12px 0;border-top:1px solid var(--rule)}
+  .examples dt{color:var(--soft)}
+  .examples dd{margin:0;font-weight:300;font-size:15px}
+  @media (max-width:860px){.examples{grid-template-columns:1fr}.examples article,.examples article+article{padding:28px 0;border-left:0}.examples dl div{grid-template-columns:1fr;gap:4px}}
+
+  /* ===== monitoring table ===== */
+  .tbl{width:100%;border-collapse:collapse;margin-top:80px;border-top:1px solid var(--ink)}
+  .tbl th{text-align:left;padding:18px 24px 18px 0;border-bottom:1px solid var(--rule);color:var(--soft)}
+  .tbl td{padding:22px 24px 22px 0;border-bottom:1px solid var(--rule);vertical-align:top;font-weight:300;color:var(--mute)}
+  .tbl td:first-child{color:var(--ink);font-weight:400;font-size:18px;letter-spacing:-.02em;width:26%}
+  .tbl td.freq{font-family:"Geist Mono",monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);white-space:nowrap;width:16%;padding-top:27px}
+  @media (max-width:720px){.tbl thead{display:none}.tbl,.tbl tbody,.tbl tr,.tbl td{display:block;width:100%!important}.tbl tr{padding:20px 0;border-bottom:1px solid var(--rule)}.tbl td{padding:3px 0;border:0}.tbl td.freq{padding-top:8px}}
+
+  /* ===== process ===== */
+  .rows{list-style:none;margin:80px 0 0;padding:0;border-top:1px solid var(--ink)}
+  .rows li{display:grid;grid-template-columns:90px 280px 1fr 220px;gap:24px;padding:30px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+  .rows .n{color:var(--soft)}
+  .rows h3{font-size:26px;font-weight:300;letter-spacing:-.04em}
+  .rows p{margin:0;color:var(--mute);font-weight:300}
+  .rows .f{color:var(--ink);text-align:right}
+  .rows li.lead h3{font-weight:400}
+  @media (max-width:1000px){.rows li{grid-template-columns:60px 1fr}.rows p,.rows .f{grid-column:2;text-align:left}}
+  .sub-h{margin:120px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end}
+  .sub-h h3{font-weight:300;font-size:clamp(28px,3.2vw,40px);letter-spacing:-.045em;line-height:1.1}
+  .sub-h p{margin:0;color:var(--mute);font-weight:300}
+  @media (max-width:900px){.sub-h{grid-template-columns:1fr;gap:20px}}
+  .chips{list-style:none;margin:40px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+  .chips li{padding:8px 16px;border:1px solid var(--rule);border-radius:2px;font-size:14px;font-weight:300;background:var(--paper)}
+  .loop{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--ink);counter-reset:s}
+  .loop li{counter-increment:s;padding:24px 24px 0 0}
+  .loop li+li{padding-left:24px;border-left:1px solid var(--rule)}
+  .loop li::before{content:"0" counter(s);display:block;font-family:"Geist Mono",monospace;font-size:11.5px;letter-spacing:.14em;color:var(--soft);margin-bottom:16px}
+  .loop b{display:block;font-weight:400;font-size:19px;letter-spacing:-.03em;margin-bottom:8px}
+  .loop span{display:block;color:var(--mute);font-weight:300;font-size:14.5px}
+  @media (max-width:1000px){.loop{grid-template-columns:1fr 1fr}.loop li:nth-child(odd){padding-left:0;border-left:0}.loop li:nth-child(n+3){margin-top:28px}}
+  @media (max-width:560px){.loop{grid-template-columns:1fr}.loop li,.loop li+li{padding:24px 0;border-left:0;margin:0;border-bottom:1px solid var(--rule)}}
+
+  /* ===== pricing ===== */
+  .plans{display:grid;grid-template-columns:repeat(4,1fr);margin-top:80px;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule)}
+  .plan{padding:36px 28px 32px;display:flex;flex-direction:column}
+  .plan+.plan{border-left:1px solid var(--rule)}
+  .plan:first-child{padding-left:0}
+  .plan .cap{color:var(--soft)}
+  .plan h3{font-size:19px;margin:16px 0 0}
+  .plan .price{font-weight:300;font-size:clamp(40px,4.2vw,54px);letter-spacing:-.05em;line-height:1;margin:22px 0 8px}
+  .plan .unit{color:var(--mute);font-weight:300;font-size:14px}
+  .plan ul{list-style:none;margin:26px 0 0;padding:0}
+  .plan li{padding:9px 0;border-top:1px solid var(--rule);font-weight:300;font-size:14.5px}
+  .plan .rec{margin-top:auto;padding-top:24px}
+  .plan.core{background:var(--night);color:var(--bone);border-left-color:var(--night)}
+  .plan.core+.plan{border-left-color:var(--night)}
+  .plan.core .cap,.plan.core .unit{color:var(--soft)}
+  .plan.core li{border-top-color:var(--rule-d)}
+  .plan.core .rec{color:var(--bone)}
+  @media (max-width:1000px){.plans{grid-template-columns:1fr 1fr}.plan:nth-child(3){border-left:0}.plan:first-child,.plan:nth-child(3){padding-left:28px}.plan:nth-child(-n+2){border-bottom:1px solid var(--rule)}.plan:first-child{padding-left:0}.plan:nth-child(3).core{padding-left:28px}}
+  @media (max-width:600px){.plans{grid-template-columns:1fr}.plan,.plan+.plan,.plan:first-child{padding:32px 0;border-left:0;border-bottom:1px solid var(--rule)}.plan.core{padding:32px 24px;margin:0 -20px}}
+  .offer{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:baseline;margin-top:56px;padding:32px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .offer b{font-weight:300;font-size:clamp(24px,2.6vw,32px);letter-spacing:-.04em}
+  .offer p{margin:0;color:var(--mute);font-weight:300}
+  @media (max-width:760px){.offer{grid-template-columns:1fr;gap:10px}}
+  .pnotes{display:flex;justify-content:space-between;gap:16px 24px;flex-wrap:wrap;margin-top:24px;color:var(--soft)}
+
+  /* ===== about ===== */
+  .about{display:grid;grid-template-columns:1fr 1.1fr;gap:96px;align-items:start}
+  @media (max-width:900px){.about{grid-template-columns:1fr;gap:56px}}
+  .about p.body{margin:28px 0 0;color:var(--mute);font-weight:300;font-size:17px;max-width:46ch}
+  .founder{display:flex;gap:20px;align-items:center;margin-top:48px;padding-top:28px;border-top:1px solid var(--rule)}
+  .avatar{flex:none;width:56px;height:56px;border-radius:50%;background:var(--night);color:var(--bone);display:grid;place-items:center;font-weight:300;font-size:22px}
+  .founder b{display:block;font-weight:400}
+  .founder span{color:var(--mute);font-weight:300;font-size:15px}
+  .standards{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink);counter-reset:st}
+  .standards li{counter-increment:st;display:grid;grid-template-columns:48px 1fr;gap:8px 16px;padding:22px 0;border-bottom:1px solid var(--rule)}
+  .standards li::before{content:"0" counter(st);grid-row:span 2;font-family:"Geist Mono",monospace;font-size:11.5px;letter-spacing:.14em;color:var(--soft);padding-top:5px}
+  .standards h3{font-size:18px}
+  .standards p{margin:0;color:var(--mute);font-weight:300;font-size:15px}
+
+  /* ===== faq ===== */
+  .faq{margin-top:80px;border-top:1px solid var(--ink);max-width:900px}
+  .faq details{border-bottom:1px solid var(--rule)}
+  .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:24px;align-items:center;padding:26px 0;font-size:20px;font-weight:300;letter-spacing:-.025em}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"";flex:none;width:12px;height:12px;background:linear-gradient(currentColor,currentColor) center/12px 1px no-repeat,linear-gradient(currentColor,currentColor) center/1px 12px no-repeat;transition:transform .3s}
+  .faq details[open] summary::after{transform:rotate(45deg)}
+  .faq details p{margin:0 0 28px;color:var(--mute);font-weight:300;max-width:66ch}
+  @media (prefers-reduced-motion:reduce){.faq summary::after{transition:none}}
+
+  /* ===== contact ===== */
+  .contact{background:var(--night);color:var(--bone);padding:150px 0}
+  @media (max-width:640px){.contact{padding:96px 0}}
+  .contact .grid{display:grid;grid-template-columns:1fr 1.05fr;gap:96px;align-items:start}
+  @media (max-width:960px){.contact .grid{grid-template-columns:1fr;gap:56px}}
+  .contact .orb{width:110px;margin:0 0 44px}
+  .contact h2 span{color:#8C8C93}
+  .contact .lede{color:#A6A6AD}
+  .call-list{list-style:none;margin:44px 0 0;padding:0;border-top:1px solid var(--rule-d)}
+  .call-list li{padding:16px 0;border-bottom:1px solid var(--rule-d);font-weight:300;color:#CFCFD4;display:grid;grid-template-columns:40px 1fr}
+  .call-list li span{font-family:"Geist Mono",monospace;font-size:11.5px;letter-spacing:.14em;color:var(--soft);padding-top:4px}
+  .book{display:flex;flex-direction:column;gap:22px}
+  .f2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media (max-width:560px){.f2{grid-template-columns:1fr}}
+  .field{display:flex;flex-direction:column;gap:8px;border:0;margin:0;padding:0;min-width:0}
+  .field label,.field legend{font-family:"Geist Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);padding:0}
+  .field input:not([type=checkbox]),.field select,.field textarea{font:inherit;font-size:16px;font-weight:300;color:var(--bone);background:transparent;border:0;border-bottom:1px solid rgba(244,244,245,.28);border-radius:0;padding:10px 0;width:100%;transition:border-color .2s}
+  .field select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--soft) 50%),linear-gradient(135deg,var(--soft) 50%,transparent 50%);background-position:calc(100% - 10px) 52%,calc(100% - 5px) 52%;background-size:5px 5px;background-repeat:no-repeat;padding-right:24px}
+  .field select option{background:var(--night);color:var(--bone)}
+  .field textarea{resize:vertical;min-height:84px}
+  .field input::placeholder,.field textarea::placeholder{color:#5E5E64}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-bottom-color:var(--bone)}
+  .checks{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;margin-top:6px}
+  @media (max-width:560px){.checks{grid-template-columns:1fr}}
+  .checks label{display:flex;gap:12px;align-items:center;font-family:inherit;font-size:15px;letter-spacing:0;text-transform:none;font-weight:300;color:#CFCFD4;cursor:pointer;min-height:28px}
+  .checks input{appearance:none;-webkit-appearance:none;flex:none;width:16px;height:16px;margin:0;border:1px solid rgba(244,244,245,.4);border-radius:2px;display:grid;place-items:center;cursor:pointer}
+  .checks input:checked{background:var(--bone);border-color:var(--bone)}
+  .checks input:checked::after{content:"";width:8px;height:4px;border-left:1.5px solid var(--night);border-bottom:1.5px solid var(--night);transform:rotate(-45deg) translate(1px,-1px)}
+  .checks input:focus-visible{outline:1px solid var(--bone);outline-offset:3px}
+  .ferr,.err{margin:0;color:var(--rose-d);font-size:13.5px;font-weight:400}
+  .ferr:empty,.err:empty{display:none}
+  .field [aria-invalid=true]{border-bottom-color:var(--rose-d)!important}
+  fieldset.field[aria-invalid=true] .checks input{border-color:var(--rose-d)}
   .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-  .book .btn[disabled]{opacity:.7;cursor:progress}
-  .book.sent{justify-content:center;min-height:320px}
-  .contact .book.sent p{color:var(--muted);margin:0;max-width:40ch}
-  .contact .book.sent .sent-k{color:var(--green);font-weight:700;font-size:14px}
-  .book.sent h3{font-family:"Newsreader",Georgia,serif;font-weight:500;font-size:30px;color:var(--forest);margin:0}
-  .contact h2{margin-bottom:20px}
-  .offer{margin-top:24px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;padding:22px 24px;border:1px dashed var(--green);border-radius:var(--radius);background:var(--surface)}
-  @media (max-width:640px){.offer{grid-template-columns:1fr;gap:8px}}
-  .offer b{font-family:"Newsreader",Georgia,serif;font-weight:500;font-size:24px;color:var(--forest)}
-  .offer p{margin:0;color:var(--muted);font-size:15.5px}
-  footer{background:#0A2E21;color:#9CB8A8;font-size:14px}
-  .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding:56px 0 40px}
-  @media (max-width:860px){.foot{grid-template-columns:1fr 1fr;gap:32px}}
-  .foot h4{color:#fff;font-size:14px;margin:0 0 12px}
+  .book .btn{align-self:flex-start;margin-top:8px}
+  .book .btn[disabled]{opacity:.6;cursor:progress}
+  @media (max-width:520px){.book .btn{align-self:stretch}}
+  .form-note{margin:0;color:var(--soft)}
+  .sent{display:flex;flex-direction:column;gap:18px;padding:48px 0;border-top:1px solid var(--rule-d);border-bottom:1px solid var(--rule-d)}
+  .sent .cap{color:var(--soft)}
+  .sent h3{font-weight:300;font-size:clamp(30px,3.4vw,42px);letter-spacing:-.045em}
+  .sent p{margin:0;color:#A6A6AD;font-weight:300;max-width:42ch}
+
+  /* ===== footer ===== */
+  footer{background:var(--night);color:#8C8C93;border-top:1px solid var(--rule-d);padding:72px 0 32px;font-size:14px;font-weight:300}
+  .foot{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px}
+  @media (max-width:800px){.foot{grid-template-columns:1fr 1fr}}
+  .foot .logo{color:var(--bone);margin-bottom:16px}
+  .foot p{margin:0;max-width:30ch}
+  .foot h4{margin:0 0 14px;color:var(--soft);font-weight:400}
   .foot ul{list-style:none;margin:0;padding:0}
-  .foot li{padding:3px 0}
-  .foot a{text-decoration:none}
-  .foot a:hover{color:#fff}
-  .foot .brand{color:#fff;margin-bottom:12px}
-  .legal{border-top:1px solid #1E4A39;padding:20px 0 28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  .foot li{padding:4px 0}
+  .foot a:hover{color:var(--bone)}
+  .legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:64px;padding-top:24px;border-top:1px solid var(--rule-d);color:#6E6E75}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.orb,.orbit .spin,.cur,.plate .live i,.plate .r .s.run::before{animation:none}.reveal{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
+<script>document.documentElement.classList.add("js")</script>
 
-<div class="bar">
+<header class="bar" id="hdr">
   <div class="wrap">
-    <a class="brand logo" href="#" aria-label="WGY Labs home">
-      <span class="lw">wgy<span> labs</span></span>
-      <svg class="arc" viewBox="0 0 250 26" aria-hidden="true"><path d="M6 6Q125 34 244 6" fill="none" stroke="#16A05D" stroke-width="9" stroke-linecap="round"/></svg>
-    </a>
+    <a class="logo" href="#" aria-label="WGY Labs home"><span class="lw">wgy<span> labs</span></span><svg viewBox="0 0 250 26" preserveAspectRatio="none" aria-hidden="true"><path d="M6 6Q125 34 244 6" fill="none" stroke-width="8" stroke-linecap="round"/></svg></a>
     <nav class="main" aria-label="Main">
       <details class="dd">
         <summary>Services</summary>
         <div class="dd-menu">
-          <a href="#services"><b>Build</b><span>New automations and AI support agents</span></a>
+          <a href="#services"><b>Build</b><span>Operations automation and AI support agents</span></a>
           <a href="#services"><b>Test</b><span>Prove your AI agent works before launch</span></a>
           <a href="#checks"><b>Monitor</b><span>Daily checks, fixes and monthly reports</span></a>
           <a href="#pricing"><b>AI agent health check</b><span>Audit and tune an existing setup</span></a>
@@ -398,14 +408,14 @@
       <a href="#about">About</a>
     </nav>
     <div class="bar-actions">
-      <a class="btn" href="#contact">Book a call</a>
+      <a class="btn" href="#contact"><span class="bl">Book a call</span></a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav"><span class="menu-ico" aria-hidden="true"></span>Menu</button>
     </div>
   </div>
   <nav class="mnav" id="mnav" aria-label="Mobile" hidden>
     <div class="wrap">
-      <p class="mnav-h">Services</p>
-      <a href="#services"><b>Build</b><span>New automations and AI support agents</span></a>
+      <p class="cap">Services</p>
+      <a href="#services"><b>Build</b><span>Operations automation and AI support agents</span></a>
       <a href="#services"><b>Test</b><span>Prove your AI agent works before launch</span></a>
       <a href="#checks"><b>Monitor</b><span>Daily checks, fixes and monthly reports</span></a>
       <a href="#pricing"><b>AI agent health check</b><span>Audit and tune an existing setup</span></a>
@@ -416,187 +426,193 @@
       </div>
     </div>
   </nav>
-</div>
+</header>
 
 <main>
-<div class="wrap">
-  <div class="hero">
-    <div>
-      <p class="kicker">We’ve got your back.</p>
-      <h1>Your automations shouldn’t fail quietly.</h1>
-      <p class="lead">WGY Labs automates the day-to-day operations of Shopify brands. We cut the steps you don’t need, automate the rest, then test and monitor it every day, so you hear about problems before your customers do.</p>
-      <div class="ctas">
-        <a class="btn lg" href="#contact">Book a free 30-minute call</a>
-        <a class="btn lg secondary" href="#pricing">See pricing</a>
-      </div>
-      <p class="proof"><b>Founded by a test automation engineer.</b> Seven years of making sure software doesn’t break in front of users, now applied to your AI and automations.</p>
-    </div>
+  <div class="hero" id="top">
+    <canvas class="wave" aria-hidden="true"></canvas>
+    <p class="cap now" aria-label="AI agent at work on your operations"><span aria-hidden="true">AI agent at work · <span class="task" id="task">Reserving stock for order 4821</span><i class="cur"></i></span></p>
+    <h1>Operations that <span>run themselves.</span></h1>
+    <p class="sub">We take the checking, the remembering and the “did that actually go out?” off your plate. Your operations run on their own, and you only hear from them when something truly needs you.</p>
+    <div class="ctas"><a class="btn" href="#contact">Book a free 30-minute call <span class="ar" aria-hidden="true"></span></a><a class="link" href="#process">How we work <span aria-hidden="true">→</span></a></div>
+    <p class="proof"><b>Founded by a test automation engineer.</b> Seven years of making sure software doesn’t break in front of users, now applied to your operations.</p>
+    <span class="scroll" aria-hidden="true"></span>
+  </div>
 
-    <figure>
-      <div class="app" role="img" aria-label="Sample health view for a store: six automations, five healthy and one order-sync incident caught and resolved; 99.4% successful runs over 30 days; 1,840 support tickets handled by AI this month.">
-        <div class="app-top"><span class="t">Automation health</span><span class="s">Sample store, today 09:00</span></div>
-        <div class="app-body">
-          <div class="wf-list">
-            <div class="wf"><span class="dot"></span><span class="n">Support agent<span class="m">Order status, returns, edits</span></span><span class="r">312 replies<br>checked</span></div>
-            <div class="wf incident"><span class="dot warn"></span><span class="n">Order sync to 3PL<span class="m">Stopped 03:12, fixed 08:40</span></span><span class="r">Resolved</span></div>
-            <div class="wf"><span class="dot"></span><span class="n">Refund approvals<span class="m">Limit $150, human above</span></span><span class="r">0 over limit</span></div>
-            <div class="wf"><span class="dot"></span><span class="n">Low-stock alerts<span class="m">14 SKUs watched</span></span><span class="r">Ran 08:00</span></div>
-            <div class="wf"><span class="dot"></span><span class="n">Review replies<span class="m">Drafts for approval</span></span><span class="r">Ran 08:15</span></div>
-            <div class="wf"><span class="dot"></span><span class="n">Weekly KPI report<span class="m">Sent Mondays</span></span><span class="r">Ran Mon</span></div>
-          </div>
-          <div class="side">
-            <div class="metric">
-              <div class="l">Successful runs, last 30 days</div>
-              <div class="v">99.4%</div>
-              <svg viewBox="0 0 200 44" preserveAspectRatio="none" aria-hidden="true">
-                <polyline fill="none" stroke="#16A05D" stroke-width="2" points="0,10 14,9 28,11 42,8 56,10 70,9 84,8 98,10 112,9 126,30 140,10 154,9 168,8 182,9 200,8"/>
-                <circle cx="126" cy="30" r="3.5" fill="#D99A12"/>
-              </svg>
-            </div>
-            <div class="metric">
-              <div class="l">Tickets handled by AI this month</div>
-              <div class="v">1,840</div>
-            </div>
-            <div class="note"><b>Incident report</b>Shopify app update changed a field name. Mapping fixed, 37 orders re-sent. No customer impact.</div>
-          </div>
+  <section id="familiar" class="light-sec">
+    <div class="wrap">
+      <p class="label cap"><span class="n">01</span><span>Sound familiar?</span></p>
+      <h2 class="reveal">You automated it. <span>You’re still the one checking it.</span></h2>
+      <ul class="quotes reveal">
+        <li>“Did that order actually reach the warehouse?”</li>
+        <li>“I’ll just check the 3PL before bed.”</li>
+        <li>“The tracking email should have gone out. Let me look.”</li>
+        <li>“Zapier sent another ‘task failed’ email. I’ll deal with it later.”</li>
+        <li>“Who books the installations if I take a week off?”</li>
+        <li>“It’s automated. I just need to keep an eye on it.”</li>
+      </ul>
+      <p class="closing reveal">That last one is the trap. <span>Automation that still needs you to keep an eye on it is just a to-do list that runs by itself.</span></p>
+    </div>
+  </section>
+
+  <section id="hidden" class="dark-sec">
+    <div class="wrap">
+      <p class="label cap"><span class="n">02</span><span>The hidden job</span></p>
+      <h2 class="reveal">You never hired anyone for this job. <span>But someone’s doing it: you.</span></h2>
+      <div class="cols reveal">
+        <div><span class="cap">01</span><h3>You’re the reminder system</h3><p>The steps live in your head, and the business works because you don’t forget them.</p></div>
+        <div><span class="cap">02</span><h3>You’re the monitoring</h3><p>Nothing tells you when a flow stops. You find out when a customer asks where their order is.</p></div>
+        <div><span class="cap">03</span><h3>You’re the backup</h3><p>When an app updates, a courier cancels or a field changes name, it lands on your desk, usually at the worst time.</p></div>
+      </div>
+      <p class="closing reveal">It’s not a lot of work each time. <span>It’s a little bit of work, all the time, and it never fully switches off.</span></p>
+    </div>
+  </section>
+
+  <section id="hours" class="light-sec">
+    <div class="wrap">
+      <p class="label cap"><span class="n">03</span><span>Where the hours go</span></p>
+      <h2 class="reveal">Small manual steps add up <span>to a full-time job nobody applied for.</span></h2>
+      <div class="cols reveal">
+        <div><span class="cap">Double handling</span><h3>Every order, touched twice</h3><p>Copying details from Shopify into the 3PL, the helpdesk and a spreadsheet, and hoping there’s no typo.</p></div>
+        <div><span class="cap">Single point of failure</span><h3>It only works because you know the steps</h3><p>When you’re ill, travelling or just busy, it quietly stops.</p></div>
+        <div><span class="cap">Linear cost</span><h3>More orders, more hands</h3><p>Every busy season or new market feels like another hire, so costs grow as fast as revenue.</p></div>
+      </div>
+      <p class="lede reveal">No two brands lose time in the same place, so we don’t sell a fixed package. We start by looking at how the work really gets done.</p>
+    </div>
+  </section>
+
+  <section id="problem" class="dark-sec">
+    <div class="wrap">
+      <p class="label cap"><span class="n">04</span><span>Why it fails quietly</span></p>
+      <div class="two reveal">
+        <h2>Most automations don’t break on day one. <span>They break on a Tuesday in March, and nobody notices.</span></h2>
+        <p class="lede">Apps update, APIs change, AI models drift. Without someone watching, a broken flow can run for days before a customer tells you.</p>
+      </div>
+      <ul class="fails reveal">
+        <li><span class="cap">Silent failure</span><h3>It stopped, and nobody noticed</h3><p>A workflow fails at 3am. Orders don’t sync, emails don’t send, and you find out from an angry customer.</p></li>
+        <li><span class="cap">No handover</span><h3>Only one freelancer understands it</h3><p>No documentation, built in someone else’s account. When they move on, nobody can fix it.</p></li>
+        <li><span class="cap">Untested AI</span><h3>The AI agent says things it shouldn’t</h3><p>Wrong refund rules, invented policies, missed handovers. It was never tested against real customer messages.</p></li>
+      </ul>
+      <div class="compare reveal" aria-label="Example: the same broken order sync, with and without monitoring">
+        <div>
+          <span class="cap">Without monitoring</span>
+          <div class="ev"><span class="t">Mon 03:12</span><span>Order sync to your warehouse stops</span></div>
+          <div class="ev"><span class="t">Tue to Fri</span><span>Orders pile up unshipped</span></div>
+          <div class="ev"><span class="t">Day 9</span><span>Customers ask “Where is my order?”</span></div>
+          <div class="ev"><span class="t">Day 10</span><span>You find the cause and start refunds</span></div>
+          <span class="end">Found after 9 days</span>
+        </div>
+        <div>
+          <span class="cap">With WGY Labs</span>
+          <div class="ev"><span class="t">Mon 03:12</span><span>Order sync to your warehouse stops</span></div>
+          <div class="ev"><span class="t">Mon 08:02</span><span>Daily check flags the failed runs</span></div>
+          <div class="ev"><span class="t">Mon 08:40</span><span>Cause found, fixed, orders re-sent</span></div>
+          <div class="ev"><span class="t">Mon 09:00</span><span>You get a short incident note</span></div>
+          <span class="end">Fixed before breakfast</span>
         </div>
       </div>
-      <figcaption>Sample daily health view. Figures are illustrative.</figcaption>
-    </figure>
-  </div>
-</div>
-
-<div class="tools">
-  <div class="wrap">
-    <p>We work inside the tools you already use</p>
-    <ul><li>Shopify</li><li>Shopify Flow</li><li>Gorgias</li><li>Klaviyo</li><li>n8n</li><li>Make</li><li>Zapier</li></ul>
-  </div>
-</div>
-
-<section id="hours" class="surface">
-  <div class="wrap">
-    <p class="kicker">Where the hours go</p>
-    <h2 class="hours-h">Small manual steps add up to a full-time job.</h2>
-    <div class="pains">
-      <div class="pain"><h3>Every order handled twice</h3><p>Order details are copied by hand from Shopify into the 3PL, the helpdesk and a spreadsheet. Every copy is a chance for a typo.</p></div>
-      <div class="pain"><h3>It lives in one person’s head</h3><p>The process works because one person knows the steps. When they’re off sick or move on, it stops.</p></div>
-      <div class="pain"><h3>More orders, more people</h3><p>Each new channel or busy season means another hire, so costs grow as fast as revenue.</p></div>
+      <div class="stat reveal">
+        <strong>40%+</strong>
+        <p>of agentic AI projects are expected to be cancelled by the end of 2027, due to rising costs, unclear value or weak risk controls.<cite class="cap">Gartner, June 2025</cite></p>
+      </div>
     </div>
-    <p class="hours-foot">No two brands lose time in the same place, so we don’t sell a fixed package. We start by looking at how the work really gets done.</p>
-  </div>
-</section>
+  </section>
 
-<section id="problem">
-  <div class="wrap">
-    <div class="head">
-      <h2>Most automations don’t fail at launch. They fail months later, and nobody notices.</h2>
-      <p>Apps update, APIs change and AI models drift. Without someone watching, a broken workflow can run for days before a customer complains.</p>
+  <section id="changes" class="light-sec">
+    <div class="wrap">
+      <p class="label cap"><span class="n">05</span><span>What changes</span></p>
+      <h2 class="reveal">Close the laptop. <span>It’s handled.</span></h2>
+      <div class="cols four reveal">
+        <div><span class="cap">01</span><h3>You stop checking</h3><p>Every flow is checked daily, so you don’t have to.</p></div>
+        <div><span class="cap">02</span><h3>You stop remembering</h3><p>The steps live in the system and its documentation, not in your head.</p></div>
+        <div><span class="cap">03</span><h3>You hear about problems first</h3><p>With a short note on what happened and what we fixed, before a customer notices.</p></div>
+        <div><span class="cap">04</span><h3>You can take a week off</h3><p>Orders, deliveries, installations and customer updates keep moving without you.</p></div>
+      </div>
+      <div class="plate reveal play" id="plate" role="img" aria-label="Sample order timeline: order received, sent to warehouse, courier booked, an installer cancellation handled automatically with the founder informed, and a review request queued.">
+        <div class="top"><span class="cap live"><i></i>Agent run · Order 4821</span><span class="cap">Sample data</span></div>
+        <div class="r"><span class="t">09:02</span><span>Order received from Shopify</span><span class="s">Done</span></div>
+        <div class="r"><span class="t">09:04</span><span>Sent to warehouse, stock reserved</span><span class="s">Done</span></div>
+        <div class="r"><span class="t">Day 2</span><span>Courier booked, tracking sent to customer</span><span class="s">Done</span></div>
+        <div class="r k"><span class="t">Day 3</span><span>Installer cancelled. New slot offered, founder informed</span><span class="s">Handled</span></div>
+        <div class="r"><span class="t">Day 14</span><span>Review request scheduled</span><span class="s">Queued</span></div>
+      </div>
+      <p class="tools-l cap">We work inside the tools you already use</p>
+      <ul class="tools"><li>Shopify</li><li>Shopify Flow</li><li>Gorgias</li><li>Klaviyo</li><li>n8n</li><li>Make</li><li>Zapier</li></ul>
     </div>
-    <div class="split">
-      <div>
-        <ul class="failures">
-          <li><span class="k">Silent failure</span><div><h3>It stopped, and nobody noticed</h3><p>A workflow fails at 3am. Orders don’t sync, emails don’t send, and you find out from an angry customer.</p></div></li>
-          <li><span class="k">No handover</span><div><h3>Only one freelancer understands it</h3><p>No documentation, built in someone else’s account. When they move on, nobody can fix it.</p></div></li>
-          <li><span class="k">Untested AI</span><div><h3>The AI agent says things it shouldn’t</h3><p>Wrong refund rules, invented policies, missed handovers. It was never tested against real customer messages.</p></div></li>
-        </ul>
-        <div class="stat">
-          <div class="big">40%+</div>
-          <p>of agentic AI projects are expected to be cancelled by the end of 2027, due to rising costs, unclear value or weak risk controls.</p>
-          <cite>Gartner, June 2025</cite>
+  </section>
+
+  <section id="services" class="light-sec">
+    <div class="wrap">
+      <p class="label cap"><span class="n">06</span><span>Services</span></p>
+      <div class="two reveal">
+        <h2>We build it, test it, <span>and keep it working.</span></h2>
+        <p class="lede">First we spend a week inside your operations and hand you a ranked plan: what to change, and in what order. Then we build it one phase at a time, on n8n or custom code, with AI agents only where they take real work off your team.</p>
+      </div>
+      <div class="cols reveal">
+        <div class="svc"><span class="cap">01</span><h3>Build</h3><p>Operations automation for the work your team still does by hand.</p>
+          <ul><li>Operations review: map the flow and cut steps you don’t need</li><li>Order, inventory and 3PL workflows</li><li>AI support agents for order status, returns and edits</li><li>Reporting and marketing operations</li></ul></div>
+        <div class="svc"><span class="cap">02</span><h3>Test</h3><p>Evidence your AI agent works before customers see it.</p>
+          <ul><li>Test sets built from your real tickets</li><li>Re-testing on every prompt or model change</li><li>Health checks for existing Gorgias, Shopify Flow and AI agent setups</li></ul></div>
+        <div class="svc"><span class="cap">03</span><h3>Monitor</h3><p>Daily checks and monthly upkeep, so everything keeps working.</p>
+          <ul><li>Alerts when anything stops or drifts</li><li>Monthly quality and savings report</li><li>Fixes when apps and APIs change</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases" class="dark-sec">
+    <div class="wrap">
+      <p class="label cap"><span class="n">07</span><span>Case studies</span></p>
+      <h2 class="reveal">Our first client project in full, <span>plus two typical projects.</span></h2>
+      <article class="feature reveal">
+        <span class="cap who">Client project · Easi Breezi</span>
+        <h3>They were about to hire. After we automated and simplified the flow, they didn’t need to.</h3>
+        <div class="figs">
+          <div><strong>0</strong><span>New hires needed</span></div>
+          <div><strong>~5</strong><span>Steps cut from the flow</span></div>
+          <div><strong>1</strong><span>Person can run the operation</span></div>
         </div>
-      </div>
-      <div class="timeline" aria-label="Example: the same broken order sync, with and without monitoring">
-        <div class="tl-head"><div>Without monitoring</div><div>With WGY Labs</div></div>
-        <div class="tl-row"><div><span class="w">Mon 03:12</span>Order sync to your warehouse stops</div><div><span class="w">Mon 03:12</span>Order sync to your warehouse stops</div></div>
-        <div class="tl-row"><div><span class="w">Tue to Fri</span>Orders pile up unshipped</div><div><span class="w">Mon 08:02</span>Daily check flags the failed runs</div></div>
-        <div class="tl-row"><div><span class="w">Day 9</span>Customers ask “Where is my order?”</div><div><span class="w">Mon 08:40</span>Cause found, fixed, orders re-sent</div></div>
-        <div class="tl-row"><div><span class="w">Day 10</span>You find the cause and start refunds</div><div><span class="w">Mon 09:00</span>You get a short incident note</div></div>
-        <div class="tl-foot"><div>Found after 9 days</div><div>Fixed before breakfast</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="services" class="surface">
-  <div class="wrap">
-    <div class="head">
-      <h2>We build it, test it, and keep it working.</h2>
-      <p>First we spend a week inside your operations and hand you a ranked plan: what to change, and in what order. Then we build it one phase at a time, on n8n or custom code, with AI agents only where they take real work off your team. Each phase is tested before launch and monitored after it.</p>
-    </div>
-    <div class="services">
-      <div class="svc">
-        <h3>Build</h3>
-        <p class="sum">Operations automation for the work your team still does by hand.</p>
-        <h4>Typical work</h4>
-        <ul><li>Operations review: map the flow and cut steps you don’t need</li><li>Order, inventory and 3PL workflows</li><li>AI support agents for order status, returns and edits</li><li>Reporting and marketing operations</li></ul>
-      </div>
-      <div class="svc">
-        <h3>Test</h3>
-        <p class="sum">Evidence your AI agent works before customers see it.</p>
-        <h4>Typical work</h4>
-        <ul><li>Test sets built from your real tickets</li><li>Re-testing on every prompt or model change</li><li>Health checks for existing Gorgias, Shopify Flow and AI agent setups</li></ul>
-      </div>
-      <div class="svc">
-        <h3>Monitor</h3>
-        <p class="sum">Daily checks and monthly upkeep, so everything keeps working.</p>
-        <h4>Typical work</h4>
-        <ul><li>Alerts when anything stops or drifts</li><li>Monthly quality and savings report</li><li>Fixes when apps and APIs change</li></ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="cases">
-  <div class="wrap">
-    <div class="head">
-      <h2>Case studies</h2>
-      <p>Our first client project in full, plus two typical projects for Shopify brands.</p>
-    </div>
-    <div class="cases">
-      <article class="case real">
-        <span class="lab">Client project</span>
-        <span class="who">Easi Breezi</span>
-        <h3>The founder needed time to build product. We started with his biggest manual task.</h3>
-        <dl>
-          <div><dt>Problem</dt><dd>Easi Breezi’s founder had no time left to develop new versions of the product, so they planned to hire someone for logistics and installation. Some work was already automated, but gaps were still handled by hand, and customers in different countries got a different experience, which was hard to manage and sustain.</dd></div>
-          <div><dt>What we did</dt><dd>We started with one question: which manual task takes most of your day? The answer was arranging installations for customers, so we tackled that first with AI agents and automation, then covered warehouse, logistics and customer updates. Stepping up to the business rules, we found part of the flow didn’t need to exist at all, and removed it.</dd></div>
-          <div><dt>Result</dt><dd>A complicated setup became a much smaller one, with about five steps cut. Easi Breezi got working automation and a clear review of how their operations should run, built to need very few changes as they grow.</dd></div>
+        <dl class="story">
+          <div><dt class="cap">Problem</dt><dd>Easi Breezi’s founder had no time left to develop new versions of the product, so they planned to hire someone for logistics and installation. Some work was already automated, but gaps were still handled by hand, and customers in different countries got a different experience, which was hard to manage and sustain.</dd></div>
+          <div><dt class="cap">What we found</dt><dd>Reviewing the whole operation, we found steps that weren’t worth automating at all. We also found that some information and guides meant for customers were failing silently: nobody knew they hadn’t arrived.</dd></div>
+          <div><dt class="cap">What we did</dt><dd>We started with the founder’s biggest manual task, arranging installations, and handled it with AI agents and automation, then covered warehouse, logistics and customer updates. Inefficient steps were removed instead of automated, which saved money. Now any part of the operation that stops working alerts the founder straight away.</dd></div>
+          <div><dt class="cap">Result</dt><dd>No new hire needed: automating the flow first removed the need for the extra role. A complicated setup became a much smaller one, designed so one person can run the whole operation, with no human in the loop for routine work and very few changes as the business grows.</dd></div>
         </dl>
       </article>
-      <article class="case">
-        <span class="lab">Example project</span>
-        <span class="who">Apparel brand using a 3PL warehouse</span>
-        <h3>Monitoring for order sync and stock alerts</h3>
-        <dl>
-          <div><dt>Problem</dt><dd>Order sync to the warehouse broke twice after app updates, and nobody noticed for days.</dd></div>
-          <div><dt>What we do</dt><dd>Add daily checks on every workflow, alerts on failures, and fixes when apps change.</dd></div>
-          <div><dt>What we measure</dt><dd>Time to detect and fix issues, missed orders, successful runs.</dd></div>
-        </dl>
-      </article>
-      <article class="case">
-        <span class="lab">Example project</span>
-        <span class="who">Home goods brand already using an AI agent</span>
-        <h3>A health check for an existing AI support setup</h3>
-        <dl>
-          <div><dt>Problem</dt><dd>The AI agent resolves fewer tickets than promised and sometimes gives wrong policy answers.</dd></div>
-          <div><dt>What we do</dt><dd>Build a test set from real tickets, find where it fails, and tune its rules and handovers.</dd></div>
-          <div><dt>What we measure</dt><dd>Automation rate and wrong answers, before and after.</dd></div>
-        </dl>
-      </article>
+      <div class="examples reveal">
+        <article>
+          <span class="cap">Example project</span>
+          <span class="who">Apparel brand using a 3PL warehouse</span>
+          <h3>Monitoring for order sync and stock alerts</h3>
+          <dl>
+            <div><dt class="cap">Problem</dt><dd>Order sync to the warehouse broke twice after app updates, and nobody noticed for days.</dd></div>
+            <div><dt class="cap">What we do</dt><dd>Add daily checks on every workflow, alerts on failures, and fixes when apps change.</dd></div>
+            <div><dt class="cap">What we measure</dt><dd>Time to detect and fix issues, missed orders, successful runs.</dd></div>
+          </dl>
+        </article>
+        <article>
+          <span class="cap">Example project</span>
+          <span class="who">Home goods brand already using an AI agent</span>
+          <h3>A health check for an existing AI support setup</h3>
+          <dl>
+            <div><dt class="cap">Problem</dt><dd>The AI agent resolves fewer tickets than promised and sometimes gives wrong policy answers.</dd></div>
+            <div><dt class="cap">What we do</dt><dd>Build a test set from real tickets, find where it fails, and tune its rules and handovers.</dd></div>
+            <div><dt class="cap">What we measure</dt><dd>Automation rate and wrong answers, before and after.</dd></div>
+          </dl>
+        </article>
+      </div>
+      <p class="note cap">Projects marked “Example project” are illustrative examples of our work, not client results.</p>
     </div>
-    <p class="cases-note">The cards marked “Example project” are illustrative examples of our work, not client results.</p>
-  </div>
-</section>
+  </section>
 
-<section id="checks">
-  <div class="wrap">
-    <div class="head">
-      <h2>What we monitor, and what it catches</h2>
-      <p>Monitoring isn’t only “is it running.” We check that each automation does the right thing, with the right data, inside the limits you set.</p>
-    </div>
-    <div class="tbl">
-      <table>
-        <thead><tr><th scope="col">Check</th><th scope="col">What it catches</th><th scope="col">How often</th></tr></thead>
+  <section id="checks" class="light-sec">
+    <div class="wrap">
+      <p class="label cap"><span class="n">08</span><span>Monitoring</span></p>
+      <div class="two reveal">
+        <h2>Everything you check by hand, <span>checked for you.</span></h2>
+        <p class="lede">Monitoring isn’t only “is it running.” We check that each automation does the right thing, with the right data, inside the limits you set.</p>
+      </div>
+      <table class="tbl reveal">
+        <thead><tr><th scope="col" class="cap">Check</th><th scope="col" class="cap">What it catches</th><th scope="col" class="cap">How often</th></tr></thead>
         <tbody>
           <tr><td>Run health</td><td>Workflows that stopped, failed or slowed down, including silent failures with no error message.</td><td class="freq">Continuous</td></tr>
           <tr><td>AI answer quality</td><td>A sample of real AI replies scored for accuracy, tone and correct policy. Catches made-up answers early.</td><td class="freq">Daily</td></tr>
@@ -607,26 +623,41 @@
         </tbody>
       </table>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="process" class="surface">
-  <div class="wrap">
-    <p class="kicker">How we work</p>
-    <div class="head">
-      <h2>From first look to looked after</h2>
-      <p>We only build what the audit shows is worth building. Everything lives in your accounts and is documented, so you’re never locked in.</p>
-    </div>
-    <ol class="stages">
-      <li class="stage lead-stage"><span class="st-n">Stage 1</span><h3>Audit week</h3><p>We spend a week with the people who do the work and find where the hours and the money go.</p><span class="st-f">1 week · $750, credited to your build</span></li>
-      <li class="stage"><span class="st-n">Stage 2</span><h3>Your plan</h3><p>A map of how your operations run today and a ranked list of changes, each with the time or money it saves. The plan is yours, whether or not we build it.</p><span class="st-f">End of week 1</span></li>
-      <li class="stage"><span class="st-n">Stage 3</span><h3>Build in phases</h3><p>One process at a time: an automation layer on n8n, custom code, or AI agents where they take real work off your team. Each phase is sized to pay for itself.</p><span class="st-f">From $2,500 per phase</span></li>
-      <li class="stage"><span class="st-n">Stage 4</span><h3>Test and launch</h3><p>Tested against your real data and launched alongside your team, with limits and human approval wherever money is involved.</p><span class="st-f">Included in every build</span></li>
-      <li class="stage"><span class="st-n">Stage 5</span><h3>Support and maintenance</h3><p>We keep everything running after launch, and take on the next process when you’re ready.</p><span class="st-f">$750 / month · optional</span></li>
-    </ol>
-    <div class="care">
-      <h3>What support and maintenance covers</h3>
-      <ol class="care-steps">
+  <section id="process" class="light-sec">
+    <div class="wrap">
+      <p class="label cap"><span class="n">09</span><span>How we work</span></p>
+      <div class="two reveal">
+        <h2>From first look <span>to looked after.</span></h2>
+        <p class="lede">We only build what the audit shows is worth building. Everything lives in your accounts and is documented, so you’re never locked in.</p>
+      </div>
+      <ol class="rows reveal">
+        <li class="lead"><span class="n cap">Stage 1</span><h3>Audit week</h3><p>We spend a week with the people who do the work and find where the hours and the money go.</p><span class="f cap">1 week · $750, credited</span></li>
+        <li><span class="n cap">Stage 2</span><h3>Your plan</h3><p>A map of how your operations run today and a ranked list of changes, each with the time or money it saves. The plan is yours, whether or not we build it.</p><span class="f cap">End of week 1</span></li>
+        <li><span class="n cap">Stage 3</span><h3>Build in phases</h3><p>One process at a time: an automation layer on n8n, custom code, or AI agents where they take real work off your team. Each phase is sized to pay for itself.</p><span class="f cap">From $2,500 per phase</span></li>
+        <li><span class="n cap">Stage 4</span><h3>Test and launch</h3><p>Tested against your real data and launched alongside your team, with limits and human approval wherever money is involved.</p><span class="f cap">Included in every build</span></li>
+        <li><span class="n cap">Stage 5</span><h3>Support and maintenance</h3><p>We stay with you after launch: everything keeps running, and when your business changes, we change the automation with it.</p><span class="f cap">$750 / month · optional</span></li>
+      </ol>
+
+      <div class="sub-h reveal">
+        <h3>How we build: one flow at a time.</h3>
+        <p>After the audit, we split your operations into flows, then take each one through the same loop.</p>
+      </div>
+      <ul class="chips reveal"><li>Taking the order</li><li>Preparing the product</li><li>Delivery</li><li>Logistics partner</li><li>Customer updates</li><li>Installation</li><li>Reviews</li></ul>
+      <ol class="loop reveal">
+        <li><b>Map</b><span>With you and the people who run it, we write down how the flow works today.</span></li>
+        <li><b>Choose</b><span>We give you a few ways to do it, comparing upkeep, running cost, risks and downsides, and time to build. You pick.</span></li>
+        <li><b>Release</b><span>We build it and release it into your real operations, testing it live with your team.</span></li>
+        <li><b>Adjust</b><span>We make any changes you ask for until the flow runs smoothly.</span></li>
+        <li><b>Next flow</b><span>Only once it’s done do we move on to the next one.</span></li>
+      </ol>
+
+      <div class="sub-h reveal">
+        <h3>We don’t leave after launch.</h3>
+        <p>When a build is done, you have a working setup that’s yours to keep. But businesses change: a new product, a new market, a new partner, a flow that needs to work differently. Our support and maintenance package keeps everything running and adapts it with you.</p>
+      </div>
+      <ol class="loop reveal">
         <li><b>Watch</b><span>Daily checks on every automation and AI reply, with alerts the moment something stops or drifts.</span></li>
         <li><b>Fix</b><span>When an app, API or model changes, we repair it, usually before your team notices. Included in the plan.</span></li>
         <li><b>Support</b><span>A named person your team can message with questions, small changes and new ideas.</span></li>
@@ -634,123 +665,128 @@
         <li><b>Grow</b><span>On Monitor and grow ($2,000 / month), we also build one new automation for you each month.</span></li>
       </ol>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="pricing">
-  <div class="wrap">
-    <div class="head">
-      <h2>Published pricing</h2>
-      <p>Fixed prices, no surprise hours. Already running automations or an AI agent? Start with a health check.</p>
-    </div>
-    <div class="plans">
-      <div class="plan">
-        <span class="type">One-off</span><h3>Audit</h3>
-        <div class="price">$750</div><div class="unit">credited toward a build</div>
-        <ul><li>Ticket and task analysis</li><li>Ranked automation plan</li><li>Expected time and cost savings</li></ul>
+  <section id="pricing" class="light-sec">
+    <div class="wrap">
+      <p class="label cap"><span class="n">10</span><span>Pricing</span></p>
+      <div class="two reveal">
+        <h2>Published pricing. <span>No surprise hours.</span></h2>
+        <p class="lede">Fixed prices. Already running automations or an AI agent? Start with a health check.</p>
       </div>
-      <div class="plan">
-        <span class="type">Project</span><h3>Build</h3>
-        <div class="price">$2,500+</div><div class="unit">per workflow package</div>
-        <ul><li>Built in your accounts</li><li>Tested against your data</li><li>Full handover, yours to keep</li></ul>
-      </div>
-      <div class="plan core">
-        <span class="type">Monthly</span><h3>Monitor</h3>
-        <div class="price">$750</div><div class="unit">per month</div>
-        <ul><li>Daily checks and alerts</li><li>Fixes when apps change</li><li>Monthly reliability report</li></ul>
-        <span class="rec">Chosen by most clients</span>
-      </div>
-      <div class="plan">
-        <span class="type">Monthly</span><h3>Monitor and grow</h3>
-        <div class="price">$2,000</div><div class="unit">per month</div>
-        <ul><li>Everything in Monitor</li><li>One new automation each month</li><li>Regression tests on every change</li></ul>
-      </div>
-    </div>
-    <div class="offer"><b>Founding clients: 30% off</b><p>Our first five brands get 30% off their first build, in return for a short testimonial and permission to publish the results as a case study.</p></div>
-    <div class="pricing-notes"><span>AI agent health check for existing setups from $1,000.</span><span>All prices in USD, excluding your own software subscriptions.</span></div>
-  </div>
-</section>
-
-<section id="about" class="surface">
-  <div class="wrap">
-    <div class="about">
-      <div>
-        <h2>Built by testers, not hype.</h2>
-        <p style="margin-top:20px">WGY stands for “We Got You.” We started WGY Labs to fix the part of AI automation most providers skip: making sure it keeps working, and stays safe, long after launch.</p>
-        <p>We work with Shopify brands worldwide, remotely and in English.</p>
-        <div class="founder">
-          <span class="avatar" aria-hidden="true">K</span>
-          <div><b>Kat, founder</b><span>Seven years in QA and test automation, now building and evaluating AI systems.</span></div>
+      <div class="plans reveal">
+        <div class="plan">
+          <span class="cap">One-off</span><h3>Audit</h3>
+          <div class="price">$750</div><div class="unit">credited toward a build</div>
+          <ul><li>Ticket and task analysis</li><li>Ranked automation plan</li><li>Expected time and cost savings</li></ul>
+        </div>
+        <div class="plan">
+          <span class="cap">Project</span><h3>Build</h3>
+          <div class="price">$2,500+</div><div class="unit">per workflow package</div>
+          <ul><li>Built in your accounts</li><li>Tested against your data</li><li>Full handover, yours to keep</li></ul>
+        </div>
+        <div class="plan core">
+          <span class="cap">Monthly</span><h3>Support and maintenance</h3>
+          <div class="price">$750</div><div class="unit">per month</div>
+          <ul><li>Daily checks and alerts</li><li>Fixes when apps change</li><li>Changes when your business changes</li><li>Monthly reliability report</li></ul>
+          <span class="rec cap">Chosen by most clients</span>
+        </div>
+        <div class="plan">
+          <span class="cap">Monthly</span><h3>Monitor and grow</h3>
+          <div class="price">$2,000</div><div class="unit">per month</div>
+          <ul><li>Everything in Support and maintenance</li><li>One new automation each month</li><li>Regression tests on every change</li></ul>
         </div>
       </div>
-      <ul class="standards">
+      <div class="offer reveal"><b>Founding clients: 30% off</b><p>Our first five brands get 30% off their first build, in return for a short testimonial and permission to publish the results as a case study.</p></div>
+      <div class="pnotes cap"><span>AI agent health check for existing setups from $1,000</span><span>All prices in USD, excluding your own software subscriptions</span></div>
+    </div>
+  </section>
+
+  <section id="about" class="dark-sec">
+    <div class="wrap about">
+      <div class="reveal">
+        <p class="label cap"><span class="n">11</span><span>About</span></p>
+        <h2>Built by testers, <span>not hype.</span></h2>
+        <p class="body">WGY stands for “We Got You.” We started WGY Labs to fix the part of AI automation most providers skip: making sure it keeps working, and stays safe, long after launch.</p>
+        <p class="body">We work with Shopify brands worldwide, remotely and in English.</p>
+        <div class="founder"><span class="avatar" aria-hidden="true">K</span><div><b>Kat, founder</b><span>Seven years in QA and test automation, now building and evaluating AI systems.</span></div></div>
+      </div>
+      <ul class="standards reveal">
         <li><h3>A named owner for every client</h3><p>You always know who is responsible for your automations.</p></li>
         <li><h3>Full handover, yours to keep</h3><p>Built in your accounts, with your data and documentation your team can read. Nothing runs on our private infrastructure unless you ask for it. No lock-in.</p></li>
         <li><h3>Tested before launch, checked every day</h3><p>The same standards used for production software.</p></li>
+        <li><h3>No human in the loop for routine work</h3><p>Our goal is operations that run without someone pushing every step along. People only step in for real exceptions, and for money above the limits you set.</p></li>
         <li><h3>AI only where it earns its place</h3><p>We don’t put AI into every step. Where a simple rule or automation does the job, we use that, and save AI for work that really needs judgement.</p></li>
         <li><h3>Built to be cheap to run</h3><p>We design for low running costs, including AI token spend: the right-sized model for each task and no wasted calls. We watch your running costs as closely as reliability.</p></li>
         <li><h3>People approve anything involving money</h3><p>AI handles the routine. Refunds and credits above your limits always go to a person.</p></li>
       </ul>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="faq">
-  <div class="wrap">
-    <div class="head"><h2>Questions brands ask us</h2><p></p></div>
-    <div class="faq">
-      <details><summary>Do we need to have automations already?</summary><p>No. Most clients start with an audit and a first build. If you already have automations or an AI support agent, we start with a health check instead.</p></details>
-      <details><summary>Who owns what you build?</summary><p>You do. Everything is built in your own Shopify, helpdesk and automation accounts, with documentation your team can read.</p></details>
-      <details><summary>What happens when something breaks?</summary><p>Our checks flag it, we fix it, and you get a short note explaining what happened and what changed. Fixes for things we monitor are included in your plan.</p></details>
-      <details><summary>Which tools do you work with?</summary><p>Shopify and Shopify Flow, Gorgias, Klaviyo, n8n, Make and Zapier, plus custom AI agents where off-the-shelf tools fall short.</p></details>
-      <details><summary>Will AI make this expensive to run?</summary><p>Not when it’s designed well. We only use AI where it does real work, choose the smallest model that does the job reliably, and keep calls to a minimum, so your monthly running costs stay low.</p></details>
-      <details><summary>Can we cancel the monthly plan?</summary><p>Yes, with 30 days’ notice. Because everything lives in your accounts with documentation, you keep it all.</p></details>
+  <section id="faq" class="light-sec">
+    <div class="wrap">
+      <p class="label cap"><span class="n">12</span><span>Questions</span></p>
+      <h2 class="reveal">Questions brands ask us.</h2>
+      <div class="faq reveal">
+        <details><summary>We already have automations. Why does it still feel like we’re doing everything?</summary><p>Because most setups automate the steps but not the watching. Someone still has to notice when a flow stops, remember the edge cases and fix things when apps change. We take over that part too, so the work actually leaves your plate.</p></details>
+        <details><summary>What exactly do you build?</summary><p>A custom system built around how your business works, so no two builds look the same. It can cover the whole flow: from the moment an order comes in, through warehouse, delivery, installation and customer updates, to asking for a review and checking that your service landed well. We only automate the parts that are worth it, and simplify or remove the rest.</p></details>
+        <details><summary>Do we need to have automations already?</summary><p>No. Most clients start with an audit and a first build. If you already have automations or an AI support agent, we start with a health check instead.</p></details>
+        <details><summary>Who owns what you build?</summary><p>You do. Everything is built in your own Shopify, helpdesk and automation accounts, with documentation your team can read.</p></details>
+        <details><summary>What happens when something breaks?</summary><p>Our checks flag it, we fix it, and you get a short note explaining what happened and what changed. Fixes for things we monitor are included in your plan.</p></details>
+        <details><summary>Which tools do you work with?</summary><p>Shopify and Shopify Flow, Gorgias, Klaviyo, n8n, Make and Zapier, plus custom AI agents where off-the-shelf tools fall short.</p></details>
+        <details><summary>Will AI make this expensive to run?</summary><p>Not when it’s designed well. We only use AI where it does real work, choose the smallest model that does the job reliably, and keep calls to a minimum, so your monthly running costs stay low.</p></details>
+        <details><summary>Can we cancel the monthly plan?</summary><p>Yes, with 30 days’ notice. Because everything lives in your accounts with documentation, you keep it all.</p></details>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 </main>
 
 <div class="contact" id="contact">
-  <div class="wrap">
-    <div>
-      <h2>Find out what’s failing quietly in your store.</h2>
-      <p>Start with a free 30-minute intro call. We check whether we’re a good fit and outline the next steps. The in-depth review of your setup happens in the paid audit.</p>
+  <div class="wrap grid">
+    <div class="reveal">
+      <canvas class="wave" aria-hidden="true"></canvas>
+      <h2>Tell us what you still <span>check by hand.</span></h2>
+      <p class="lede">A free 30-minute call. We’ll tell you honestly what can run on its own, what should be simplified, and what isn’t worth automating. The in-depth review of your setup happens in the paid audit.</p>
       <ul class="call-list">
-        <li>Answer four quick questions so we can prepare</li>
-        <li>We reply within one business day to set a time</li>
-        <li>No obligation, no sales pressure</li>
+        <li><span>01</span>Answer four quick questions so we can prepare</li>
+        <li><span>02</span>We reply within one business day to set a time</li>
+        <li><span>03</span>No obligation, no sales pressure</li>
       </ul>
     </div>
-    <form class="book" id="book" novalidate>
-      <div class="f2">
-        <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" maxlength="100" required aria-describedby="e-name"><p class="ferr" id="e-name"></p></div>
-        <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" maxlength="200" required aria-describedby="e-email"><p class="ferr" id="e-email"></p></div>
-      </div>
-      <div class="field"><label for="f-store">Store website</label><input id="f-store" name="store" type="text" inputmode="url" placeholder="yourstore.com" autocomplete="url" maxlength="300" required aria-describedby="e-store"><p class="ferr" id="e-store"></p></div>
-      <div class="field"><label for="f-orders">Orders per month</label>
-        <select id="f-orders" name="orders" required aria-describedby="e-orders">
-          <option value="">Choose one</option>
-          <option>Under 500</option><option>500 to 2,000</option><option>2,000 to 10,000</option><option>Over 10,000</option>
-        </select><p class="ferr" id="e-orders"></p></div>
-      <fieldset class="field" id="f-need" aria-describedby="e-need"><legend>What do you need help with?</legend>
-        <div class="checks">
-          <label><input type="checkbox" name="need" value="New automations"> New automations</label>
-          <label><input type="checkbox" name="need" value="AI support agent"> AI support agent</label>
-          <label><input type="checkbox" name="need" value="Fix or monitor existing setup"> Fix or monitor setup</label>
-          <label><input type="checkbox" name="need" value="Not sure yet"> Not sure yet</label>
+    <div>
+      <form class="book" id="book" novalidate>
+        <div class="f2">
+          <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" maxlength="100" required aria-describedby="e-name"><p class="ferr" id="e-name"></p></div>
+          <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" maxlength="200" required aria-describedby="e-email"><p class="ferr" id="e-email"></p></div>
         </div>
-        <p class="ferr" id="e-need"></p>
-      </fieldset>
-      <div class="field"><label for="f-msg">What does your team still do by hand?</label><textarea id="f-msg" name="message" rows="3" maxlength="3000" required aria-describedby="e-message"></textarea><p class="ferr" id="e-message"></p></div>
-      <div class="hp" aria-hidden="true"><label for="f-company">Company</label><input id="f-company" name="company" tabindex="-1" autocomplete="off"></div>
-      <p class="err" id="f-err" role="alert"></p>
-      <button class="btn lg" type="submit" id="f-submit">Request a free intro call</button>
-      <p class="form-note">All fields are required. We reply within one business day.</p>
-    </form>
-    <div class="book sent" id="book-sent" hidden tabindex="-1">
-      <p class="sent-k">Request received</p>
-      <h3>Thanks, we’ve got it.</h3>
-      <p>We’ll email you within one business day to set a time for your free 30-minute call.</p>
+        <div class="f2">
+          <div class="field"><label for="f-store">Store website</label><input id="f-store" name="store" type="text" inputmode="url" placeholder="yourstore.com" autocomplete="url" maxlength="300" required aria-describedby="e-store"><p class="ferr" id="e-store"></p></div>
+          <div class="field"><label for="f-orders">Orders per month</label>
+            <select id="f-orders" name="orders" required aria-describedby="e-orders">
+              <option value="">Choose one</option>
+              <option>Under 500</option><option>500 to 2,000</option><option>2,000 to 10,000</option><option>Over 10,000</option>
+            </select><p class="ferr" id="e-orders"></p></div>
+        </div>
+        <fieldset class="field" id="f-need" aria-describedby="e-need"><legend>What do you need help with?</legend>
+          <div class="checks">
+            <label><input type="checkbox" name="need" value="New automations"> New automations</label>
+            <label><input type="checkbox" name="need" value="AI support agent"> AI support agent</label>
+            <label><input type="checkbox" name="need" value="Fix or monitor existing setup"> Fix or monitor setup</label>
+            <label><input type="checkbox" name="need" value="Not sure yet"> Not sure yet</label>
+          </div>
+          <p class="ferr" id="e-need"></p>
+        </fieldset>
+        <div class="field"><label for="f-msg">What do you still check or do by hand?</label><textarea id="f-msg" name="message" rows="3" maxlength="3000" required aria-describedby="e-message"></textarea><p class="ferr" id="e-message"></p></div>
+        <div class="hp" aria-hidden="true"><label for="f-company">Company</label><input id="f-company" name="company" tabindex="-1" autocomplete="off"></div>
+        <p class="err" id="f-err" role="alert"></p>
+        <button class="btn" type="submit" id="f-submit"><span class="bl">Request a free intro call</span> <span class="ar" aria-hidden="true"></span></button>
+        <p class="form-note cap">All fields are required · We reply within one business day</p>
+      </form>
+      <div class="sent" id="book-sent" hidden tabindex="-1">
+        <p class="cap">Request received</p>
+        <h3>Thanks, we’ve got it.</h3>
+        <p>We’ll email you within one business day to set a time for your free 30-minute call.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -759,33 +795,109 @@
   <div class="wrap">
     <div class="foot">
       <div>
-        <a class="brand logo" href="#" aria-label="WGY Labs home"><span class="lw" style="color:#fff">wgy<span> labs</span></span><svg class="arc" viewBox="0 0 250 26" aria-hidden="true"><path d="M6 6Q125 34 244 6" fill="none" stroke="#3FCB86" stroke-width="9" stroke-linecap="round"/></svg></a>
-        <p style="margin:0;max-width:30ch">Reliable AI automations for Shopify brands. We’ve got your back.</p>
+        <a class="logo" href="#" aria-label="WGY Labs home"><span class="lw">wgy<span> labs</span></span><svg viewBox="0 0 250 26" preserveAspectRatio="none" aria-hidden="true"><path d="M6 6Q125 34 244 6" fill="none" stroke-width="8" stroke-linecap="round"/></svg></a>
+        <p>Operations automation for Shopify brands. We’ve got your back.</p>
       </div>
-      <div><h4>Services</h4><ul><li><a href="#services">Build</a></li><li><a href="#services">Test</a></li><li><a href="#checks">Monitor</a></li><li><a href="#pricing">Pricing</a></li></ul></div>
-      <div><h4>Company</h4><ul><li><a href="#about">About</a></li><li><a href="#cases">Case studies</a></li><li><a href="#process">Process</a></li><li><a href="#faq">FAQ</a></li></ul></div>
-      <div><h4>Contact</h4><ul><li><a href="mailto:hello@wgylabs.com">hello@wgylabs.com</a></li><li><a href="#contact">Book a call</a></li></ul></div>
+      <div><h4 class="cap">Services</h4><ul><li><a href="#services">Build</a></li><li><a href="#services">Test</a></li><li><a href="#checks">Monitor</a></li><li><a href="#pricing">Pricing</a></li></ul></div>
+      <div><h4 class="cap">Company</h4><ul><li><a href="#about">About</a></li><li><a href="#cases">Case studies</a></li><li><a href="#process">Process</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+      <div><h4 class="cap">Contact</h4><ul><li><a href="mailto:hello@wgylabs.com">hello@wgylabs.com</a></li><li><a href="#contact">Book a call</a></li></ul></div>
     </div>
     <div class="legal"><span>© 2026 WGY Labs</span><span>Working with clients worldwide</span></div>
   </div>
 </footer>
+
 <script>
-  (function(){var dd=document.querySelector('.dd');if(!dd)return;
-    dd.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){dd.removeAttribute('open');});});
-    document.addEventListener('click',function(e){if(!dd.contains(e.target))dd.removeAttribute('open');});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape')dd.removeAttribute('open');});})();
+  /* header colour follows the section underneath; services dropdown */
+  (function(){
+    var h=document.getElementById('hdr'),light=document.querySelectorAll('.light-sec'),meta=document.querySelector('meta[name=theme-color]');
+    function upd(){
+      var y=72,isLight=false;
+      light.forEach(function(s){var r=s.getBoundingClientRect();if(r.top<=y&&r.bottom>y)isLight=true;});
+      h.classList.toggle('light',isLight);
+      h.classList.toggle('solid',!isLight&&scrollY>40);
+      if(meta)meta.content=isLight?'#FFFFFF':'#0A0A0B';
+    }
+    addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+    var dd=document.querySelector('.dd');if(dd){
+      dd.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){dd.removeAttribute('open');});});
+      document.addEventListener('click',function(e){if(!dd.contains(e.target))dd.removeAttribute('open');});
+      document.addEventListener('keydown',function(e){if(e.key==='Escape')dd.removeAttribute('open');});
+    }
+  })();
 </script>
 <script>
-  (function(){var b=document.querySelector('.menu-btn'),m=document.getElementById('mnav');if(!b||!m)return;
-    function set(open){b.setAttribute('aria-expanded',open);m.hidden=!open;}
+  /* mobile menu */
+  (function(){var b=document.querySelector('.menu-btn'),m=document.getElementById('mnav'),h=document.getElementById('hdr');if(!b||!m)return;
+    function set(open){b.setAttribute('aria-expanded',open);m.hidden=!open;h.classList.toggle('open',open);}
     b.addEventListener('click',function(){set(m.hidden);});
     m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){set(false);});});
     document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden){set(false);b.focus();}});
-    window.matchMedia('(min-width:861px)').addEventListener('change',function(e){if(e.matches)set(false);});})();
+    window.matchMedia('(min-width:721px)').addEventListener('change',function(e){if(e.matches)set(false);});})();
 </script>
 <script>
+  /* reveal on scroll */
+  (function(){var els=document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(e){io.observe(e);});})();
+</script>
+<script>
+  /* particle core: a sphere of points that breathes, turns and is scanned by light */
+  (function(){
+    var still=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    [].slice.call(document.querySelectorAll('canvas.wave')).forEach(function(cv){
+      var ctx=cv.getContext('2d');if(!ctx)return;
+      var W,H,dpr,running=!still,raf=0,t0=performance.now();
+      function size(){dpr=Math.min(window.devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);}
+      var N=cv.closest('.contact')?900:2000,P=[],g=Math.PI*(3-Math.sqrt(5));
+      for(var i=0;i<N;i++){var yy=1-2*(i+.5)/N,rr=Math.sqrt(1-yy*yy),aa=i*g;P.push([Math.cos(aa)*rr,yy,Math.sin(aa)*rr]);}
+      function draw(now){
+        var t=(now-t0)/1000+4;ctx.clearRect(0,0,W,H);
+        var R=Math.min(W,H)*.40,cx=W/2,cy=H/2,ry=t*.25,rx=-.35,cr=Math.cos(ry),sr=Math.sin(ry),cxr=Math.cos(rx),sxr=Math.sin(rx),scan=Math.sin(t*.7);
+        for(var i=0;i<N;i++){var p=P[i],n=1+.08*Math.sin(p[0]*4+t*1.3)*Math.cos(p[1]*5-t)+.05*Math.sin(p[2]*7+t*2);
+          var X=p[0]*n,Y=p[1]*n,Z=p[2]*n,x1=X*cr-Z*sr,z1=X*sr+Z*cr,y1=Y*cxr-z1*sxr,z2=Y*sxr+z1*cxr;
+          var d=(z2+1.3)/2.3,sc=1/(1.6-z2*.4),band=Math.max(0,1-Math.abs(y1-scan)*6);
+          ctx.fillStyle='rgba(244,244,245,'+Math.min(1,.08+.55*d*d+.6*band).toFixed(3)+')';
+          var sz=(.6+d*1.1+band)*sc;ctx.fillRect(cx+x1*R*sc-sz/2,cy+y1*R*sc-sz/2,sz,sz);}
+        if(running)raf=requestAnimationFrame(draw);
+      }
+      size();draw(performance.now());
+      addEventListener('resize',function(){size();if(!running)draw(performance.now());});
+      if(!still&&'IntersectionObserver' in window){
+        new IntersectionObserver(function(es){var v=es[0].isIntersecting;if(v&&!running){running=true;raf=requestAnimationFrame(draw);}else if(!v&&running){running=false;cancelAnimationFrame(raf);}}).observe(cv);
+      }
+    });
+  })();
+</script>
+<script>
+  /* AI agent: typed task line in the hero, and the sample order played step by step */
+  (function(){
+    var still=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    var el=document.getElementById('task');
+    var tasks=['Reserving stock for order 4821','Booking a courier','Sending tracking to the customer','Rebooking a cancelled installer','Scheduling a review request','Checking every flow ran today'];
+    if(el&&!still){var i=0,c=tasks[0].length,del=true;
+      (function tick(){var t=tasks[i];
+        if(del){c--;el.textContent=t.slice(0,c);if(c<=0){del=false;i=(i+1)%tasks.length;}setTimeout(tick,c<=0?250:22);}
+        else{var n=tasks[i];c++;el.textContent=n.slice(0,c);if(c>=n.length){del=true;setTimeout(tick,2200);}else setTimeout(tick,45);}
+      })();
+    }
+    var plate=document.getElementById('plate');if(!plate)return;
+    var rows=[].slice.call(plate.querySelectorAll('.r'));
+    if(still||!('IntersectionObserver' in window)){plate.classList.remove('play');return;}
+    var finals=rows.map(function(r){return r.querySelector('.s').textContent;});
+    function play(){rows.forEach(function(r){r.classList.remove('on');var s=r.querySelector('.s');s.textContent='';s.classList.remove('run');});
+      rows.forEach(function(r,k){
+        setTimeout(function(){r.classList.add('on');var s=r.querySelector('.s');s.textContent='Running';s.classList.add('run');},k*1100);
+        setTimeout(function(){var s=r.querySelector('.s');s.classList.remove('run');s.textContent=finals[k];},k*1100+800);
+      });}
+    var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();play();}},{threshold:.35});
+    io.observe(plate);
+  })();
+</script>
+<script>
+  /* booking form: same rules as worker/src/validate.js */
   (function(){var f=document.getElementById('book');if(!f)return;
-    var err=document.getElementById('f-err'),btn=document.getElementById('f-submit'),done=document.getElementById('book-sent');
+    var err=document.getElementById('f-err'),btn=document.getElementById('f-submit'),bl=btn.querySelector('.bl'),done=document.getElementById('book-sent');
     var EMAIL=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     function url(v){v=v.trim();if(!v)return'';return/^https?:\/\//i.test(v)?v:'https://'+v;}
     function okUrl(v){try{var u=new URL(v);return(u.protocol==='https:'||u.protocol==='http:')&&/\.[a-z]{2,}$/i.test(u.hostname);}catch(e){return false;}}
@@ -811,7 +923,7 @@
       var first=null;Object.keys(rules).forEach(function(k){touched[k]=true;if(check(k)&&!first)first=k;});
       if(first){var el=target[first];(first==='need'?el.querySelector('input'):el).focus();return;}
       var data={name:f.elements.name.value.trim(),email:f.email.value.trim(),store:url(f.store.value),orders:f.orders.value,need:needs(),message:f.message.value.trim(),company:f.company.value};
-      btn.disabled=true;btn.textContent='Sending…';
+      btn.disabled=true;bl.textContent='Sending…';
       fetch('/api/book',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(data)})
         .then(function(r){return r.json().catch(function(){return{ok:false};}).then(function(j){return{status:r.status,j:j};});})
         .then(function(res){
@@ -820,7 +932,7 @@
           else throw new Error('send');
         })
         .catch(function(){err.textContent='Sorry, your request didn’t go through. Please try again, or email hello@wgylabs.com.';})
-        .then(function(){btn.disabled=false;btn.textContent='Request a free intro call';});
+        .then(function(){btn.disabled=false;bl.textContent='Request a free intro call';});
     });})();
 </script>
 </body>
