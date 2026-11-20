@@ -185,6 +185,7 @@
   .two .lede{margin:0}
   @media (max-width:900px){.two{grid-template-columns:1fr;gap:28px}}
   .note{margin-top:28px;color:var(--soft)}
+  .more{margin:36px 0 0}
   .cols{display:grid;grid-template-columns:repeat(3,1fr);margin-top:44px;border-top:1px solid var(--ink)}
   .cols>*{padding:24px 32px 0 0}
   .cols>*+*{padding-left:32px;border-left:1px solid var(--rule)}
@@ -428,7 +429,7 @@
           <a href="/services#health"><b>AI agent health check</b><span>Audit and tune an existing setup</span></a>
         </div>
       </details>
-      <a href="#cases">Case studies</a>
+      <a href="/case-studies">Case studies</a>
       <a href="#pricing">Pricing</a>
       <a href="#about">About</a>
     </nav>
@@ -445,7 +446,7 @@
       <a href="/services#monitor"><b>Monitor</b><span>Daily checks, fixes and monthly reports</span></a>
       <a href="/services#health"><b>AI agent health check</b><span>Audit and tune an existing setup</span></a>
       <div class="mnav-links">
-        <a href="#cases">Case studies</a>
+        <a href="/case-studies">Case studies</a>
         <a href="#pricing">Pricing</a>
         <a href="#about">About</a>
       </div>
@@ -576,46 +577,14 @@
 
   <section id="cases" class="dark-sec">
     <div class="wrap">
-      <p class="label cap"><span class="n">05</span><span>Case studies</span></p>
-      <h2 class="reveal">Our first client project in full, <span>plus two typical projects.</span></h2>
-      <article class="feature reveal">
-        <span class="cap who">Client project · Easi Breezi</span>
-        <h3>They were about to hire. After we automated and simplified the flow, they didn’t need to.</h3>
-        <div class="figs">
-          <div><strong>0</strong><span>New hires needed</span></div>
-          <div><strong>~5</strong><span>Steps cut from the flow</span></div>
-          <div><strong>1</strong><span>Person can run the operation</span></div>
-        </div>
-        <dl class="story">
-          <div><dt class="cap">Problem</dt><dd>Easi Breezi’s founder had no time left to develop new versions of the product, so they planned to hire someone for logistics and installation. Some work was already automated, but gaps were still handled by hand, and customers in different countries got a different experience, which was hard to manage and sustain.</dd></div>
-          <div><dt class="cap">What we found</dt><dd>Reviewing the whole operation, we found steps that weren’t worth automating at all. We also found that some information and guides meant for customers were failing silently: nobody knew they hadn’t arrived.</dd></div>
-          <div><dt class="cap">What we did</dt><dd>We started with the founder’s biggest manual task, arranging installations, and handled it with AI agents and automation, then covered warehouse, logistics and customer updates. Inefficient steps were removed instead of automated, which saved money. Now any part of the operation that stops working alerts the founder straight away.</dd></div>
-          <div><dt class="cap">Result</dt><dd>No new hire needed: automating the flow first removed the need for the extra role. A complicated setup became a much smaller one, designed so one person can run the whole operation, with no human in the loop for routine work and very few changes as the business grows.</dd></div>
-        </dl>
-      </article>
-      <div class="examples reveal">
-        <article>
-          <span class="cap">Example project</span>
-          <span class="who">Apparel brand using a 3PL warehouse</span>
-          <h3>Monitoring for order sync and stock alerts</h3>
-          <dl>
-            <div><dt class="cap">Problem</dt><dd>Order sync to the warehouse broke twice after app updates, and nobody noticed for days.</dd></div>
-            <div><dt class="cap">What we do</dt><dd>Add daily checks on every workflow, alerts on failures, and fixes when apps change.</dd></div>
-            <div><dt class="cap">What we measure</dt><dd>Time to detect and fix issues, missed orders, successful runs.</dd></div>
-          </dl>
-        </article>
-        <article>
-          <span class="cap">Example project</span>
-          <span class="who">Home goods brand already using an AI agent</span>
-          <h3>A health check for an existing AI support setup</h3>
-          <dl>
-            <div><dt class="cap">Problem</dt><dd>The AI agent resolves fewer tickets than promised and sometimes gives wrong policy answers.</dd></div>
-            <div><dt class="cap">What we do</dt><dd>Build a test set from real tickets, find where it fails, and tune its rules and handovers.</dd></div>
-            <div><dt class="cap">What we measure</dt><dd>Automation rate and wrong answers, before and after.</dd></div>
-          </dl>
-        </article>
+      <p class="label cap"><span class="n">05</span><span>Case study · Easi Breezi</span></p>
+      <h2 class="reveal">They were about to hire. <span>After we automated and simplified the flow, they didn’t need to.</span></h2>
+      <div class="figs reveal">
+        <div><strong>0</strong><span>New hires needed</span></div>
+        <div><strong>~5</strong><span>Steps cut from the flow</span></div>
+        <div><strong>1</strong><span>Person can run the operation</span></div>
       </div>
-      <p class="note cap">Projects marked “Example project” are illustrative examples of our work, not client results.</p>
+      <p class="more reveal"><a class="link" href="/case-studies">Read the full story <span aria-hidden="true">→</span></a></p>
     </div>
   </section>
 
@@ -636,30 +605,7 @@
         <li><span class="n cap">Stage 5</span><h3>Support and maintenance</h3><p>We stay with you after launch: everything keeps running, and when your business changes, we change the automation with it.</p><span class="f cap">$750 / month · optional</span></li>
       </ol>
 
-      <div class="sub-h reveal">
-        <h3>How we build: one flow at a time.</h3>
-        <p>After the audit, we split your operations into flows, then take each one through the same loop.</p>
-      </div>
-      <ul class="chips reveal"><li>Taking the order</li><li>Preparing the product</li><li>Delivery</li><li>Logistics partner</li><li>Customer updates</li><li>Installation</li><li>Reviews</li></ul>
-      <ol class="loop reveal">
-        <li><b>Map</b><span>With you and the people who run it, we write down how the flow works today.</span></li>
-        <li><b>Choose</b><span>We give you a few ways to do it, comparing upkeep, running cost, risks and downsides, and time to build. You pick.</span></li>
-        <li><b>Release</b><span>We build it and release it into your real operations, testing it live with your team.</span></li>
-        <li><b>Adjust</b><span>We make any changes you ask for until the flow runs smoothly.</span></li>
-        <li><b>Next flow</b><span>Only once it’s done do we move on to the next one.</span></li>
-      </ol>
-
-      <div class="sub-h reveal">
-        <h3>We don’t leave after launch.</h3>
-        <p>When a build is done, you have a working setup that’s yours to keep. But businesses change: a new product, a new market, a new partner, a flow that needs to work differently. Our support and maintenance package keeps everything running and adapts it with you.</p>
-      </div>
-      <ol class="loop reveal">
-        <li><b>Watch</b><span>Daily checks on every automation and AI reply, with alerts the moment something stops or drifts.</span></li>
-        <li><b>Fix</b><span>When an app, API or model changes, we repair it, usually before your team notices. Included in the plan.</span></li>
-        <li><b>Support</b><span>A named person your team can message with questions, small changes and new ideas.</span></li>
-        <li><b>Report</b><span>A short monthly report on what ran, what broke, what we fixed and the time saved.</span></li>
-        <li><b>Grow</b><span>On Monitor and grow ($2,000 / month), we also build one new automation for you each month.</span></li>
-      </ol>
+      <p class="more reveal"><a class="link" href="/services#flow">How we build each flow, and what happens after launch <span aria-hidden="true">→</span></a></p>
     </div>
   </section>
 
@@ -795,7 +741,7 @@
         <p>Operations automation for Shopify brands. We’ve got your back.</p>
       </div>
       <div><h4 class="cap">Services</h4><ul><li><a href="/services#build">Build</a></li><li><a href="/services#test">Test</a></li><li><a href="/services#monitor">Monitor</a></li><li><a href="#pricing">Pricing</a></li></ul></div>
-      <div><h4 class="cap">Company</h4><ul><li><a href="#about">About</a></li><li><a href="#cases">Case studies</a></li><li><a href="#process">Process</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+      <div><h4 class="cap">Company</h4><ul><li><a href="#about">About</a></li><li><a href="/case-studies">Case studies</a></li><li><a href="#process">Process</a></li><li><a href="#faq">FAQ</a></li></ul></div>
       <div><h4 class="cap">Contact</h4><ul><li><a href="mailto:hello@wgylabs.com">hello@wgylabs.com</a></li><li><a href="#contact">Book a call</a></li></ul></div>
     </div>
     <div class="legal"><span>© 2026 WGY Labs</span><span>Working with clients worldwide</span></div>

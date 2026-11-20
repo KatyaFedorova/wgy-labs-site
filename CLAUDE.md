@@ -2,6 +2,8 @@
 
 This repo holds the marketing site for **WGY Labs** (short for "We Got You"), Kat's AI ops automation company. The site is already built: `index.html` is a single self-contained page (HTML + CSS + a little JS, Google Fonts only). Don't redesign it; the design ("Style D", approved 2026-11-19) is approved.
 
+**Pages (2026-11-20):** `index.html` (home), `services.html` (/services: Build/Test/Monitor, health check, how we build each flow, after launch, monitoring table) and `case-studies.html` (/case-studies: full Easi Breezi story + example projects). Each page carries its own copy of the CSS and header/footer; when you change shared styles or the menu, update all three. Deploy all three files together.
+
 ## Hosting and email (live since 2026-11-18)
 - Live site: https://wgylabs.com (and www), served by **Cloudflare Pages** project `wgy-labs-site` in Kat's own Cloudflare account (`6cb7c2713b5f88e2e1fa9cef0ea37d23`). Never use Ash's account.
 - Deploy: `CLOUDFLARE_ACCOUNT_ID=6cb7c2713b5f88e2e1fa9cef0ea37d23 npx wrangler pages deploy <dir with index.html> --project-name wgy-labs-site --branch main`. Pushing to GitHub does NOT deploy.
