@@ -18,7 +18,7 @@ This repo holds the marketing site for **WGY Labs** (short for "We Got You"), Ka
 - **Logo:** lowercase "wgy labs" wordmark with a curve underneath ("held up"), in the current text colour. Built in HTML/CSS; favicon is a bone "w" on warm black.
 - **Header:** Services (dropdown: Build, Test, Monitor, AI agent health check) · Case studies · Pricing · About · Book a call.
 - **Pricing (USD):** Audit $750 (credited to a build) · Build from $2,500 per workflow package · Support and maintenance $750/mo (core product, labelled "Recommended"; never claim "chosen by most clients" until it is true) · Monitor and grow $2,000/mo · AI agent health check from $1,000.
-- **Founding client offer:** first 5 brands get 30% off their first build in exchange for a testimonial + case study rights. No more free projects.
+- **No "founding client" discount on the site** (removed 2026-11-20: it signalled no clients). Pricing ends with "A low-risk start": audit plan is yours to keep, $750 credited in full to a build. Don't add wording that reveals how many clients there are (e.g. "our first client", "first five brands"). No more free projects.
 - **Free 30-min intro call:** it's a fit/sales call, not free consulting. Deep analysis = the paid audit. A qualifying form sits in front of it.
 - **Case studies:** currently 3 "Example project" cards, clearly labeled illustrative. Never present them as real client results. Replace with real ones as they come.
 - **Honesty rules:** no fake testimonials, logos, client names or results. The hero dashboard and monthly figures are labeled as sample data; keep those labels.
