@@ -113,7 +113,10 @@
   @keyframes spin{to{transform:rotate(360deg)}}
   .wave{display:block;position:relative;width:min(520px,92vw);height:clamp(130px,30vh,300px);margin:calc(-1 * clamp(4px,2vh,24px)) auto clamp(6px,2vh,20px)}
   @media (max-width:640px){.wave{height:clamp(130px,28vh,240px)}}
-  .contact .wave{width:220px;height:200px;margin:-20px 0 28px -20px}
+  .contact .wave{position:absolute;top:-70px;left:-60px;width:220px;height:200px;margin:0;opacity:.45;pointer-events:none;z-index:0}
+  .contact .grid>div:first-child{position:relative}
+  .contact .grid>div:first-child>*:not(.wave){position:relative;z-index:1}
+  @media (max-width:960px){.contact .wave{top:-80px;left:auto;right:-40px}}
   .hero .cap{color:var(--soft);margin:0 0 clamp(12px,2.6vh,28px);position:relative}
   .now{min-height:1.4em}
   @media (max-width:620px){.now{min-height:2.9em}}
@@ -415,7 +418,7 @@
   /* ===== contact ===== */
   .contact{background:var(--night);color:var(--bone);padding:104px 0}
   @media (max-width:640px){.contact{padding:72px 0}}
-  .contact .grid{display:grid;grid-template-columns:1fr 1.05fr;gap:96px;align-items:start}
+  .contact .grid{display:grid;grid-template-columns:1fr 1.05fr;gap:96px;align-items:center}
   @media (max-width:960px){.contact .grid{grid-template-columns:1fr;gap:56px}}
   .contact .orb{width:110px;margin:0 0 44px}
   .contact h2 span{color:#8C8C93}
@@ -717,8 +720,7 @@
       <ul class="call-list">
         <li><span>01</span>You’ll talk to Kat, the founder, not a sales rep</li>
         <li><span>02</span>Answer four quick questions so we can prepare</li>
-        <li><span>03</span>We reply within one business day to set a time</li>
-        <li><span>04</span>No obligation, no sales pressure</li>
+        <li><span>03</span>No obligation, no sales pressure</li>
       </ul>
     </div>
     <div>
