@@ -292,6 +292,34 @@
   .rows .f{color:var(--ink);text-align:right}
   .rows li.lead h3{font-weight:400}
   @media (max-width:1000px){.rows li{grid-template-columns:60px 1fr}.rows p,.rows .f{grid-column:2;text-align:left}}
+  .proc{display:grid;grid-template-columns:1fr minmax(340px,440px);gap:64px;margin-top:44px;align-items:start}
+  @media (max-width:960px){.proc{grid-template-columns:1fr;gap:40px}}
+  .steps{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+  .steps li{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--rule)}
+  .steps .n{color:var(--soft);padding-top:6px}
+  .steps h3{font-size:22px;font-weight:300;letter-spacing:-.035em}
+  .steps p{margin:6px 0 0;color:var(--mute);font-weight:300;font-size:15px;max-width:52ch}
+  .steps .f{display:block;margin-top:8px;color:var(--ink)}
+  .queue{position:sticky;top:96px;background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:18px;box-shadow:0 40px 80px -50px rgba(17,17,19,.3)}
+  .q-top{display:flex;justify-content:space-between;align-items:center;margin:2px 4px 14px}
+  .q-t{font-size:16px;letter-spacing:-.02em}
+  .q-pill{padding:4px 10px;border:1px solid var(--rule);border-radius:999px;color:var(--mute)}
+  .q-item{display:grid;grid-template-columns:22px 1fr auto;gap:12px;align-items:center;padding:13px 14px;border:1px solid var(--rule);border-radius:4px;margin-top:8px}
+  .q-item b{font-weight:400;font-size:14.5px;letter-spacing:-.01em;line-height:1.35}
+  .q-s{color:var(--soft);white-space:nowrap}
+  .q-dot{width:16px;height:16px;border-radius:50%;border:1px solid var(--soft);position:relative}
+  .q-item.active{background:var(--night);border-color:var(--night);color:var(--bone)}
+  .q-item.active .q-s{color:var(--bone)}
+  .q-dot.spin{border:1.5px solid rgba(244,244,245,.25);border-top-color:var(--bone);animation:qspin 1s linear infinite}
+  @keyframes qspin{to{transform:rotate(360deg)}}
+  .q-bar{display:block;height:2px;margin-top:10px;background:rgba(244,244,245,.18);overflow:hidden}
+  .q-bar i{display:block;height:100%;width:30%;background:var(--bone);animation:qbar 6s ease-in-out infinite}
+  @keyframes qbar{0%{width:22%}70%{width:86%}100%{width:86%}}
+  .q-dot.ok{background:var(--ink);border-color:var(--ink)}
+  .q-dot.ok::after{content:"";position:absolute;left:4.5px;top:4px;width:6px;height:3px;border-left:1.5px solid var(--paper);border-bottom:1.5px solid var(--paper);transform:rotate(-45deg)}
+  .q-h{margin:20px 4px 2px;color:var(--soft)}
+  .q-note{margin:14px 4px 0;color:var(--soft);text-align:right}
+  @media (prefers-reduced-motion:reduce){.q-dot.spin,.q-bar i{animation:none}}
   .sub-h{margin:64px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end}
   .sub-h h3{font-weight:300;font-size:clamp(28px,3.2vw,40px);letter-spacing:-.045em;line-height:1.1}
   .sub-h p{margin:0;color:var(--mute);font-weight:300}
@@ -584,13 +612,25 @@
         <h2>From first look <span>to looked after.</span></h2>
         <p class="lede">We only build what the audit shows is worth building. Everything lives in your accounts and is documented, so you’re never locked in.</p>
       </div>
-      <ol class="rows reveal">
-        <li class="lead"><span class="n cap">Stage 1</span><h3>Audit week</h3><p>We spend a week with the people who do the work and find where the hours and the money go.</p><span class="f cap">1 week · $750, credited</span></li>
-        <li><span class="n cap">Stage 2</span><h3>Your plan</h3><p>A map of how your operations run today and a ranked list of changes, each with the time or money it saves. The plan is yours, whether or not we build it.</p><span class="f cap">End of week 1</span></li>
-        <li><span class="n cap">Stage 3</span><h3>Build in phases</h3><p>One process at a time: an automation layer on n8n, custom code, or AI agents where they take real work off your team. Each phase is sized to pay for itself.</p><span class="f cap">From $2,500 per phase</span></li>
-        <li><span class="n cap">Stage 4</span><h3>Test and launch</h3><p>Tested against your real data and launched alongside your team, with limits and human approval wherever money is involved.</p><span class="f cap">Included in every build</span></li>
-        <li><span class="n cap">Stage 5</span><h3>Support and maintenance</h3><p>We stay with you after launch: everything keeps running, and when your business changes, we change the automation with it.</p><span class="f cap">$750 / month · optional</span></li>
-      </ol>
+      <div class="proc">
+        <ol class="steps reveal">
+          <li><span class="n cap">01</span><div><h3>Audit week</h3><p>We spend a week with the people who do the work and find where the hours and the money go.</p><span class="f cap">1 week · $750, credited</span></div></li>
+          <li><span class="n cap">02</span><div><h3>Your plan</h3><p>A map of how your operations run today and a ranked list of changes, each with the time or money it saves. The plan is yours, whether or not we build it.</p><span class="f cap">End of week 1</span></div></li>
+          <li><span class="n cap">03</span><div><h3>Build in phases</h3><p>One process at a time: an automation layer on n8n, custom code, or AI agents where they take real work off your team. Each phase is sized to pay for itself.</p><span class="f cap">From $2,500 per phase</span></div></li>
+          <li><span class="n cap">04</span><div><h3>Test and launch</h3><p>Tested against your real data and launched alongside your team, with limits and human approval wherever money is involved.</p><span class="f cap">Included in every build</span></div></li>
+          <li><span class="n cap">05</span><div><h3>Support and maintenance</h3><p>We stay with you after launch: everything keeps running, and when your business changes, we change the automation with it.</p><span class="f cap">$750 / month · optional</span></div></li>
+        </ol>
+        <div class="queue reveal" role="img" aria-label="Sample: your flows. One flow is being built, two are waiting, and two are live and checked daily.">
+          <div class="q-top"><span class="q-t">Your flows</span><span class="cap q-pill">One at a time</span></div>
+          <div class="q-item active"><span class="q-dot spin"></span><div class="q-b"><b>Installer bookings rebooked automatically</b><span class="q-bar"><i></i></span></div><span class="cap q-s">In build</span></div>
+          <div class="q-item"><span class="q-dot"></span><div class="q-b"><b>Tracking sent to every customer</b></div><span class="cap q-s">Up next</span></div>
+          <div class="q-item"><span class="q-dot"></span><div class="q-b"><b>Warehouse stock synced hourly</b></div><span class="cap q-s">3rd</span></div>
+          <p class="cap q-h">Live and monitored</p>
+          <div class="q-item live"><span class="q-dot ok"></span><div class="q-b"><b>Orders sent to the warehouse</b></div><span class="cap q-s">Checked 09:00</span></div>
+          <div class="q-item live"><span class="q-dot ok"></span><div class="q-b"><b>Review requests after delivery</b></div><span class="cap q-s">Checked 09:00</span></div>
+          <p class="cap q-note">Sample</p>
+        </div>
+      </div>
 
       <p class="more reveal"><a class="link" href="/services#flow">How we build each flow, and what happens after launch <span aria-hidden="true">→</span></a></p>
     </div>
@@ -677,9 +717,10 @@
       <h2>Tell us what you still <span>check by hand.</span></h2>
       <p class="lede">A free 30-minute call. We’ll tell you honestly what can run on its own, what should be simplified, and what isn’t worth automating. The in-depth review of your setup happens in the paid audit.</p>
       <ul class="call-list">
-        <li><span>01</span>Answer four quick questions so we can prepare</li>
-        <li><span>02</span>We reply within one business day to set a time</li>
-        <li><span>03</span>No obligation, no sales pressure</li>
+        <li><span>01</span>You’ll talk to Kat, the founder, not a sales rep</li>
+        <li><span>02</span>Answer four quick questions so we can prepare</li>
+        <li><span>03</span>We reply within one business day to set a time</li>
+        <li><span>04</span>No obligation, no sales pressure</li>
       </ul>
     </div>
     <div>
