@@ -155,12 +155,15 @@
   .calc-grid{display:grid;grid-template-columns:1.35fr 1fr;border-top:1px solid var(--ink)}
   .calc{padding:28px 48px 24px 0}
   .calc-q{display:block;font-weight:300;font-size:clamp(22px,2.4vw,30px);line-height:1.2;letter-spacing:-.035em;max-width:26ch}
-  .calc-in{display:flex;align-items:center;gap:20px;margin:24px 0 4px}
+  .calc-in{display:flex;align-items:center;gap:16px;margin:16px 0 4px}
   .calc-in input{flex:1;-webkit-appearance:none;appearance:none;height:1px;background:var(--ink);outline:none;cursor:pointer}
   .calc-in input::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--ink);border:4px solid var(--paper);box-shadow:0 0 0 1px var(--ink)}
   .calc-in input::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--ink);border:4px solid var(--paper);box-shadow:0 0 0 1px var(--ink)}
   .calc-in input:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 1px var(--ink),0 0 0 6px rgba(17,17,19,.12)}
-  .calc-in output{font-family:"Geist Mono",monospace;font-size:13px;letter-spacing:.08em;min-width:52px;text-align:right}
+  .calc-in .cap{color:var(--soft)}
+  .calc-hours{display:flex;align-items:baseline;gap:14px;margin-top:22px}
+  .calc-hours output{font-weight:300;font-size:clamp(56px,6.4vw,88px);letter-spacing:-.06em;line-height:1;font-variant-numeric:tabular-nums;min-width:1.3em}
+  .calc-hours span{color:var(--mute);font-weight:300;font-size:17px}
   .calc-out{display:grid;grid-template-columns:repeat(3,1fr);margin-top:24px;border-top:1px solid var(--rule)}
   .calc-out div{padding:24px 20px 0 0}
   .calc-out div+div{padding-left:20px;border-left:1px solid var(--rule)}
@@ -375,7 +378,7 @@
   .cmp-head>span{padding-top:18px;padding-bottom:14px}
   .cmp-head>.us{color:var(--bone)!important}
   @media (max-width:860px){.cmp-row{grid-template-columns:1fr 1fr 1fr}.cmp-row>span:first-child{grid-column:1/-1;padding:14px 0 0}.cmp-head>span:first-child{display:none}.cmp-row>span+span{padding-left:12px}.cmp-row>span:nth-child(2){padding-left:0}.cmp-row>span{font-size:13.5px}}
-  .offer{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:baseline;margin-top:32px;padding:22px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .offer{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:baseline;margin-top:48px;padding:22px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
   .offer b{font-weight:300;font-size:clamp(24px,2.6vw,32px);letter-spacing:-.04em}
   .offer p{margin:0;color:var(--mute);font-weight:300}
   @media (max-width:760px){.offer{grid-template-columns:1fr;gap:10px}}
@@ -523,7 +526,8 @@
       <div class="calc-grid reveal">
         <div class="calc">
           <label for="calc-h" class="calc-q">How many hours a week do you or your team spend checking, copying and chasing?</label>
-          <div class="calc-in"><input id="calc-h" type="range" min="2" max="40" step="1" value="10" aria-describedby="calc-out"><output id="calc-hv" for="calc-h">10 h</output></div>
+          <div class="calc-hours"><output id="calc-hv" for="calc-h">10</output><span>hours a week</span></div>
+          <div class="calc-in"><span class="cap">2</span><input id="calc-h" type="range" min="2" max="40" step="1" value="10" aria-describedby="calc-out"><span class="cap">40</span></div>
           <div class="calc-out" id="calc-out" aria-live="polite">
             <div><strong id="calc-y">500</strong><span>hours a year</span></div>
             <div><strong id="calc-c">$12,500</strong><span>a year in time, at $25 an hour</span></div>
@@ -551,11 +555,30 @@
     </div>
   </section>
 
+  <section id="compare" class="light-sec">
+    <div class="wrap">
+      <p class="label cap"><span class="n">02</span><span>Your options</span></p>
+      <div class="two reveal">
+        <h2>Hire someone, use an agency, <span>or hand it to us.</span></h2>
+        <p class="lede">Three ways to take the checking off your plate, and what each one really involves.</p>
+      </div>
+      <div class="cmp reveal" role="table" aria-label="How WGY Labs compares with an in-house hire and a typical agency">
+        <div class="cmp-row cmp-head" role="row"><span role="columnheader"></span><span role="columnheader" class="cap">In-house hire</span><span role="columnheader" class="cap">Typical agency</span><span role="columnheader" class="cap us">WGY Labs</span></div>
+        <div class="cmp-row" role="row"><span role="rowheader" class="cap">Cost</span><span role="cell">$51.5k a year in salary, plus hiring and training</span><span role="cell">A fee per build, then hourly for every change</span><span role="cell" class="us">From $2,500 per flow, $750 a month to keep it running</span></div>
+        <div class="cmp-row" role="row"><span role="rowheader" class="cap">Getting started</span><span role="cell">Weeks to hire and train</span><span role="cell">Weeks of scoping and proposals</span><span role="cell" class="us">A one-week audit, then the first flow</span></div>
+        <div class="cmp-row" role="row"><span role="rowheader" class="cap">When something breaks</span><span role="cell">Only if they notice</span><span role="cell">A new ticket, billed by the hour</span><span role="cell" class="us">Checked daily, fixes included</span></div>
+        <div class="cmp-row" role="row"><span role="rowheader" class="cap">If they leave</span><span role="cell">The know-how leaves with them</span><span role="cell">Often hard to hand over</span><span role="cell" class="us">Built in your accounts and documented</span></div>
+      </div>
+      <p class="note cap">Salary: average US e-commerce operations coordinator, ZipRecruiter 2026.</p>
+    </div>
+  </section>
+
+
 
 
   <section id="problem" class="dark-sec">
     <div class="wrap">
-      <p class="label cap"><span class="n">02</span><span>Why it fails quietly</span></p>
+      <p class="label cap"><span class="n">03</span><span>Why it fails quietly</span></p>
       <div class="two reveal">
         <h2>Most automations don’t break on day one. <span>They break on a Tuesday in March, and nobody notices.</span></h2>
         <p class="lede">Apps update, APIs change, AI models drift. Without someone watching, a broken flow can run for days before a customer tells you.</p>
@@ -583,7 +606,7 @@
 
   <section id="changes" class="light-sec">
     <div class="wrap">
-      <p class="label cap"><span class="n">03</span><span>What changes</span></p>
+      <p class="label cap"><span class="n">04</span><span>What changes</span></p>
       <h2 class="reveal">Close the laptop. <span>It’s handled.</span></h2>
       <div class="cols four reveal">
         <div><span class="cap">01</span><h3>You stop checking</h3><p>Every flow is checked daily, so you don’t have to.</p></div>
@@ -610,7 +633,7 @@
 
   <section id="process" class="light-sec">
     <div class="wrap">
-      <p class="label cap"><span class="n">04</span><span>How we work</span></p>
+      <p class="label cap"><span class="n">05</span><span>How we work</span></p>
       <div class="two reveal">
         <h2>From first look <span>to looked after.</span></h2>
         <p class="lede">We only build what the audit shows is worth building. Everything lives in your accounts and is documented, so you’re never locked in.</p>
@@ -641,7 +664,7 @@
 
   <section id="pricing" class="light-sec">
     <div class="wrap">
-      <p class="label cap"><span class="n">05</span><span>Pricing</span></p>
+      <p class="label cap"><span class="n">06</span><span>Pricing</span></p>
       <div class="two reveal">
         <h2>Published pricing. <span>No surprise hours.</span></h2>
         <p class="lede">Fixed prices. Already running automations or an AI agent? Start with a health check.</p>
@@ -669,14 +692,6 @@
           <ul><li>Everything in Support and maintenance</li><li>One new automation each month</li><li>Regression tests on every change</li></ul>
         </div>
       </div>
-      <div class="cmp reveal" role="table" aria-label="How WGY Labs compares with an in-house hire and a typical agency">
-        <div class="cmp-row cmp-head" role="row"><span role="columnheader"></span><span role="columnheader" class="cap">In-house hire</span><span role="columnheader" class="cap">Typical agency</span><span role="columnheader" class="cap us">WGY Labs</span></div>
-        <div class="cmp-row" role="row"><span role="rowheader" class="cap">Cost</span><span role="cell">$51.5k a year in salary, plus hiring and training</span><span role="cell">A fee per build, then hourly for every change</span><span role="cell" class="us">From $2,500 per flow, $750 a month to keep it running</span></div>
-        <div class="cmp-row" role="row"><span role="rowheader" class="cap">Getting started</span><span role="cell">Weeks to hire and train</span><span role="cell">Weeks of scoping and proposals</span><span role="cell" class="us">A one-week audit, then the first flow</span></div>
-        <div class="cmp-row" role="row"><span role="rowheader" class="cap">When something breaks</span><span role="cell">Only if they notice</span><span role="cell">A new ticket, billed by the hour</span><span role="cell" class="us">Checked daily, fixes included</span></div>
-        <div class="cmp-row" role="row"><span role="rowheader" class="cap">If they leave</span><span role="cell">The know-how leaves with them</span><span role="cell">Often hard to hand over</span><span role="cell" class="us">Built in your accounts and documented</span></div>
-      </div>
-      <p class="note cap">Salary: average US e-commerce operations coordinator, ZipRecruiter 2026.</p>
       <div class="offer reveal"><b>A low-risk start</b><p>Begin with the one-week audit. You get a map of how your operations run and a ranked list of changes. It’s yours to keep whether or not we build it, and the $750 is credited in full if we do.</p></div>
       <div class="pnotes cap"><span>AI agent health check for existing setups from $1,000</span><span>All prices in USD, excluding your own software subscriptions</span></div>
     </div>
@@ -685,7 +700,7 @@
   <section id="about" class="dark-sec">
     <div class="wrap about">
       <div class="reveal">
-        <p class="label cap"><span class="n">06</span><span>About</span></p>
+        <p class="label cap"><span class="n">07</span><span>About</span></p>
         <h2>Reliability first, <span>not hype.</span></h2>
         <p class="body">We started WGY Labs to fix the part of AI automation most providers skip: making sure it keeps working, and stays safe, long after launch.</p>
         <p class="body">We work with Shopify and other e-commerce brands worldwide.</p>
@@ -702,7 +717,7 @@
 
   <section id="faq" class="light-sec">
     <div class="wrap">
-      <p class="label cap"><span class="n">07</span><span>Questions</span></p>
+      <p class="label cap"><span class="n">08</span><span>Questions</span></p>
       <h2 class="reveal">Questions brands ask us.</h2>
       <div class="faq reveal">
         <details><summary>We already have automations. Why does it still feel like we’re doing everything?</summary><p>Because most setups automate the steps but not the watching. Someone still has to notice when a flow stops, remember the edge cases and fix things when apps change. We take over that part too, so the work actually leaves your plate.</p></details>
@@ -874,7 +889,7 @@
   (function(){var r=document.getElementById('calc-h');if(!r)return;
     var hv=document.getElementById('calc-hv'),y=document.getElementById('calc-y'),c=document.getElementById('calc-c'),f=document.getElementById('calc-f');
     function frac(h){var q=h/40;if(q>=.95)return'1';if(q>=.7)return'¾';if(q>=.45)return'½';if(q>=.2)return'¼';return'<¼';}
-    function upd(){var h=+r.value,yr=h*50;hv.textContent=h+' h';y.textContent=yr.toLocaleString('en-US');c.textContent='$'+(yr*25).toLocaleString('en-US');f.textContent=frac(h);}
+    function upd(){var h=+r.value,yr=h*50;hv.textContent=h;y.textContent=yr.toLocaleString('en-US');c.textContent='$'+(yr*25).toLocaleString('en-US');f.textContent=frac(h);}
     r.addEventListener('input',upd);upd();})();
 </script>
 <script>
