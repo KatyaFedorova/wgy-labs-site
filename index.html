@@ -418,7 +418,11 @@
   /* ===== contact ===== */
   .contact{background:var(--night);color:var(--bone);padding:104px 0}
   @media (max-width:640px){.contact{padding:72px 0}}
-  .contact .grid{display:grid;grid-template-columns:1fr 1.05fr;gap:96px;align-items:center}
+  .contact .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:96px;align-items:stretch}
+  .contact .grid>div:first-child{display:flex;flex-direction:column}
+  .contact .grid>div:first-child .call-list{margin-top:auto;padding-top:0}
+  .contact .grid>div:first-child .lede{margin-bottom:32px}
+  .contact h2{margin-top:-.12em}
   @media (max-width:960px){.contact .grid{grid-template-columns:1fr;gap:56px}}
   .contact .orb{width:110px;margin:0 0 44px}
   .contact h2 span{color:#8C8C93}
@@ -714,7 +718,6 @@
 <div class="contact" id="contact">
   <div class="wrap grid">
     <div class="reveal">
-      <canvas class="wave" aria-hidden="true"></canvas>
       <h2>Tell us what you still <span>check by hand.</span></h2>
       <p class="lede">A free 30-minute call. We’ll tell you honestly what can run on its own, what should be simplified, and what isn’t worth automating. The in-depth review of your setup happens in the paid audit.</p>
       <ul class="call-list">
