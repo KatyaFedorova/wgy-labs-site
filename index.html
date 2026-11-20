@@ -152,8 +152,11 @@
   .closing span{color:var(--soft)}
   .numbers{padding:80px 0 0}
   .numbers+.light-sec{border-top:0}
-  .calc-grid{display:grid;grid-template-columns:1.35fr 1fr;border-top:1px solid var(--ink)}
-  .calc{padding:28px 48px 24px 0}
+  .calc-grid{display:grid;grid-template-columns:1fr;border-top:1px solid var(--ink)}
+  .calc{padding:28px 0 24px;display:grid;grid-template-columns:1fr 1.2fr;gap:24px 64px;align-items:end}
+  .calc .calc-q{grid-column:1/-1}
+  .calc-out{margin-top:0!important}
+  @media (max-width:960px){.calc{grid-template-columns:1fr}}
   .calc-q{display:block;font-weight:300;font-size:clamp(22px,2.4vw,30px);line-height:1.2;letter-spacing:-.035em;max-width:26ch}
   .calc-in{display:flex;align-items:center;gap:16px;margin:16px 0 4px}
   .calc-in input{flex:1;-webkit-appearance:none;appearance:none;height:1px;background:var(--ink);outline:none;cursor:pointer}
@@ -526,20 +529,16 @@
       <div class="calc-grid reveal">
         <div class="calc">
           <label for="calc-h" class="calc-q">How many hours a week do you or your team spend checking, copying and chasing?</label>
-          <div class="calc-hours"><output id="calc-hv" for="calc-h">10</output><span>hours a week</span></div>
-          <div class="calc-in"><span class="cap">2</span><input id="calc-h" type="range" min="2" max="40" step="1" value="10" aria-describedby="calc-out"><span class="cap">40</span></div>
+          <div class="calc-l"><div class="calc-hours"><output id="calc-hv" for="calc-h">10</output><span>hours a week</span></div>
+          <div class="calc-in"><span class="cap">2</span><input id="calc-h" type="range" min="2" max="40" step="1" value="10" aria-describedby="calc-out"><span class="cap">40</span></div></div>
           <div class="calc-out" id="calc-out" aria-live="polite">
             <div><strong id="calc-y">500</strong><span>hours a year</span></div>
             <div><strong id="calc-c">$12,500</strong><span>a year in time, at $25 an hour</span></div>
             <div><strong id="calc-f">¼</strong><span>of a full-time role</span></div>
           </div>
         </div>
-        <div class="facts">
-          <div><strong>64%</strong><span>of shoppers say they won’t reorder after a failed delivery.</span><em class="cap">Sendcloud, 2025</em></div>
-          <div><strong>$51.5k</strong><span>a year: the average US salary for an e-commerce operations coordinator.</span><em class="cap">ZipRecruiter, 2026</em></div>
-        </div>
       </div>
-      <p class="note cap">Calculator: hours a week × 50 working weeks, at $25 an hour (the average US operations coordinator rate). Sendcloud: survey of 1,000 UK consumers.</p>
+      <p class="note cap">Hours a week × 50 working weeks, at $25 an hour: the average US e-commerce operations coordinator rate (ZipRecruiter, 2026).</p>
     </div>
   </section>
 
@@ -600,6 +599,10 @@
           <div class="ev"><span class="t">Mon 09:00</span><span>You get a short incident note</span></div>
           <span class="end">Fixed before breakfast</span>
         </div>
+      </div>
+      <div class="stat reveal">
+        <strong>64%</strong>
+        <p>of shoppers say they won’t reorder after a failed delivery. A quiet failure costs you the customer, not just the order.<cite class="cap">Sendcloud, 2025 · survey of 1,000 UK consumers</cite></p>
       </div>
     </div>
   </section>
