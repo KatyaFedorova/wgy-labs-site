@@ -1,5 +1,7 @@
 // Shared rules for the booking form. Mirrors the checks in index.html.
-export const ORDERS = ["Under 500", "500 to 2,000", "2,000 to 10,000", "Over 10,000"];
+// Monthly revenue bands (current form) plus the old order-count bands, still accepted so older pages keep working.
+export const REVENUE = ["Under $50k", "$50k to $200k", "$200k to $1M", "Over $1M"];
+export const ORDERS = [...REVENUE, "Under 500", "500 to 2,000", "2,000 to 10,000", "Over 10,000"];
 export const NEEDS = ["New automations", "AI support agent", "Fix or monitor existing setup", "Not sure yet"];
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -29,14 +31,14 @@ export function validate(input) {
 
   const email = s("email");
   if (!email) errors.email = "Please enter your work email.";
-  else if (!EMAIL.test(email) || email.length > 200) errors.email = "Please enter a valid email, like name@yourstore.com.";
+  else if (!EMAIL.test(email) || email.length > 200) errors.email = "Please enter a valid email, like name@yourcompany.com.";
 
   const store = normalizeUrl(s("store"));
-  if (!store) errors.store = "Please enter your store website.";
-  else if (!isStoreUrl(store) || store.length > 300) errors.store = "Please enter a valid website, like yourstore.com.";
+  if (!store) errors.store = "Please enter your company website.";
+  else if (!isStoreUrl(store) || store.length > 300) errors.store = "Please enter a valid website, like yourcompany.com.";
 
   const orders = s("orders");
-  if (!ORDERS.includes(orders)) errors.orders = "Please choose your monthly orders.";
+  if (!ORDERS.includes(orders)) errors.orders = "Please choose your monthly revenue.";
 
   const need = (Array.isArray(input?.need) ? input.need : []).filter((n) => NEEDS.includes(n));
   if (!need.length) errors.need = "Please choose at least one option.";

@@ -148,6 +148,14 @@
   @media (max-width:760px){.quotes{grid-template-columns:1fr}.quotes li,.quotes li:nth-child(even){padding:24px 0;border-left:0}}
   .closing{margin:56px 0 0;font-weight:300;font-size:clamp(24px,2.8vw,36px);line-height:1.2;letter-spacing:-.04em;max-width:30ch}
   .closing span{color:var(--soft)}
+  .numbers{padding:96px 0 0}
+  .numbers+.light-sec{border-top:0}
+  .nums{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink);border-bottom:1px solid var(--rule)}
+  .nums div{padding:36px 36px 36px 0}
+  .nums div+div{padding-left:36px;border-left:1px solid var(--rule)}
+  .nums strong{display:block;font-weight:300;font-size:clamp(64px,8vw,112px);letter-spacing:-.06em;line-height:.95}
+  .nums span{display:block;margin-top:16px;color:var(--mute);font-weight:300;font-size:16px;max-width:30ch}
+  @media (max-width:760px){.nums{grid-template-columns:1fr}.nums div,.nums div+div{padding:28px 0;border-left:0}.nums div+div{border-top:1px solid var(--rule)}}
   .cols.four{grid-template-columns:repeat(4,1fr)}
   @media (max-width:1000px){.cols.four{grid-template-columns:1fr 1fr}.cols.four>*:nth-child(3){padding-left:0;border-left:0}.cols.four>*:nth-child(n+3){margin-top:28px}}
   @media (max-width:860px){.cols.four{grid-template-columns:1fr}.cols.four>*,.cols.four>*:nth-child(3){margin:0}}
@@ -397,10 +405,11 @@
       <details class="dd">
         <summary>Services</summary>
         <div class="dd-menu">
-          <a href="#services"><b>Build</b><span>Operations automation and AI support agents</span></a>
-          <a href="#services"><b>Test</b><span>Prove your AI agent works before launch</span></a>
-          <a href="#checks"><b>Monitor</b><span>Daily checks, fixes and monthly reports</span></a>
-          <a href="#pricing"><b>AI agent health check</b><span>Audit and tune an existing setup</span></a>
+          <a href="/services"><b>All services</b><span>What we build, test and monitor</span></a>
+          <a href="/services#build"><b>Build</b><span>Operations automation and AI support agents</span></a>
+          <a href="/services#test"><b>Test</b><span>Prove your AI agent works before launch</span></a>
+          <a href="/services#monitor"><b>Monitor</b><span>Daily checks, fixes and monthly reports</span></a>
+          <a href="/services#health"><b>AI agent health check</b><span>Audit and tune an existing setup</span></a>
         </div>
       </details>
       <a href="#cases">Case studies</a>
@@ -415,10 +424,10 @@
   <nav class="mnav" id="mnav" aria-label="Mobile" hidden>
     <div class="wrap">
       <p class="cap">Services</p>
-      <a href="#services"><b>Build</b><span>Operations automation and AI support agents</span></a>
-      <a href="#services"><b>Test</b><span>Prove your AI agent works before launch</span></a>
-      <a href="#checks"><b>Monitor</b><span>Daily checks, fixes and monthly reports</span></a>
-      <a href="#pricing"><b>AI agent health check</b><span>Audit and tune an existing setup</span></a>
+      <a href="/services#build"><b>Build</b><span>Operations automation and AI support agents</span></a>
+      <a href="/services#test"><b>Test</b><span>Prove your AI agent works before launch</span></a>
+      <a href="/services#monitor"><b>Monitor</b><span>Daily checks, fixes and monthly reports</span></a>
+      <a href="/services#health"><b>AI agent health check</b><span>Audit and tune an existing setup</span></a>
       <div class="mnav-links">
         <a href="#cases">Case studies</a>
         <a href="#pricing">Pricing</a>
@@ -438,13 +447,24 @@
     <span class="scroll" aria-hidden="true"></span>
   </div>
 
+  <section id="numbers" class="light-sec numbers">
+    <div class="wrap">
+      <div class="nums reveal">
+        <div><strong>500+</strong><span>hours a year: what two hours a day of checking and copying adds up to</span></div>
+        <div><strong>1</strong><span>hire avoided: Easi Breezi didn’t need the operations role they planned</span></div>
+        <div><strong>~5</strong><span>manual steps removed from Easi Breezi’s order flow</span></div>
+      </div>
+      <p class="note cap reveal">Hours: 2 hours a day × 250 working days. Easi Breezi figures are from our first client project.</p>
+    </div>
+  </section>
+
   <section id="familiar" class="light-sec">
     <div class="wrap">
       <p class="label cap"><span class="n">01</span><span>Sound familiar?</span></p>
       <h2 class="reveal">You automated it. <span>You’re still the one checking it.</span></h2>
       <ul class="quotes reveal">
         <li>“Did that order actually reach the warehouse?”</li>
-        <li>“I’ll just check the 3PL before bed.”</li>
+        <li>“I’ll just check if the warehouse sent the order before bed.”</li>
         <li>“The tracking email should have gone out. Let me look.”</li>
         <li>“Zapier sent another ‘task failed’ email. I’ll deal with it later.”</li>
         <li>“Who books the installations if I take a week off?”</li>
@@ -467,22 +487,11 @@
     </div>
   </section>
 
-  <section id="hours" class="light-sec">
-    <div class="wrap">
-      <p class="label cap"><span class="n">03</span><span>Where the hours go</span></p>
-      <h2 class="reveal">Small manual steps add up <span>to a full-time job nobody applied for.</span></h2>
-      <div class="cols reveal">
-        <div><span class="cap">Double handling</span><h3>Every order, touched twice</h3><p>Copying details from Shopify into the 3PL, the helpdesk and a spreadsheet, and hoping there’s no typo.</p></div>
-        <div><span class="cap">Single point of failure</span><h3>It only works because you know the steps</h3><p>When you’re ill, travelling or just busy, it quietly stops.</p></div>
-        <div><span class="cap">Linear cost</span><h3>More orders, more hands</h3><p>Every busy season or new market feels like another hire, so costs grow as fast as revenue.</p></div>
-      </div>
-      <p class="lede reveal">No two brands lose time in the same place, so we don’t sell a fixed package. We start by looking at how the work really gets done.</p>
-    </div>
-  </section>
+
 
   <section id="problem" class="dark-sec">
     <div class="wrap">
-      <p class="label cap"><span class="n">04</span><span>Why it fails quietly</span></p>
+      <p class="label cap"><span class="n">03</span><span>Why it fails quietly</span></p>
       <div class="two reveal">
         <h2>Most automations don’t break on day one. <span>They break on a Tuesday in March, and nobody notices.</span></h2>
         <p class="lede">Apps update, APIs change, AI models drift. Without someone watching, a broken flow can run for days before a customer tells you.</p>
@@ -510,16 +519,12 @@
           <span class="end">Fixed before breakfast</span>
         </div>
       </div>
-      <div class="stat reveal">
-        <strong>40%+</strong>
-        <p>of agentic AI projects are expected to be cancelled by the end of 2027, due to rising costs, unclear value or weak risk controls.<cite class="cap">Gartner, June 2025</cite></p>
-      </div>
     </div>
   </section>
 
   <section id="changes" class="light-sec">
     <div class="wrap">
-      <p class="label cap"><span class="n">05</span><span>What changes</span></p>
+      <p class="label cap"><span class="n">04</span><span>What changes</span></p>
       <h2 class="reveal">Close the laptop. <span>It’s handled.</span></h2>
       <div class="cols four reveal">
         <div><span class="cap">01</span><h3>You stop checking</h3><p>Every flow is checked daily, so you don’t have to.</p></div>
@@ -536,31 +541,15 @@
         <div class="r"><span class="t">Day 14</span><span>Review request scheduled</span><span class="s">Queued</span></div>
       </div>
       <p class="tools-l cap">We work inside the tools you already use</p>
-      <ul class="tools"><li>Shopify</li><li>Shopify Flow</li><li>Gorgias</li><li>Klaviyo</li><li>n8n</li><li>Make</li><li>Zapier</li></ul>
+      <ul class="tools"><li>Shopify</li><li>Shopify Flow</li><li>Gorgias</li><li>Klaviyo</li><li>WhatsApp</li><li>Zoho</li><li>n8n</li><li>Make</li><li>Zapier</li></ul>
     </div>
   </section>
 
-  <section id="services" class="light-sec">
-    <div class="wrap">
-      <p class="label cap"><span class="n">06</span><span>Services</span></p>
-      <div class="two reveal">
-        <h2>We build it, test it, <span>and keep it working.</span></h2>
-        <p class="lede">First we spend a week inside your operations and hand you a ranked plan: what to change, and in what order. Then we build it one phase at a time, on n8n or custom code, with AI agents only where they take real work off your team.</p>
-      </div>
-      <div class="cols reveal">
-        <div class="svc"><span class="cap">01</span><h3>Build</h3><p>Operations automation for the work your team still does by hand.</p>
-          <ul><li>Operations review: map the flow and cut steps you don’t need</li><li>Order, inventory and 3PL workflows</li><li>AI support agents for order status, returns and edits</li><li>Reporting and marketing operations</li></ul></div>
-        <div class="svc"><span class="cap">02</span><h3>Test</h3><p>Evidence your AI agent works before customers see it.</p>
-          <ul><li>Test sets built from your real tickets</li><li>Re-testing on every prompt or model change</li><li>Health checks for existing Gorgias, Shopify Flow and AI agent setups</li></ul></div>
-        <div class="svc"><span class="cap">03</span><h3>Monitor</h3><p>Daily checks and monthly upkeep, so everything keeps working.</p>
-          <ul><li>Alerts when anything stops or drifts</li><li>Monthly quality and savings report</li><li>Fixes when apps and APIs change</li></ul></div>
-      </div>
-    </div>
-  </section>
+
 
   <section id="cases" class="dark-sec">
     <div class="wrap">
-      <p class="label cap"><span class="n">07</span><span>Case studies</span></p>
+      <p class="label cap"><span class="n">05</span><span>Case studies</span></p>
       <h2 class="reveal">Our first client project in full, <span>plus two typical projects.</span></h2>
       <article class="feature reveal">
         <span class="cap who">Client project · Easi Breezi</span>
@@ -603,30 +592,11 @@
     </div>
   </section>
 
-  <section id="checks" class="light-sec">
-    <div class="wrap">
-      <p class="label cap"><span class="n">08</span><span>Monitoring</span></p>
-      <div class="two reveal">
-        <h2>Everything you check by hand, <span>checked for you.</span></h2>
-        <p class="lede">Monitoring isn’t only “is it running.” We check that each automation does the right thing, with the right data, inside the limits you set.</p>
-      </div>
-      <table class="tbl reveal">
-        <thead><tr><th scope="col" class="cap">Check</th><th scope="col" class="cap">What it catches</th><th scope="col" class="cap">How often</th></tr></thead>
-        <tbody>
-          <tr><td>Run health</td><td>Workflows that stopped, failed or slowed down, including silent failures with no error message.</td><td class="freq">Continuous</td></tr>
-          <tr><td>AI answer quality</td><td>A sample of real AI replies scored for accuracy, tone and correct policy. Catches made-up answers early.</td><td class="freq">Daily</td></tr>
-          <tr><td>Money and limits</td><td>Refunds, discounts or credits outside the rules you approved. Anything above the limit goes to a person.</td><td class="freq">Every action</td></tr>
-          <tr><td>Data mapping</td><td>Field and API changes after app updates that send wrong or incomplete data between tools.</td><td class="freq">Daily</td></tr>
-          <tr><td>Regression tests</td><td>Changes in behaviour after a prompt, model or app update, tested against your saved test set.</td><td class="freq">Every change</td></tr>
-          <tr><td>Business results</td><td>Hours saved, tickets resolved and handover rate, reported so you can see what it’s worth.</td><td class="freq">Monthly</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+
 
   <section id="process" class="light-sec">
     <div class="wrap">
-      <p class="label cap"><span class="n">09</span><span>How we work</span></p>
+      <p class="label cap"><span class="n">06</span><span>How we work</span></p>
       <div class="two reveal">
         <h2>From first look <span>to looked after.</span></h2>
         <p class="lede">We only build what the audit shows is worth building. Everything lives in your accounts and is documented, so you’re never locked in.</p>
@@ -668,7 +638,7 @@
 
   <section id="pricing" class="light-sec">
     <div class="wrap">
-      <p class="label cap"><span class="n">10</span><span>Pricing</span></p>
+      <p class="label cap"><span class="n">07</span><span>Pricing</span></p>
       <div class="two reveal">
         <h2>Published pricing. <span>No surprise hours.</span></h2>
         <p class="lede">Fixed prices. Already running automations or an AI agent? Start with a health check.</p>
@@ -704,7 +674,7 @@
   <section id="about" class="dark-sec">
     <div class="wrap about">
       <div class="reveal">
-        <p class="label cap"><span class="n">11</span><span>About</span></p>
+        <p class="label cap"><span class="n">08</span><span>About</span></p>
         <h2>Reliability first, <span>not hype.</span></h2>
         <p class="body">We started WGY Labs to fix the part of AI automation most providers skip: making sure it keeps working, and stays safe, long after launch.</p>
         <p class="body">We work with Shopify and other e-commerce brands worldwide.</p>
@@ -724,7 +694,7 @@
 
   <section id="faq" class="light-sec">
     <div class="wrap">
-      <p class="label cap"><span class="n">12</span><span>Questions</span></p>
+      <p class="label cap"><span class="n">09</span><span>Questions</span></p>
       <h2 class="reveal">Questions brands ask us.</h2>
       <div class="faq reveal">
         <details><summary>We already have automations. Why does it still feel like we’re doing everything?</summary><p>Because most setups automate the steps but not the watching. Someone still has to notice when a flow stops, remember the edge cases and fix things when apps change. We take over that part too, so the work actually leaves your plate.</p></details>
@@ -732,7 +702,7 @@
         <details><summary>Do we need to have automations already?</summary><p>No. Most clients start with an audit and a first build. If you already have automations or an AI support agent, we start with a health check instead.</p></details>
         <details><summary>Who owns what you build?</summary><p>You do. Everything is built in your own Shopify, helpdesk and automation accounts, with documentation your team can read.</p></details>
         <details><summary>What happens when something breaks?</summary><p>Our checks flag it, we fix it, and you get a short note explaining what happened and what changed. Fixes for things we monitor are included in your plan.</p></details>
-        <details><summary>Which tools do you work with?</summary><p>Shopify and Shopify Flow, Gorgias, Klaviyo, n8n, Make and Zapier, plus custom AI agents where off-the-shelf tools fall short.</p></details>
+        <details><summary>Which tools do you work with?</summary><p>Shopify and Shopify Flow, Gorgias, Klaviyo, WhatsApp, Zoho, n8n, Make and Zapier, plus custom AI agents where off-the-shelf tools fall short.</p></details>
         <details><summary>Will AI make this expensive to run?</summary><p>Not when it’s designed well. We only use AI where it does real work, choose the smallest model that does the job reliably, and keep calls to a minimum, so your monthly running costs stay low.</p></details>
         <details><summary>Can we cancel the monthly plan?</summary><p>Yes, with 30 days’ notice. Because everything lives in your accounts with documentation, you keep it all.</p></details>
       </div>
@@ -759,11 +729,11 @@
           <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" maxlength="200" required aria-describedby="e-email"><p class="ferr" id="e-email"></p></div>
         </div>
         <div class="f2">
-          <div class="field"><label for="f-store">Store website</label><input id="f-store" name="store" type="text" inputmode="url" placeholder="yourstore.com" autocomplete="url" maxlength="300" required aria-describedby="e-store"><p class="ferr" id="e-store"></p></div>
-          <div class="field"><label for="f-orders">Orders per month</label>
+          <div class="field"><label for="f-store">Company website</label><input id="f-store" name="store" type="text" inputmode="url" placeholder="yourcompany.com" autocomplete="url" maxlength="300" required aria-describedby="e-store"><p class="ferr" id="e-store"></p></div>
+          <div class="field"><label for="f-orders">Revenue per month</label>
             <select id="f-orders" name="orders" required aria-describedby="e-orders">
               <option value="">Choose one</option>
-              <option>Under 500</option><option>500 to 2,000</option><option>2,000 to 10,000</option><option>Over 10,000</option>
+              <option>Under $50k</option><option>$50k to $200k</option><option>$200k to $1M</option><option>Over $1M</option>
             </select><p class="ferr" id="e-orders"></p></div>
         </div>
         <fieldset class="field" id="f-need" aria-describedby="e-need"><legend>What do you need help with?</legend>
@@ -779,7 +749,7 @@
         <div class="hp" aria-hidden="true"><label for="f-company">Company</label><input id="f-company" name="company" tabindex="-1" autocomplete="off"></div>
         <p class="err" id="f-err" role="alert"></p>
         <button class="btn" type="submit" id="f-submit"><span class="bl">Request a free intro call</span> <span class="ar" aria-hidden="true"></span></button>
-        <p class="form-note cap">All fields are required · We reply within one business day</p>
+        <p class="form-note cap">We reply within one business day</p>
       </form>
       <div class="sent" id="book-sent" hidden tabindex="-1">
         <p class="cap">Request received</p>
@@ -797,7 +767,7 @@
         <a class="logo" href="#" aria-label="WGY Labs home"><span class="lw">wgy<span> labs</span></span><svg viewBox="0 0 250 26" preserveAspectRatio="none" aria-hidden="true"><path d="M6 6Q125 34 244 6" fill="none" stroke-width="8" stroke-linecap="round"/></svg></a>
         <p>Operations automation for Shopify brands. We’ve got your back.</p>
       </div>
-      <div><h4 class="cap">Services</h4><ul><li><a href="#services">Build</a></li><li><a href="#services">Test</a></li><li><a href="#checks">Monitor</a></li><li><a href="#pricing">Pricing</a></li></ul></div>
+      <div><h4 class="cap">Services</h4><ul><li><a href="/services#build">Build</a></li><li><a href="/services#test">Test</a></li><li><a href="/services#monitor">Monitor</a></li><li><a href="#pricing">Pricing</a></li></ul></div>
       <div><h4 class="cap">Company</h4><ul><li><a href="#about">About</a></li><li><a href="#cases">Case studies</a></li><li><a href="#process">Process</a></li><li><a href="#faq">FAQ</a></li></ul></div>
       <div><h4 class="cap">Contact</h4><ul><li><a href="mailto:hello@wgylabs.com">hello@wgylabs.com</a></li><li><a href="#contact">Book a call</a></li></ul></div>
     </div>
@@ -903,9 +873,9 @@
     function needs(){return[].slice.call(f.querySelectorAll('input[name=need]:checked')).map(function(c){return c.value;});}
     var rules={
       name:function(){var v=f.elements.name.value.trim();return v.length<2?'Please enter your name.':'';},
-      email:function(){var v=f.email.value.trim();return!v?'Please enter your work email.':!EMAIL.test(v)?'Please enter a valid email, like name@yourstore.com.':'';},
-      store:function(){var v=url(f.store.value);return!v?'Please enter your store website.':!okUrl(v)?'Please enter a valid website, like yourstore.com.':'';},
-      orders:function(){return f.orders.value?'':'Please choose your monthly orders.';},
+      email:function(){var v=f.email.value.trim();return!v?'Please enter your work email.':!EMAIL.test(v)?'Please enter a valid email, like name@yourcompany.com.':'';},
+      store:function(){var v=url(f.store.value);return!v?'Please enter your company website.':!okUrl(v)?'Please enter a valid website, like yourcompany.com.':'';},
+      orders:function(){return f.orders.value?'':'Please choose your monthly revenue.';},
       need:function(){return needs().length?'':'Please choose at least one option.';},
       message:function(){var v=f.message.value.trim();return v.length<10?'Please tell us a little more (at least 10 characters).':'';}
     };
