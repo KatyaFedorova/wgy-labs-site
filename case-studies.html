@@ -90,7 +90,7 @@
   @media (prefers-reduced-motion:reduce){.btn,.btn::before,.btn .ar,.link{transition:none}}
 
   /* ===== hero ===== */
-  .hero{position:relative;min-height:100svh;background:var(--night);color:var(--bone);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:128px 0 96px;overflow:hidden}
+  .hero{position:relative;min-height:100svh;background:var(--night);color:var(--bone);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:clamp(80px,11vh,128px) 20px clamp(36px,7vh,96px);overflow:hidden}
   .hero::before{content:"";position:absolute;left:50%;top:44%;width:900px;height:900px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(244,244,245,.06),transparent);pointer-events:none}
   .orb{position:relative;width:min(240px,52vw);aspect-ratio:1;margin:0 auto 48px;border-radius:50%;
     background:radial-gradient(circle at var(--x,34%) var(--y,28%),rgba(255,255,255,.95) 0,rgba(255,255,255,.35) 6%,transparent 22%),radial-gradient(circle at 70% 78%,rgba(244,244,245,.22),transparent 38%),radial-gradient(circle at 50% 50%,#3A3936 0,#1A1918 52%,#0B0B0A 74%);
@@ -111,20 +111,22 @@
   .orbit.o2 .spin{animation-duration:11s;animation-direction:reverse}
   .orbit.o2 .p{width:4px;height:4px;margin-left:-2px;top:-2px;opacity:.7}
   @keyframes spin{to{transform:rotate(360deg)}}
-  .wave{display:block;position:relative;width:min(520px,92vw);height:300px;margin:-24px auto 20px}
-  @media (max-width:640px){.wave{height:240px;margin-bottom:12px}}
+  .wave{display:block;position:relative;width:min(520px,92vw);height:clamp(130px,30vh,300px);margin:calc(-1 * clamp(4px,2vh,24px)) auto clamp(6px,2vh,20px)}
+  @media (max-width:640px){.wave{height:clamp(130px,28vh,240px)}}
   .contact .wave{width:220px;height:200px;margin:-20px 0 28px -20px}
-  .hero .cap{color:var(--soft);margin:0 0 28px;position:relative}
+  .hero .cap{color:var(--soft);margin:0 0 clamp(12px,2.6vh,28px);position:relative}
   .now{min-height:1.4em}
   @media (max-width:620px){.now{min-height:2.9em}}
   .now .task{color:var(--bone)}
   .cur{display:inline-block;width:7px;height:12px;margin-left:3px;vertical-align:-1px;background:var(--bone);animation:blink 1s steps(1) infinite}
   @keyframes blink{50%{opacity:0}}
-  h1{position:relative;font-weight:300;font-size:clamp(44px,7.2vw,92px);line-height:1.02;letter-spacing:-.05em;margin:0 auto 28px;max-width:14ch}
+  h1{position:relative;font-weight:300;font-size:clamp(38px,min(7.2vw,10.5vh),92px);line-height:1.02;letter-spacing:-.05em;margin:0 auto clamp(12px,2.6vh,28px);max-width:14ch}
   h1 span{color:#8C8C93}
-  .hero .sub{position:relative;font-size:17px;font-weight:300;color:#A6A6AD;max-width:48ch;margin:0 auto 44px}
+  .hero .sub{position:relative;font-size:17px;font-weight:300;color:#A6A6AD;max-width:48ch;margin:0 auto clamp(18px,4vh,44px)}
+  @media (max-height:760px){.scroll{display:none}}
   .ctas{position:relative;display:flex;gap:36px;align-items:center;justify-content:center;flex-wrap:wrap}
   @media (max-width:520px){.ctas{flex-direction:column;gap:24px}.ctas .btn{width:100%}}
+  @media (max-width:420px){.ctas .btn{padding:0 18px;gap:12px;letter-spacing:.1em;font-size:11.5px}}
   .proof{position:relative;margin:56px auto 0;max-width:52ch;font-size:13.5px;font-weight:300;color:#7C7C83}
   .proof b{font-weight:400;color:#CBCBD0}
   .scroll{position:absolute;bottom:28px;left:50%;width:1px;height:44px;background:linear-gradient(var(--soft),transparent);opacity:.6}
@@ -181,7 +183,9 @@
   h2 span{color:var(--soft)}
   h3{font-weight:400;letter-spacing:-.025em;margin:0}
   .lede{font-weight:300;font-size:17px;color:var(--mute);max-width:54ch;margin:20px 0 0}
-  .two{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  .two>.lede{padding-top:.6em}
+  @media (max-width:900px){.two>.lede{padding-top:0}}
   .two .lede{margin:0}
   @media (max-width:900px){.two{grid-template-columns:1fr;gap:28px}}
   .note{margin-top:28px;color:var(--soft)}
