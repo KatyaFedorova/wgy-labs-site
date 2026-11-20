@@ -100,8 +100,6 @@
   @property --y{syntax:'<percentage>';inherits:false;initial-value:28%}
   @keyframes drift{0%{--x:24%;--y:22%}50%{--x:46%;--y:20%}100%{--x:60%;--y:38%}}
   @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-  .core{position:relative;width:min(240px,52vw);margin:0 auto 48px}
-  .core .orb{margin:0}
   .orbit{position:absolute;left:50%;top:50%;width:170%;aspect-ratio:1;transform:translate(-50%,-50%) rotate(-16deg) scaleY(.32);pointer-events:none}
   .orbit::before{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid rgba(244,244,245,.24)}
   .orbit .spin{position:absolute;inset:0;animation:spin 7s linear infinite}
