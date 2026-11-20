@@ -20,6 +20,7 @@ This repo holds the marketing site for **WGY Labs** (short for "We Got You"), Ka
 - **Free 30-min intro call:** it's a fit/sales call, not free consulting. Deep analysis = the paid audit. A qualifying form sits in front of it.
 - **Case studies:** currently 3 "Example project" cards, clearly labeled illustrative. Never present them as real client results. Replace with real ones as they come.
 - **Honesty rules:** no fake testimonials, logos, client names or results. The hero dashboard and monthly figures are labeled as sample data; keep those labels.
+- **Numbers on the site (2026-11-20):** savings calculator (hours/week × 50 weeks × $25/h) plus two sourced stats: 64% won't reorder after a failed delivery (Sendcloud 2025, 1,000 UK consumers) and $51.5k average US e-commerce operations coordinator salary (ZipRecruiter 2026). Kat has no paid clients yet: never imply many clients or past results beyond Easi Breezi. Skip the "30–50% of tickets are WISMO" claim: no traceable study.
 
 ## Open to-dos (in priority order)
 0. **Next up (Kat, 2026-11-19): pain-language copy + chapter breaks.**
