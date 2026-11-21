@@ -474,9 +474,9 @@
     .hz-goal{flex-direction:column;gap:8px;padding:20px}
   }
   @media (min-width:761px){
-    #start{padding:64px 0}
-    #start h2{max-width:none;font-size:clamp(30px,3.2vw,44px)}
-    #start .hz-wrap{margin-top:24px}
+    #start{padding:28px 0 64px}
+    #start h2{max-width:none;font-size:clamp(26px,2.6vw,36px)}
+    #start .hz-wrap{margin-top:0}
     #start .hz-goal{padding:14px 28px}
     #start .hz-goal p{font-size:clamp(20px,2vw,28px)}
     #start .hz{padding:22px 32px 18px}
@@ -508,6 +508,36 @@
     #start .hz-foot{margin-top:10px;padding-top:8px}
     #start .note{margin-top:8px}
   }
+  /* case study: quiet manual row, WGY row is the hero */
+  #start .hz-slow .hz-head .cap,#start .hz-slow .hz-status,#start .hz-slow .hz-foot{color:var(--soft);border-color:var(--rule)}
+  #start .hz-slow .hz-track>i{background:#C4C5CA}
+  #start .hz-slow .hz-track>i::after{display:none}
+  #start .hz-slow li.on .d{background:var(--light);border-color:#C4C5CA;color:var(--mute)}
+  #start .hz-slow .hz-steps li.on{color:var(--mute)}
+  #start .hz-slow li.now .d{transform:none}
+  #start .hz-slow li.now .d::after{display:none}
+  #start .hz-fast .hz-track>i{box-shadow:0 0 18px 2px rgba(244,244,245,.45)}
+  #start .hz-fast .hz-foot{color:var(--ink)}
+  #start .hz-slow .hz-head h3{color:var(--mute)}
+  #start .hz-slow .hz-stats b{color:var(--soft)}
+  @media (min-width:761px){
+    #start .hz-slow{padding-top:16px;padding-bottom:14px}
+    #start .hz-slow .hz-head{margin-bottom:12px}
+    #start .hz-slow .hz-head h3{font-size:22px;color:var(--mute)}
+    #start .hz-slow .hz-stats b{font-size:28px;color:var(--soft)}
+    #start .hz-slow .hz-track::before,#start .hz-slow .hz-track>i{top:17px;height:2px}
+    #start .hz-slow .hz-steps .d{width:36px;height:36px;border-width:1.5px}
+    #start .hz-slow .hz-steps .d svg{width:16px;height:16px}
+    #start .hz-slow .hz-steps .t{font-size:13.5px;margin-top:8px}
+    #start .hz-slow .hz-foot{margin-top:10px;padding-top:8px}
+    #start .hz-fast{padding-top:28px;padding-bottom:24px}
+    #start .hz-fast .hz-head h3{font-size:clamp(28px,3vw,40px)}
+    #start .hz-fast .hz-stats b{font-size:clamp(40px,4.4vw,60px)}
+    #start .hz-fast .hz-steps .d{width:58px;height:58px}
+    #start .hz-fast .hz-steps .d svg{width:24px;height:24px}
+    #start .hz-fast .hz-track::before,#start .hz-fast .hz-track>i{top:27px;height:4px}
+    #start .hz-fast .hz-steps .t{font-size:16px;margin-top:12px}
+  }
   @media (prefers-reduced-motion:reduce){.hz-steps li,.hz-steps .d{transition:none}.hz-steps li.now .d::after{animation:none}}
   .hz-goal small{display:block;margin-top:6px;font-family:"Geist Mono",monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--rose)}
   .hz-ctx{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:12px 32px;border:1px solid var(--rule);border-top:0;color:var(--soft)}
@@ -521,10 +551,11 @@
   @media (prefers-reduced-motion:reduce){.orb,.orbit .spin,.cur,.plate .live i,.plate .r .s.run::before{animation:none}.reveal{opacity:1;transform:none;transition:none}}
 </style>
 <style>
-  .pagehead{background:var(--night);color:var(--bone);padding:180px 0 120px}
-  @media (max-width:640px){.pagehead{padding:136px 0 88px}}
-  .pagehead .cap{color:var(--soft);margin:0 0 24px}
-  .pagehead h1{text-align:left;margin:0 0 28px;max-width:16ch}
+  .pagehead{background:var(--night);color:var(--bone);padding:112px 0 36px}
+  @media (max-width:640px){.pagehead{padding:100px 0 28px}}
+  .pagehead .cap{color:var(--soft);margin:0 0 10px}
+  .pagehead h1{text-align:left;margin:0;max-width:none;font-size:clamp(28px,3.2vw,40px);line-height:1.15}
+  .pagehead h1 span{color:var(--soft)}
   .pagehead .sub{font-size:18px;font-weight:300;color:#A6A6AD;max-width:52ch;margin:0 0 44px}
   .pagehead .ctas{justify-content:flex-start}
   .close-cta .two{align-items:center}
@@ -575,30 +606,22 @@
 <main>
   <div class="pagehead">
     <div class="wrap">
-      <p class="cap">Case studies · One of our recent projects</p>
-      <h1>Easi Breezi: <span>clean air on two wheels.</span></h1>
-      <p class="sub">An air-filtering system that fits your bike and your helmet. It keeps your lungs healthy and your skin clean, and cools the air inside your helmet while you ride, so city traffic stops being something you just have to survive.</p>
-      <div class="ctas"><a class="btn" href="/#contact">Book a free 30-minute call <span class="ar" aria-hidden="true"></span></a><a class="link" href="/services">Our services <span aria-hidden="true">→</span></a></div>
+      <p class="cap">Case study</p>
+      <h1>Easi Breezi <span>· air filters for bikes and helmets</span></h1>
     </div>
   </div>
 
   <section id="start" class="light-sec">
     <div class="wrap">
-      <p class="label cap"><span class="n">01</span><span>Where it started</span></p>
-      <div class="two reveal">
-        <h2>The founder was about to hire. <span>We asked one question first.</span></h2>
-        <p class="lede" style="margin-top:0">Every unit went from the factory to a warehouse, then to the customer, and then it had to be installed. The founder was coordinating all of it by hand, with no time left for the next version of the product.</p>
-      </div>
       <div class="hz-wrap reveal" id="hz">
-        <div class="hz-goal"><span class="cap">Our first question</span><p>Where are you losing your time?<small>Their answer: booking every installation</small></p></div>
-        <p class="hz-ctx cap"><span>Order paid</span><i>→</i><span>Unit made</span><i>→</i><span>At the warehouse</span><i>→</i><span>Delivered</span><i>→</i><b>Now it needs installing</b></p>
+        <div class="hz-goal"><span class="cap">Before hiring, we asked</span><p>Where are you losing your time?<small>Their answer: booking every installation</small></p></div>
         <div class="hz hz-slow" style="--p:1;--n:6">
-          <div class="hz-head"><div><span class="cap">Before</span><h3>By hand <span class="hz-status" id="hz-ss">Booked, next order waiting</span></h3></div><div class="hz-stats"><div><b id="hz-sm">14</b><span>messages you sent</span></div><div><b id="hz-sb">1</b><span>install booked</span></div></div></div>
+          <div class="hz-head"><div><span class="cap">Before</span><h3>By hand <span class="hz-status" id="hz-ss">Booked, next order waiting</span></h3></div><div class="hz-stats"><div><b id="hz-sm">14</b><span>messages you sent</span></div></div></div>
           <div class="hz-track"><i></i><ol class="hz-steps" aria-label="Booking an installation by hand"><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 17.5h2"/></svg></span><span class="t">Text the customer: “When are you free?”</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg></span><span class="t">Text the installer: “Are you free then?”</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 13.7-5.6L20 9"/><path d="M20 4v5h-5"/><path d="M20 12a8 8 0 0 1-13.7 5.6L4 15"/><path d="M4 20v-5h5"/></svg></span><span class="t">Not free? Text them both again</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg></span><span class="t">Send the location to the customer</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5h4"/></svg></span><span class="t">Confirm with both the day before</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12M6 12h8M6 17h5"/><path d="M14 17l2.5 2.5L21 15"/></svg></span><span class="t">Check it’s installed, then send the review link</span></li></ol></div>
           <p class="hz-foot cap"><span class="ar" aria-hidden="true">↻</span>That was one installation. All day, emails and DMs keep pulling you away.</p>
         </div>
         <div class="hz hz-fast" style="--p:1;--n:6">
-          <div class="hz-head"><div><span class="cap">With WGY Labs</span><h3>Runs on its own <span class="hz-status ok" id="hz-fs">✓ Done</span></h3></div><div class="hz-stats"><div><b>0</b><span>messages from you</span></div><div><b id="hz-fb">1</b><span>install booked</span></div></div></div>
+          <div class="hz-head"><div><span class="cap">With WGY Labs</span><h3>Runs on its own <span class="hz-status ok" id="hz-fs">✓ Done</span></h3></div><div class="hz-stats"><div><b>0</b><span>messages from you</span></div></div></div>
           <div class="hz-track"><i></i><ol class="hz-steps" aria-label="Booking an installation with WGY Labs"><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg></span><span class="t">Customer picks a time</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="1.5"/><path d="M4 10h16M9 3v4M15 3v4"/><path d="M9.5 15l2 2 3.5-4"/></svg></span><span class="t">Installer confirmed</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 13.7-5.6L20 9"/><path d="M20 4v5h-5"/><path d="M20 12a8 8 0 0 1-13.7 5.6L4 15"/><path d="M4 20v-5h5"/></svg></span><span class="t">Clash? Rebooked on its own</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg></span><span class="t">Location sent to the customer</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5h4"/></svg></span><span class="t">Reminders sent the day before</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 16.9l-5.2 2.8 1-5.9-4.3-4.1 5.9-.8z"/></svg></span><span class="t">Install confirmed, review link sent</span></li></ol></div>
           <p class="hz-foot cap"><span class="ar" aria-hidden="true">→</span>The founder only hears about it if something needs them.</p>
         </div>
@@ -607,22 +630,9 @@
     </div>
   </section>
 
-  <section id="found" class="dark-sec">
-    <div class="wrap">
-      <p class="label cap"><span class="n">02</span><span>What we found</span></p>
-      <h2 class="reveal">Some of it was already failing, <span>and nobody knew.</span></h2>
-      <ul class="fails reveal">
-        <li><span class="cap">Silent failure</span><h3>Guides weren’t reaching customers</h3><p>The emails with how to install and use the product were meant to go out automatically. The automation had stopped, quietly, and nobody noticed.</p></li>
-        <li><span class="cap">One person</span><h3>Everything ran through the founder</h3><p>Factory, warehouses, deliveries, installations and customer questions all needed him to keep them moving.</p></li>
-        <li><span class="cap">Inconsistent</span><h3>Every country worked differently</h3><p>Customers in different countries got a different experience, which was hard to manage and harder to grow.</p></li>
-        <li><span class="cap">Extra steps</span><h3>Some steps weren’t worth automating</h3><p>Part of the flow existed only out of habit. Automating it would have locked the extra work in.</p></li>
-      </ul>
-    </div>
-  </section>
-
   <section id="did" class="light-sec">
     <div class="wrap">
-      <p class="label cap"><span class="n">03</span><span>What we did</span></p>
+      <p class="label cap"><span class="n">01</span><span>What we did</span></p>
       <h2 class="reveal">Fix what was broken. <span>Then make sure it can’t fail quietly again.</span></h2>
       <div class="cols four reveal">
         <div><span class="cap">01</span><h3>Guides fixed, with alerts</h3><p>Installation and how-to guides go out automatically again. If that ever fails, we get notified straight away.</p></div>
@@ -635,41 +645,11 @@
 
   <section id="result" class="dark-sec">
     <div class="wrap">
-      <p class="label cap"><span class="n">04</span><span>The result</span></p>
+      <p class="label cap"><span class="n">02</span><span>The result</span></p>
       <div class="two reveal">
         <h2>About $50k a year saved. <span>No new hire, and the founder is back on the product.</span></h2>
         <p class="lede">Work that used to be done by hand now runs on its own, saving about $50k a year compared with hiring for it. A complicated setup became a much smaller one, with about five steps cut. It’s designed so one person can run the whole operation, with no human in the loop for routine work, and anything that stops working alerts the founder straight away.</p>
       </div>
-    </div>
-  </section>
-
-  <section id="examples" class="light-sec">
-    <div class="wrap">
-      <p class="label cap"><span class="n">05</span><span>Typical projects</span></p>
-      <h2 class="reveal">Two more ways <span>we usually help.</span></h2>
-      <div class="examples reveal">
-        <article>
-          <span class="cap">Example project</span>
-          <span class="who">Apparel brand using a 3PL warehouse</span>
-          <h3>Monitoring for order sync and stock alerts</h3>
-          <dl>
-            <div><dt class="cap">Problem</dt><dd>Order sync to the warehouse broke twice after app updates, and nobody noticed for days.</dd></div>
-            <div><dt class="cap">What we do</dt><dd>Add daily checks on every workflow, alerts on failures, and fixes when apps change.</dd></div>
-            <div><dt class="cap">What we measure</dt><dd>Time to detect and fix issues, missed orders, successful runs.</dd></div>
-          </dl>
-        </article>
-        <article>
-          <span class="cap">Example project</span>
-          <span class="who">Home goods brand already using an AI agent</span>
-          <h3>A health check for an existing AI support setup</h3>
-          <dl>
-            <div><dt class="cap">Problem</dt><dd>The AI agent resolves fewer tickets than promised and sometimes gives wrong policy answers.</dd></div>
-            <div><dt class="cap">What we do</dt><dd>Build a test set from real tickets, find where it fails, and tune its rules and handovers.</dd></div>
-            <div><dt class="cap">What we measure</dt><dd>Automation rate and wrong answers, before and after.</dd></div>
-          </dl>
-        </article>
-      </div>
-      <p class="note cap">Projects marked “Example project” are illustrative examples of our work, not client results.</p>
     </div>
   </section>
 
@@ -736,12 +716,12 @@
 (function(){
   var w=document.getElementById('hz'); if(!w) return;
   if(window.matchMedia('(prefers-reduced-motion:reduce)').matches||!('IntersectionObserver' in window)) return;
-  var slow=w.querySelector('.hz-slow'),fast=w.querySelector('.hz-fast'),sm=document.getElementById('hz-sm'),sb=document.getElementById('hz-sb'),fb=document.getElementById('hz-fb');
+  var slow=w.querySelector('.hz-slow'),fast=w.querySelector('.hz-fast'),sm=document.getElementById('hz-sm');
   var CYCLE=16000,FAST=3500,HOLD=3000,raf=0,run=false,acc=0,last=0;
   function set(row,p,done){row.style.setProperty('--p',p);var li=row.querySelectorAll('.hz-steps li'),n=li.length,cur=done?-1:Math.min(n-1,Math.floor(p*(n-1)+.5));
     for(var i=0;i<n;i++){var r=p>=i/(n-1)-1e-6;li[i].classList.toggle('on',r);li[i].classList.toggle('now',i===cur&&r);}}
   function draw(ms){var ps=Math.min(1,ms/CYCLE),pf=Math.min(1,ms/FAST);set(slow,ps,ps>=1);set(fast,pf,pf>=1);
-    sm.textContent=Math.round(14*ps);sb.textContent=ps>=1?1:0;fb.textContent=pf>=1?1:0;
+    sm.textContent=Math.round(14*ps);
     var ss=document.getElementById('hz-ss'),fs=document.getElementById('hz-fs');
     ss.textContent=ps>=1?'Booked, next order waiting':'Still going…';
     if(pf>=1){if(!fs.classList.contains('ok')){fs.classList.add('ok');fs.textContent='✓ Done';}}else if(fs.classList.contains('ok')||fs.textContent!=='Running…'){fs.classList.remove('ok');fs.textContent='Running…';}}
