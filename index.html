@@ -581,7 +581,7 @@
 <main>
   <div class="hero" id="top">
     <canvas class="wave" aria-hidden="true"></canvas>
-    <p class="cap now" aria-label="AI agent at work on your operations"><span aria-hidden="true">AI agent at work · <span class="task" id="task">Reserving stock for order 4821</span><i class="cur"></i></span></p>
+    <p class="cap now" aria-label="AI agent at work on your operations"><span aria-hidden="true">AI agent at work · <span class="task" id="task">Answering “Where is my order?”</span><i class="cur"></i></span></p>
     <h1>Stop losing money <span>doing steps</span> manually.</h1>
     <p class="sub">Operations that run themselves. We take the checking and remembering off your plate.</p>
     <div class="ctas"><a class="btn" href="#contact">Book a free 30-minute call <span class="ar" aria-hidden="true"></span></a><a class="link" href="#process">How we work <span aria-hidden="true">→</span></a></div>
@@ -924,7 +924,7 @@
   (function(){
     var still=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
     var el=document.getElementById('task');
-    var tasks=['Reserving stock for order 4821','Booking a courier','Sending tracking to the customer','Rebooking a cancelled installer','Scheduling a review request','Checking every flow ran today'];
+    var tasks=['Answering “Where is my order?”','Sending tracking to a customer','Updating stock across channels','Processing a return','Chasing a late delivery','Sending the order to the warehouse','Asking for a product review','Flagging a failed payment'];
     if(el&&!still){var i=0,c=tasks[0].length,del=true;
       (function tick(){var t=tasks[i];
         if(del){c--;el.textContent=t.slice(0,c);if(c<=0){del=false;i=(i+1)%tasks.length;}setTimeout(tick,c<=0?250:22);}
