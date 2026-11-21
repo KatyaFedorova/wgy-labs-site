@@ -40,7 +40,7 @@ We automate the day-to-day operations of e-commerce brands, cut the steps that a
 - Our standards: full handover (no lock-in), no human in the loop for routine work, AI only where it earns its place, built to be cheap to run (right-sized models, low token spend).
 
 ## Proof
-- **Easi Breezi** (air-filtering system for bike and helmet): the founder planned to hire for logistics and customer communication. We found their installation/how-to guide emails were failing silently; fixed them with alerts, automated installation booking with AI, connected factory/warehouse/logistics/customer updates, and removed unneeded steps. Result: no new hire, about 5 steps cut, the founder back on the product.
+- **Easi Breezi** (air-filtering system for bike and helmet): the founder planned to hire for logistics and customer communication. We found their installation/how-to guide emails were failing silently; fixed them with alerts, automated installation booking with AI, connected factory/warehouse/logistics/customer updates, and removed unneeded steps. Result: about $50k a year saved by automating what was done by hand, no new hire, about 5 steps cut, the founder back on the product.
 - Don't claim other clients or results. Don't say how many clients we have.
 
 ## The 30-minute call (fit call, not free consulting)
