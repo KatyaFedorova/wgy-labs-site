@@ -472,35 +472,65 @@
   .foot a:hover{color:var(--bone)}
   .legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:64px;padding-top:24px;border-top:1px solid var(--rule-d);color:#6E6E75}
 
-  .hz-wrap{margin-top:56px;border-top:1px solid var(--ink)}
-  .hz{padding:32px 0 36px;border-bottom:1px solid var(--rule)}
-  .hz-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:0 0 28px}
+  .hz-wrap{margin-top:48px}
+  .hz-goal{display:flex;align-items:baseline;gap:28px;padding:26px 32px;background:var(--light);border-top:2px solid var(--ink)}
+  .hz-goal .cap{color:var(--mute);white-space:nowrap}
+  .hz-goal p{margin:0;font-weight:400;font-size:clamp(22px,2.6vw,34px);line-height:1.15;letter-spacing:-.035em}
+  .hz{padding:44px 40px 40px;border:1px solid var(--rule);border-top:0}
+  .hz-fast{--ink:#F4F4F5;--mute:#A6A6AD;--soft:#75757C;--rule:rgba(244,244,245,.14);--paper:#0A0A0B;background:var(--night);color:var(--ink);border-color:var(--night)}
+  .hz-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin:0 0 40px}
+  .hz-head .cap{display:block;margin-bottom:10px}
   .hz-slow .hz-head .cap{color:var(--rose)}
-  .hz-fast .hz-head .cap{color:var(--ink)}
-  .hz-n{font-weight:300;font-size:15px;color:var(--mute);white-space:nowrap}
-  .hz-n b{font-weight:300;font-size:clamp(28px,3vw,40px);letter-spacing:-.04em;color:var(--ink);font-variant-numeric:tabular-nums;margin-right:6px}
-  .hz-slow .hz-n b{color:var(--rose)}
+  .hz-fast .hz-head .cap{color:var(--mute)}
+  .hz-head h3{margin:0;font-weight:300;font-size:clamp(28px,3.2vw,44px);letter-spacing:-.045em;line-height:1}
+  .hz-stats{display:flex;gap:40px;text-align:right}
+  .hz-stats div{display:flex;flex-direction:column;align-items:flex-end}
+  .hz-stats b{font-weight:300;font-size:clamp(40px,4.6vw,64px);letter-spacing:-.05em;line-height:.95;font-variant-numeric:tabular-nums}
+  .hz-stats span{margin-top:8px;font-family:"Geist Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+  .hz-slow .hz-stats b{color:var(--rose)}
   .hz-track{position:relative}
-  .hz-track::before,.hz-track>i{content:"";position:absolute;left:0;right:0;top:6px;height:2px;background:var(--rule)}
-  .hz-track>i{background:var(--ink);transform-origin:left;transform:scaleX(var(--p))}
+  .hz-track::before,.hz-track>i{content:"";position:absolute;left:10%;top:31px;height:3px;background:var(--rule)}
+  .hz-track::before{right:10%}
+  .hz-track>i{width:calc(var(--p) * 80%);background:var(--ink)}
   .hz-slow .hz-track>i{background:var(--rose)}
-  .hz-steps{position:relative;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px}
-  .hz-steps li{font-weight:300;font-size:15px;line-height:1.35;color:var(--soft);transition:color .3s}
-  .hz-steps .d{display:block;width:14px;height:14px;box-sizing:border-box;border-radius:50%;border:2px solid var(--rule);background:var(--paper);margin-bottom:16px;transition:background .3s,border-color .3s}
+  .hz-track>i::after{content:"";position:absolute;right:-7px;top:-5px;width:13px;height:13px;border-radius:50%;background:inherit;box-shadow:0 0 0 6px rgba(178,67,45,.18)}
+  .hz-fast .hz-track>i::after{box-shadow:0 0 0 6px rgba(244,244,245,.18)}
+  .hz-steps{position:relative;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
+  .hz-steps li{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 10px;color:var(--soft);transition:color .3s}
+  .hz-steps .d{position:relative;display:grid;place-items:center;width:64px;height:64px;box-sizing:border-box;border-radius:50%;border:2px solid var(--rule);background:var(--paper);color:var(--soft);transition:background .3s,border-color .3s,color .3s,transform .3s}
+  .hz-steps .d svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .hz-steps .t{margin-top:18px;font-weight:300;font-size:16px;line-height:1.3;max-width:18ch}
+  .hz-steps .a{margin-top:8px;font-family:"Geist Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
   .hz-steps li.on{color:var(--ink)}
-  .hz-fast li.on .d{background:var(--ink);border-color:var(--ink)}
-  .hz-slow li.on .d{background:var(--rose);border-color:var(--rose)}
-  .hz-foot{margin:24px 0 0;color:var(--soft)}
-  @media (max-width:640px){
-    .hz-steps{grid-template-columns:1fr;gap:14px;padding-left:30px}
-    .hz-steps .d{position:absolute;left:0;margin:3px 0 0}
-    .hz-steps li{position:relative;padding-left:0}
-    .hz-steps li .d{left:-30px}
-    .hz-track::before,.hz-track>i{left:6px;right:auto;top:0;bottom:0;width:2px;height:auto}
-    .hz-track>i{transform-origin:top;transform:scaleY(var(--p))}
-    .hz-head{flex-direction:column;gap:8px}
+  .hz-slow li.on .d{border-color:var(--rose);background:var(--rose);color:#fff}
+  .hz-fast li.on .d{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+  .hz-slow li.on .a{color:var(--rose)}
+  .hz-fast li.on .a{color:var(--ink)}
+  .hz-steps li.now .d{transform:scale(1.12)}
+  .hz-steps li.now .d::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:2px solid currentColor;animation:hzRing 1.2s ease-out infinite}
+  .hz-slow li.now .d::after{border-color:var(--rose)}
+  .hz-fast li.now .d::after{border-color:var(--ink)}
+  @keyframes hzRing{from{opacity:.8;transform:scale(1)}to{opacity:0;transform:scale(1.6)}}
+  .hz-foot{display:flex;align-items:center;gap:12px;margin:40px 0 0;padding-top:20px;border-top:1px dashed var(--rule);color:var(--mute)}
+  .hz-slow .hz-foot{color:var(--rose)}
+  .hz-foot .ar{font-size:18px;line-height:1}
+  @media (max-width:760px){
+    .hz{padding:32px 20px}
+    .hz-head{flex-direction:column;align-items:flex-start;margin-bottom:32px}
+    .hz-stats{text-align:left;gap:28px}.hz-stats div{align-items:flex-start}
+    .hz-steps{grid-template-columns:1fr;gap:22px}
+    .hz-steps li{display:grid;grid-template-columns:52px 1fr;column-gap:16px;align-items:center;text-align:left;padding:0}
+    .hz-steps .d{width:52px;height:52px;grid-row:1/3}
+    .hz-steps .d svg{width:22px;height:22px}
+    .hz-steps .t{margin:0;max-width:none;align-self:end}
+    .hz-steps .a{margin-top:4px;align-self:start}
+    .hz-track::before,.hz-track>i{left:25px;right:auto;top:26px;width:3px;height:auto}
+    .hz-track::before{bottom:26px}
+    .hz-track>i{width:3px;height:calc(var(--p) * (100% - 52px))}
+    .hz-track>i::after{right:-5px;top:auto;bottom:-7px}
+    .hz-goal{flex-direction:column;gap:8px;padding:20px}
   }
-  @media (prefers-reduced-motion:reduce){.hz-steps li,.hz-steps .d{transition:none}}
+  @media (prefers-reduced-motion:reduce){.hz-steps li,.hz-steps .d{transition:none}.hz-steps li.now .d::after{animation:none}}
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){.orb,.orbit .spin,.cur,.plate .live i,.plate .r .s.run::before{animation:none}.reveal{opacity:1;transform:none;transition:none}}
@@ -579,20 +609,18 @@
   <section id="before-after" class="light-sec">
     <div class="wrap">
       <p class="label cap"><span class="n">01</span><span>Before and after</span></p>
-      <div class="two reveal">
-        <h2>Same goal. <span>A very different week.</span></h2>
-        <p class="lede">Goal: find 10 new stores to sell your product.</p>
-      </div>
+      <h2 class="reveal">Same goal. <span>A very different week.</span></h2>
       <div class="hz-wrap reveal" id="hz">
+        <div class="hz-goal"><span class="cap">The goal</span><p>Find 10 new stores to sell your product.</p></div>
         <div class="hz hz-slow" style="--p:1">
-          <p class="hz-head"><span class="cap">Today · by hand</span><span class="hz-n"><b id="hz-sn">1</b> of 10 stores</span></p>
-          <div class="hz-track"><i></i><ol class="hz-steps" aria-label="By hand"><li class="on"><span class="d"></span><span class="t">Search for stores manually</span></li><li class="on"><span class="d"></span><span class="t">Copy the phone number manually</span></li><li class="on"><span class="d"></span><span class="t">Open WhatsApp on your phone</span></li><li class="on"><span class="d"></span><span class="t">Type and send the message manually</span></li><li class="on"><span class="d"></span><span class="t">Answer every reply manually</span></li></ol></div>
-          <p class="hz-foot cap">↻ Then the same again for the next store. And the next.</p>
+          <div class="hz-head"><div><span class="cap">Today</span><h3>By hand</h3></div><div class="hz-stats"><div><b id="hz-sn">1</b><span>of 10 stores</span></div><div><b id="hz-st">33</b><span>min of your time</span></div></div></div>
+          <div class="hz-track"><i></i><ol class="hz-steps" aria-label="By hand"><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></span><span class="t">Search for stores manually</span><span class="a">You · ~10 min</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="12" rx="1.5"/><path d="M5 15V5.5A1.5 1.5 0 0 1 6.5 4H15"/></svg></span><span class="t">Copy the phone number manually</span><span class="a">You · ~2 min</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 17.5h2"/></svg></span><span class="t">Open WhatsApp on your phone</span><span class="a">You · ~1 min</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3L10 14"/><path d="M21 3l-6.5 18-4.5-7-7-4.5z"/></svg></span><span class="t">Type and send the message manually</span><span class="a">You · ~5 min</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg></span><span class="t">Answer every reply manually</span><span class="a">You · ~15 min</span></li></ol></div>
+          <p class="hz-foot cap"><span class="ar" aria-hidden="true">↻</span>That was one store. Now repeat it 9 more times.</p>
         </div>
         <div class="hz hz-fast" style="--p:1">
-          <p class="hz-head"><span class="cap">With WGY Labs · runs on its own</span><span class="hz-n"><b id="hz-fn">10</b> of 10 stores</span></p>
-          <div class="hz-track"><i></i><ol class="hz-steps" aria-label="With WGY Labs"><li class="on"><span class="d"></span><span class="t">You press Start</span></li><li class="on"><span class="d"></span><span class="t">Stores found automatically</span></li><li class="on"><span class="d"></span><span class="t">WhatsApp messages sent automatically</span></li><li class="on"><span class="d"></span><span class="t">Replies handled, partners added to your table</span></li><li class="on"><span class="d"></span><span class="t">Product, tracking and documents sent</span></li></ol></div>
-          <p class="hz-foot cap">You press start once. Then you work on your product.</p>
+          <div class="hz-head"><div><span class="cap">With WGY Labs</span><h3>Runs on its own</h3></div><div class="hz-stats"><div><b id="hz-fn">10</b><span>of 10 stores</span></div><div><b>1</b><span>click from you</span></div></div></div>
+          <div class="hz-track"><i></i><ol class="hz-steps" aria-label="With WGY Labs"><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><span class="t">You press Start</span><span class="a">You · 1 click</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></span><span class="t">Stores found automatically</span><span class="a">Auto · seconds</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3L10 14"/><path d="M21 3l-6.5 18-4.5-7-7-4.5z"/></svg></span><span class="t">WhatsApp messages sent automatically</span><span class="a">Auto · seconds</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="14" rx="1.5"/><path d="M3.5 10h17M3.5 14.5h17M9.5 10v9"/></svg></span><span class="t">Replies handled, partners added to your table</span><span class="a">Auto · ongoing</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7.5L12 3l8.5 4.5v9L12 21l-8.5-4.5z"/><path d="M3.5 7.5L12 12l8.5-4.5M12 12v9"/></svg></span><span class="t">Product, tracking and documents sent</span><span class="a">Auto · same day</span></li></ol></div>
+          <p class="hz-foot cap"><span class="ar" aria-hidden="true">→</span>You press start once. Then you work on your product.</p>
         </div>
       </div>
       <p class="note cap">Illustrative example. Your numbers depend on your product and market.</p>
@@ -968,17 +996,18 @@
 (function(){
   var w=document.getElementById('hz'); if(!w) return;
   if(window.matchMedia('(prefers-reduced-motion:reduce)').matches||!('IntersectionObserver' in window)) return;
-  var slow=w.querySelector('.hz-slow'),fast=w.querySelector('.hz-fast'),sn=document.getElementById('hz-sn'),fn=document.getElementById('hz-fn');
-  var CYCLE=14000,FAST=3500,HOLD=2500,t0=0,raf=0,run=false,acc=0,last=0;
-  function set(row,p){row.style.setProperty('--p',p);var li=row.querySelectorAll('li');for(var i=0;i<li.length;i++)li[i].classList.toggle('on',p>=i/li.length-1e-6&&p>0);}
+  var slow=w.querySelector('.hz-slow'),fast=w.querySelector('.hz-fast'),sn=document.getElementById('hz-sn'),st=document.getElementById('hz-st'),fn=document.getElementById('hz-fn');
+  var CYCLE=15000,FAST=3500,HOLD=3000,raf=0,run=false,acc=0,last=0;
+  function set(row,p,done){row.style.setProperty('--p',p);var li=row.querySelectorAll('.hz-steps li'),n=li.length,cur=done?-1:Math.min(n-1,Math.floor(p*(n-1)+.5));
+    for(var i=0;i<n;i++){var reached=p>=i/(n-1)-1e-6;li[i].classList.toggle('on',reached);li[i].classList.toggle('now',i===cur&&reached);}}
   function draw(ms){
     var ps=Math.min(1,ms/CYCLE),pf=Math.min(1,ms/FAST);
-    set(slow,ps);set(fast,pf);
-    sn.textContent=ps>=1?1:0; fn.textContent=Math.round(10*pf);
+    set(slow,ps,ps>=1);set(fast,pf,pf>=1);
+    sn.textContent=ps>=1?1:0; st.textContent=Math.round(33*ps); fn.textContent=Math.round(10*pf);
   }
   function frame(now){if(!run)return;acc+=Math.min(64,now-last);last=now;if(acc>CYCLE+HOLD)acc=0;draw(acc);raf=requestAnimationFrame(frame);}
   draw(0);
-  new IntersectionObserver(function(es){var v=es[0].isIntersecting;if(v&&!run){run=true;last=performance.now();raf=requestAnimationFrame(frame);}else if(!v&&run){run=false;cancelAnimationFrame(raf);}},{threshold:.3}).observe(w);
+  new IntersectionObserver(function(es){var v=es[0].isIntersecting;if(v&&!run){run=true;last=performance.now();raf=requestAnimationFrame(frame);}else if(!v&&run){run=false;cancelAnimationFrame(raf);}},{threshold:.25}).observe(w);
 })();
 </script>
 </body>
