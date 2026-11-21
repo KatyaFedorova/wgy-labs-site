@@ -169,7 +169,7 @@
   .calc-hours{display:flex;align-items:baseline;gap:14px;margin-top:22px}
   .calc-hours output{display:inline-block;width:1.25em;font-weight:300;font-size:clamp(56px,6.4vw,88px);letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
   .calc-hours span{color:var(--mute);font-weight:300;font-size:17px}
-  .calc-out{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:24px;border-top:1px solid var(--rule)}
+  .calc-out{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:24px;border-top:1px solid var(--rule)}
   .calc-out div{padding:24px 20px 0 0}
   .calc-out div+div{padding-left:20px;border-left:1px solid var(--rule)}
   .calc-out strong{display:block;font-weight:300;font-size:clamp(34px,3.6vw,54px);letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap}
@@ -593,7 +593,6 @@
           <div class="calc-out" id="calc-out" aria-live="polite">
             <div><strong id="calc-y">500</strong><span>hours a year</span></div>
             <div><strong id="calc-c">$12,500</strong><span>a year in time, at $25 an hour</span></div>
-            <div><strong id="calc-f">¼</strong><span>of a full-time role</span></div>
           </div>
         </div>
       </div>
@@ -955,9 +954,8 @@
 <script>
   /* savings calculator */
   (function(){var r=document.getElementById('calc-h');if(!r)return;
-    var hv=document.getElementById('calc-hv'),y=document.getElementById('calc-y'),c=document.getElementById('calc-c'),f=document.getElementById('calc-f');
-    function frac(h){var q=h/40;if(q>=.95)return'1';if(q>=.7)return'¾';if(q>=.45)return'½';if(q>=.2)return'¼';return'<¼';}
-    function upd(){var h=+r.value,yr=h*50;hv.textContent=h;y.textContent=yr.toLocaleString('en-US');c.textContent='$'+(yr*25).toLocaleString('en-US');f.textContent=frac(h);}
+    var hv=document.getElementById('calc-hv'),y=document.getElementById('calc-y'),c=document.getElementById('calc-c');
+    function upd(){var h=+r.value,yr=h*50;hv.textContent=h;y.textContent=yr.toLocaleString('en-US');c.textContent='$'+(yr*25).toLocaleString('en-US');}
     r.addEventListener('input',upd);upd();})();
 </script>
 <script>
