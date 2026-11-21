@@ -487,7 +487,7 @@
   .hz-stats div{display:flex;flex-direction:column;align-items:flex-end}
   .hz-stats b{font-weight:300;font-size:clamp(40px,4.6vw,64px);letter-spacing:-.05em;line-height:.95;font-variant-numeric:tabular-nums}
   .hz-stats span{margin-top:8px;font-family:"Geist Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
-  .hz-slow .hz-stats b{color:var(--rose)}
+  .hz-slow .hz-stats b{color:var(--mute)}
   .hz-track{position:relative}
   .hz-track::before,.hz-track>i{content:"";position:absolute;left:10%;top:31px;height:3px;background:var(--rule)}
   .hz-track::before{right:10%}
@@ -502,7 +502,13 @@
   .hz-steps .t{margin-top:18px;font-weight:300;font-size:16px;line-height:1.3;max-width:18ch}
   .hz-steps .a{margin-top:8px;font-family:"Geist Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
   .hz-steps li.on{color:var(--ink)}
-  .hz-slow li.on .d{border-color:var(--rose);background:var(--rose);color:#fff}
+  .hz-slow li.on .d{border-color:rgba(178,67,45,.4);background:rgba(178,67,45,.08);color:var(--rose)}
+  .hz-slow .hz-steps li.on{color:var(--mute)}
+  .hz-status{display:inline-flex;align-items:center;vertical-align:middle;margin-left:14px;padding:6px 12px;border:1px solid var(--rule);border-radius:999px;font-family:"Geist Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);white-space:nowrap}
+  .hz-slow .hz-status{color:var(--rose);border-color:rgba(178,67,45,.3)}
+  .hz-fast .hz-status.ok{background:var(--ink);color:var(--paper);border-color:var(--ink);animation:hzPop .5s cubic-bezier(.2,1.6,.4,1)}
+  @keyframes hzPop{0%{transform:scale(.6);opacity:0}100%{transform:scale(1);opacity:1}}
+  @media (prefers-reduced-motion:reduce){.hz-status.ok{animation:none}}
   .hz-fast li.on .d{border-color:var(--ink);background:var(--ink);color:var(--paper)}
   .hz-slow li.on .a{color:var(--rose)}
   .hz-fast li.on .a{color:var(--ink)}
@@ -618,7 +624,7 @@
     <canvas class="wave" aria-hidden="true"></canvas>
     <p class="cap now" aria-label="AI agent at work on your operations"><span aria-hidden="true">AI agent at work · <span class="task" id="task">Answering “Where is my order?”</span><i class="cur"></i></span></p>
     <h1>Stop losing money <span>doing steps</span> manually.</h1>
-    <p class="sub">Operations that run themselves. We take the checking and remembering off your plate.</p>
+    <p class="sub">Operations that run themselves, without your input.</p>
     <div class="ctas"><a class="btn" href="#contact">Book a free 30-minute call <span class="ar" aria-hidden="true"></span></a><a class="link" href="#process">How we work <span aria-hidden="true">→</span></a></div>
     <span class="scroll" aria-hidden="true"></span>
   </div>
@@ -648,17 +654,16 @@
       <div class="hz-wrap reveal" id="hz">
         <div class="hz-goal"><span class="cap">The goal</span><p>Find 10 new stores to sell your product.</p></div>
         <div class="hz hz-slow" style="--p:1">
-          <div class="hz-head"><div><span class="cap">Today</span><h3>By hand</h3></div><div class="hz-stats"><div><b id="hz-sn">1</b><span>of 10 stores</span></div><div><b id="hz-st">33</b><span>min of your time</span></div></div></div>
-          <div class="hz-track"><i></i><ol class="hz-steps" aria-label="By hand"><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></span><span class="t">Search for stores manually</span><span class="a">You · ~10 min</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="12" rx="1.5"/><path d="M5 15V5.5A1.5 1.5 0 0 1 6.5 4H15"/></svg></span><span class="t">Copy the phone number manually</span><span class="a">You · ~2 min</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 17.5h2"/></svg></span><span class="t">Open WhatsApp on your phone</span><span class="a">You · ~1 min</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3L10 14"/><path d="M21 3l-6.5 18-4.5-7-7-4.5z"/></svg></span><span class="t">Type and send the message manually</span><span class="a">You · ~5 min</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg></span><span class="t">Answer every reply manually</span><span class="a">You · ~15 min</span></li></ol></div>
+          <div class="hz-head"><div><span class="cap">Today</span><h3>By hand <span class="hz-status" id="hz-ss">1 done, 9 to go</span></h3></div><div class="hz-stats"><div><b id="hz-sn">1</b><span>of 10 stores</span></div><div><b id="hz-st">33</b><span>min of your time</span></div></div></div>
+          <div class="hz-track"><i></i><ol class="hz-steps" aria-label="By hand"><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></span><span class="t">Search for stores manually</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="12" rx="1.5"/><path d="M5 15V5.5A1.5 1.5 0 0 1 6.5 4H15"/></svg></span><span class="t">Copy the phone number manually</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 17.5h2"/></svg></span><span class="t">Open WhatsApp on your phone</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3L10 14"/><path d="M21 3l-6.5 18-4.5-7-7-4.5z"/></svg></span><span class="t">Type and send the message manually</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg></span><span class="t">Answer every reply manually</span></li></ol></div>
           <p class="hz-foot cap"><span class="ar" aria-hidden="true">↻</span>That was one store. Now repeat it 9 more times.</p>
         </div>
         <div class="hz hz-fast" style="--p:1">
-          <div class="hz-head"><div><span class="cap">With WGY Labs</span><h3>Runs on its own</h3></div><div class="hz-stats"><div><b id="hz-fn">10</b><span>of 10 stores</span></div><div><b>1</b><span>click from you</span></div></div></div>
-          <div class="hz-track"><i></i><ol class="hz-steps" aria-label="With WGY Labs"><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><span class="t">You press Start</span><span class="a">You · 1 click</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></span><span class="t">Stores found automatically</span><span class="a">Auto · seconds</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3L10 14"/><path d="M21 3l-6.5 18-4.5-7-7-4.5z"/></svg></span><span class="t">WhatsApp messages sent automatically</span><span class="a">Auto · seconds</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="14" rx="1.5"/><path d="M3.5 10h17M3.5 14.5h17M9.5 10v9"/></svg></span><span class="t">Replies handled, partners added to your table</span><span class="a">Auto · ongoing</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7.5L12 3l8.5 4.5v9L12 21l-8.5-4.5z"/><path d="M3.5 7.5L12 12l8.5-4.5M12 12v9"/></svg></span><span class="t">Product, tracking and documents sent</span><span class="a">Auto · same day</span></li></ol></div>
+          <div class="hz-head"><div><span class="cap">With WGY Labs</span><h3>Runs on its own <span class="hz-status ok" id="hz-fs">✓ Done</span></h3></div><div class="hz-stats"><div><b id="hz-fn">10</b><span>of 10 stores</span></div><div><b>1</b><span>click from you</span></div></div></div>
+          <div class="hz-track"><i></i><ol class="hz-steps" aria-label="With WGY Labs"><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span><span class="t">You press Start</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></span><span class="t">Stores found automatically</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3L10 14"/><path d="M21 3l-6.5 18-4.5-7-7-4.5z"/></svg></span><span class="t">WhatsApp messages sent automatically</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="14" rx="1.5"/><path d="M3.5 10h17M3.5 14.5h17M9.5 10v9"/></svg></span><span class="t">Replies handled, partners added to your table</span></li><li class="on"><span class="d"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7.5L12 3l8.5 4.5v9L12 21l-8.5-4.5z"/><path d="M3.5 7.5L12 12l8.5-4.5M12 12v9"/></svg></span><span class="t">Product, tracking and documents sent</span></li></ol></div>
           <p class="hz-foot cap"><span class="ar" aria-hidden="true">→</span>You press start once. Then you work on your product.</p>
         </div>
       </div>
-      <p class="note cap">Illustrative example. Your numbers depend on your product and market.</p>
     </div>
   </section>
 
@@ -1039,6 +1044,9 @@
     var ps=Math.min(1,ms/CYCLE),pf=Math.min(1,ms/FAST);
     set(slow,ps,ps>=1);set(fast,pf,pf>=1);
     sn.textContent=ps>=1?1:0; st.textContent=Math.round(33*ps); fn.textContent=Math.round(10*pf);
+    var ss=document.getElementById('hz-ss'),fs=document.getElementById('hz-fs');
+    ss.textContent=ps>=1?'1 done, 9 to go':'Still going…';
+    if(pf>=1){if(!fs.classList.contains('ok')){fs.classList.add('ok');fs.textContent='✓ Done';}}else if(fs.classList.contains('ok')||fs.textContent!=='Running…'){fs.classList.remove('ok');fs.textContent='Running…';}
   }
   function frame(now){if(!run)return;acc+=Math.min(64,now-last);last=now;if(acc>CYCLE+HOLD)acc=0;draw(acc);raf=requestAnimationFrame(frame);}
   draw(0);
