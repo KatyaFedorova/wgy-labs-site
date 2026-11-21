@@ -470,61 +470,35 @@
   .foot a:hover{color:var(--bone)}
   .legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:64px;padding-top:24px;border-top:1px solid var(--rule-d);color:#6E6E75}
 
-  .ba{margin-top:56px;border-top:1px solid var(--ink)}
-  .ba-week{position:relative;display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--rule)}
-  .ba-week span{padding:14px 0 12px;font-family:"Geist Mono",monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);transition:color .3s}
-  .ba-week span.on{color:var(--ink)}
-  .ba-week i{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--ink);transform-origin:left;transform:scaleX(1)}
-  .ba-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
-  .ba-col{padding:36px 40px 8px 0;min-width:0}
-  .ba-col+.ba-col{padding:36px 0 8px 40px;border-left:1px solid var(--rule)}
-  .ba-h{margin:0 0 18px;color:var(--ink)}
-  .ba-before .ba-h{color:var(--rose)}
-  .ba-goal{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:78px;box-sizing:border-box;padding:14px 18px;border:1px solid var(--rule);margin-bottom:24px}
-  .ba-goal .cap{display:block;color:var(--soft);margin-bottom:4px}
-  .ba-goal b{font-weight:400;font-size:16px;letter-spacing:-.01em}
-  .ba-who{color:var(--soft);white-space:nowrap;margin:0!important}
-  .ba-go{display:inline-flex;align-items:center;gap:8px;flex:none;padding:10px 14px;border:1px solid var(--ink);font-family:"Geist Mono",monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;transition:background .2s,color .2s,transform .15s}
-  .ba-go.press{transform:scale(.92);background:var(--ink);color:var(--paper)}
-  .ba-go.on,.ba-go.fin{background:var(--ink);color:var(--paper)}
-  .ba-go.on::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;animation:baPulse 1s ease-out infinite}
-  @keyframes baPulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.5)}100%{box-shadow:0 0 0 7px rgba(255,255,255,0)}}
-  .ba-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
-  .ba-list li{position:relative;display:grid;grid-template-columns:30px 1fr auto;gap:12px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--rule);font-weight:300;font-size:15px;color:var(--soft);transition:color .25s}
-  .ba-list .n{font-size:11px;color:var(--soft)}
-  .ba-list .s{font-family:"Geist Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;text-align:right;min-width:9ch;font-variant-numeric:tabular-nums}
-  .ba-steps li.on{color:var(--ink)}
-  .ba-steps li.on .s::before{content:"Doing"}
-  .ba-steps li.hit{color:var(--rose)}
-  .ba-steps li.hit .s::before{content:"Interrupted"}
-  .ba-flow li{color:var(--ink)}
-  .ba-flow li::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--ink);transform-origin:left;transform:scaleX(var(--p,1))}
-  .ba-flow li.ok .s::after{content:" ✓"}
-  .ba.run .ba-flow li:not(.on):not(.ok){color:var(--soft)}
-  .ba-loop{margin:12px 0 24px;color:var(--soft)}
-  .ba-loop b{font-weight:400;color:var(--ink)}
-  .ba-panel{display:flex;flex-direction:column;height:236px;border:1px solid var(--rule);overflow:hidden}
-  .ba-ph{display:flex;justify-content:space-between;gap:12px;margin:0;padding:12px 16px;border-bottom:1px solid var(--rule);color:var(--soft)}
-  .ba-ph b{font-weight:400;color:var(--ink)}
-  .ba-feed,.ba-rows{list-style:none;margin:0;padding:0 16px;flex:1;overflow:hidden;-webkit-mask-image:linear-gradient(#000 65%,transparent);mask-image:linear-gradient(#000 65%,transparent)}
-  .ba-feed li,.ba-rows li{display:flex;align-items:baseline;gap:12px;padding:10px 0;border-bottom:1px solid var(--rule);font-size:14px;font-weight:300;animation:baIn .45s cubic-bezier(.2,.7,.2,1)}
-  .ba-feed li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--rose);align-self:center}
-  .ba-feed b,.ba-rows .st{font-family:"Geist Mono",monospace;font-weight:400;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
-  .ba-feed b{color:var(--rose);min-width:11ch}
-  .ba-rows li{justify-content:space-between}
-  .ba-rows .st{color:var(--soft)}.ba-rows .st.s{color:var(--mute)}.ba-rows .st.d{color:var(--ink)}
-  @keyframes baIn{from{opacity:0;transform:translateY(-10px)}}
-  .ba-stats{display:grid;grid-template-columns:repeat(3,1fr);margin:24px 0 0;border-top:1px solid var(--ink)}
-  .ba-stats div{padding:14px 12px 0 0}
-  .ba-stats dt{color:var(--soft)}
-  .ba-stats dd{margin:8px 0 0;font-weight:300;font-size:clamp(24px,2.4vw,34px);letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
-  .ba-before dd.bad{color:var(--rose)}
-  .ba-end{margin:24px 0 0;font-size:18px;font-weight:300;letter-spacing:-.02em;line-height:1.4;transition:opacity .6s}
-  .ba-end span{color:var(--soft)}
-  .ba.run .ba-end{opacity:0}.ba.run.done .ba-end{opacity:1}
-  @media (max-width:860px){.ba-grid{grid-template-columns:1fr}.ba-col,.ba-col+.ba-col{padding:28px 0}.ba-col+.ba-col{border-left:0;border-top:1px solid var(--ink)}}
-  @media (max-width:480px){.ba-goal{flex-direction:column;align-items:flex-start}.ba-list li{grid-template-columns:24px 1fr auto;font-size:14px}.ba-feed b{min-width:0}}
-  @media (prefers-reduced-motion:reduce){.ba-feed li,.ba-rows li{animation:none}.ba-go.on::before{animation:none}}
+  .hz-wrap{margin-top:56px;border-top:1px solid var(--ink)}
+  .hz{padding:32px 0 36px;border-bottom:1px solid var(--rule)}
+  .hz-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:0 0 28px}
+  .hz-slow .hz-head .cap{color:var(--rose)}
+  .hz-fast .hz-head .cap{color:var(--ink)}
+  .hz-n{font-weight:300;font-size:15px;color:var(--mute);white-space:nowrap}
+  .hz-n b{font-weight:300;font-size:clamp(28px,3vw,40px);letter-spacing:-.04em;color:var(--ink);font-variant-numeric:tabular-nums;margin-right:6px}
+  .hz-slow .hz-n b{color:var(--rose)}
+  .hz-track{position:relative}
+  .hz-track::before,.hz-track>i{content:"";position:absolute;left:0;right:0;top:6px;height:2px;background:var(--rule)}
+  .hz-track>i{background:var(--ink);transform-origin:left;transform:scaleX(var(--p))}
+  .hz-slow .hz-track>i{background:var(--rose)}
+  .hz-steps{position:relative;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px}
+  .hz-steps li{font-weight:300;font-size:15px;line-height:1.35;color:var(--soft);transition:color .3s}
+  .hz-steps .d{display:block;width:14px;height:14px;box-sizing:border-box;border-radius:50%;border:2px solid var(--rule);background:var(--paper);margin-bottom:16px;transition:background .3s,border-color .3s}
+  .hz-steps li.on{color:var(--ink)}
+  .hz-fast li.on .d{background:var(--ink);border-color:var(--ink)}
+  .hz-slow li.on .d{background:var(--rose);border-color:var(--rose)}
+  .hz-foot{margin:24px 0 0;color:var(--soft)}
+  @media (max-width:640px){
+    .hz-steps{grid-template-columns:1fr;gap:14px;padding-left:30px}
+    .hz-steps .d{position:absolute;left:0;margin:3px 0 0}
+    .hz-steps li{position:relative;padding-left:0}
+    .hz-steps li .d{left:-30px}
+    .hz-track::before,.hz-track>i{left:6px;right:auto;top:0;bottom:0;width:2px;height:auto}
+    .hz-track>i{transform-origin:top;transform:scaleY(var(--p))}
+    .hz-head{flex-direction:column;gap:8px}
+  }
+  @media (prefers-reduced-motion:reduce){.hz-steps li,.hz-steps .d{transition:none}}
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){.orb,.orbit .spin,.cur,.plate .live i,.plate .r .s.run::before{animation:none}.reveal{opacity:1;transform:none;transition:none}}
@@ -605,32 +579,21 @@
       <p class="label cap"><span class="n">01</span><span>Before and after</span></p>
       <div class="two reveal">
         <h2>Same goal. <span>A very different week.</span></h2>
-        <p class="lede">Say you want 10 new stores to sell your product. Here’s that week done by hand, and the same week when the work runs on its own.</p>
+        <p class="lede">Goal: find 10 new stores to sell your product.</p>
       </div>
-      <div class="ba reveal" id="ba">
-        <div class="ba-week" aria-hidden="true"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><i></i></div>
-        <div class="ba-grid">
-          <div class="ba-col ba-before">
-            <p class="cap ba-h">Before · by hand</p>
-            <div class="ba-goal"><div><span class="cap">Your goal</span><b>Find 10 new stores to sell my product</b></div><span class="ba-who cap">You do every step</span></div>
-            <ol class="ba-list ba-steps" aria-label="What you do by hand"><li><span class="n cap">01</span><span>Search for stores near you</span><span class="s"></span></li><li><span class="n cap">02</span><span>Copy each phone number</span><span class="s"></span></li><li><span class="n cap">03</span><span>Paste it into WhatsApp</span><span class="s"></span></li><li><span class="n cap">04</span><span>Type “Hi, this is my product…”</span><span class="s"></span></li><li><span class="n cap">05</span><span>Answer replies one by one</span><span class="s"></span></li><li><span class="n cap">06</span><span>Chase the ones who went quiet</span><span class="s"></span></li></ol>
-            <p class="ba-loop cap" aria-hidden="true">↻ Repeat for every store · <b id="ba-bm">12</b> messaged</p>
-            <div class="ba-panel" aria-hidden="true"><p class="cap ba-ph"><span>Your phone</span><span><b id="ba-bi">14</b> interruptions</span></p><ul class="ba-feed" id="ba-feed"><li><b>WhatsApp</b><span>Is there a minimum order?</span></li><li><b>WhatsApp</b><span>Call me back</span></li><li><b>WhatsApp</b><span>What’s the margin?</span></li><li><b>WhatsApp</b><span>Maybe next month</span></li></ul></div>
-            <dl class="ba-stats" aria-hidden="true"><div><dt class="cap">Your hours</dt><dd class="bad" id="ba-bh">26 h</dd></div><div><dt class="cap">New partners</dt><dd id="ba-bp">1</dd></div><div><dt class="cap">On your product</dt><dd class="bad" id="ba-bw">0 h</dd></div></dl>
-            <p class="ba-end">End of the week: one new partner. <span>Nothing new built.</span></p>
-          </div>
-          <div class="ba-col ba-after">
-            <p class="cap ba-h">With WGY Labs · runs on its own</p>
-            <div class="ba-goal"><div><span class="cap">Your goal</span><b>Find 10 new stores to sell my product</b></div><span class="ba-go fin" id="ba-go" aria-hidden="true">Done</span></div>
-            <ol class="ba-list ba-flow" aria-label="What runs on its own"><li><span class="n cap">01</span><span>Find stores that fit</span><span class="s c">32</span></li><li><span class="n cap">02</span><span>Message each one</span><span class="s c">32</span></li><li><span class="n cap">03</span><span>Handle the replies</span><span class="s c">18</span></li><li><span class="n cap">04</span><span>Add partners to your table</span><span class="s c">10</span></li><li><span class="n cap">05</span><span>Send them the product</span><span class="s c">10</span></li><li><span class="n cap">06</span><span>Send tracking and documents</span><span class="s c">10</span></li></ol>
-            <p class="ba-loop cap" aria-hidden="true">You press start · then you just watch</p>
-            <div class="ba-panel" aria-hidden="true"><p class="cap ba-ph"><span>Your partner table</span><span><b id="ba-ap2">10</b> partners</span></p><ul class="ba-rows" id="ba-rows"><li><span>The Bike Room</span><span class="st d">Delivered · docs sent</span></li><li><span>Hill &amp; Trail</span><span class="st d">Delivered · docs sent</span></li><li><span>Coastline Outfitters</span><span class="st d">Delivered · docs sent</span></li><li><span>Metro Wheels</span><span class="st d">Delivered · docs sent</span></li><li><span>Southbank Sports</span><span class="st d">Delivered · docs sent</span></li></ul></div>
-            <dl class="ba-stats" aria-hidden="true"><div><dt class="cap">Your hours</dt><dd id="ba-ah">5 min</dd></div><div><dt class="cap">New partners</dt><dd id="ba-ap">10</dd></div><div><dt class="cap">On your product</dt><dd id="ba-aw">38 h</dd></div></dl>
-            <p class="ba-end">End of the week: 10 partners, product delivered. <span>You watched it run.</span></p>
-          </div>
+      <div class="hz-wrap reveal" id="hz">
+        <div class="hz hz-slow" style="--p:1">
+          <p class="hz-head"><span class="cap">Today · by hand</span><span class="hz-n"><b id="hz-sn">1</b> of 10 stores</span></p>
+          <div class="hz-track"><i></i><ol class="hz-steps" aria-label="By hand"><li class="on"><span class="d"></span><span class="t">Search for stores manually</span></li><li class="on"><span class="d"></span><span class="t">Copy the phone number manually</span></li><li class="on"><span class="d"></span><span class="t">Open WhatsApp on your phone</span></li><li class="on"><span class="d"></span><span class="t">Type and send the message manually</span></li><li class="on"><span class="d"></span><span class="t">Answer every reply manually</span></li></ol></div>
+          <p class="hz-foot cap">↻ Then the same again for the next store. And the next.</p>
+        </div>
+        <div class="hz hz-fast" style="--p:1">
+          <p class="hz-head"><span class="cap">With WGY Labs · runs on its own</span><span class="hz-n"><b id="hz-fn">10</b> of 10 stores</span></p>
+          <div class="hz-track"><i></i><ol class="hz-steps" aria-label="With WGY Labs"><li class="on"><span class="d"></span><span class="t">You press Start</span></li><li class="on"><span class="d"></span><span class="t">Stores found automatically</span></li><li class="on"><span class="d"></span><span class="t">WhatsApp messages sent automatically</span></li><li class="on"><span class="d"></span><span class="t">Replies handled, partners added to your table</span></li><li class="on"><span class="d"></span><span class="t">Product, tracking and documents sent</span></li></ol></div>
+          <p class="hz-foot cap">You press start once. Then you work on your product.</p>
         </div>
       </div>
-      <p class="note cap">Illustrative example of a typical week. Your numbers depend on your product and market.</p>
+      <p class="note cap">Illustrative example. Your numbers depend on your product and market.</p>
     </div>
   </section>
 
@@ -1001,47 +964,19 @@
 </script>
 <script>
 (function(){
-  var ba=document.getElementById('ba'); if(!ba) return;
+  var w=document.getElementById('hz'); if(!w) return;
   if(window.matchMedia('(prefers-reduced-motion:reduce)').matches||!('IntersectionObserver' in window)) return;
-  function $(id){return document.getElementById(id);}
-  var days=ba.querySelectorAll('.ba-week span'),bar=ba.querySelector('.ba-week i');
-  var steps=ba.querySelectorAll('.ba-steps li'),flow=ba.querySelectorAll('.ba-flow li');
-  var feed=$('ba-feed'),rows=$('ba-rows'),go=$('ba-go');
-  var WEEK=16000,HOLD=4500;
-  var PINGS=[["WhatsApp","Hi, what’s the price?"],["WhatsApp","Can you send photos?"],["Missed call","Unknown number"],["WhatsApp","Who is this?"],["Email","Supplier has a question"],["WhatsApp","Send me the catalogue"],["WhatsApp","Not interested, thanks"],["Missed call","Store owner"],["Email","Customer: where’s my order?"],["WhatsApp","Can we talk tomorrow?"],["WhatsApp","Maybe next month"],["WhatsApp","What’s the margin?"],["WhatsApp","Call me back"],["WhatsApp","Is there a minimum order?"]];
-  var STORES=["Northside Bikes","Harbour Outdoor","Ride Lab","Urban Gear Co.","Peak Cycles","Southbank Sports","Metro Wheels","Coastline Outfitters","Hill & Trail","The Bike Room"];
-  var STAGES=[[32,.03,.30],[32,.08,.48],[18,.18,.66],[10,.24,.72],[10,.34,.86],[10,.44,.96]];
-  var elapsed,last=0,raf=0,running=false,pi,shown,stepAt,step,hitUntil,rowEls;
-  function cl(x){return x<0?0:x>1?1:x;}
-  function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
-  function trim(list,n){while(list.children.length>n)list.removeChild(list.lastChild);}
-  function reset(){elapsed=0;pi=0;shown=0;step=0;stepAt=0;hitUntil=-1;rowEls=[];feed.textContent='';rows.textContent='';ba.classList.remove('done');ba.classList.add('run');go.className='ba-go';go.textContent='Start';render(0);}
-  function render(ms){
-    var t=cl(ms/WEEK),d=Math.min(4,Math.floor(t*5)),i;
-    for(i=0;i<days.length;i++)days[i].classList.toggle('on',i<=d);
-    bar.style.transform='scaleX('+t+')';
-    /* before: by hand */
-    var pn=Math.floor(t*PINGS.length);
-    while(pi<pn&&pi<PINGS.length){var li=el('li');li.appendChild(el('b',null,PINGS[pi][0]));li.appendChild(el('span',null,PINGS[pi][1]));feed.insertBefore(li,feed.firstChild);trim(feed,5);pi++;hitUntil=ms+1000;}
-    var hit=ms<hitUntil&&t<1;
-    if(!hit&&ms-stepAt>650){step=(step+1)%6;stepAt=ms;}
-    for(i=0;i<steps.length;i++){steps[i].classList.toggle('on',t<1&&i===step);steps[i].classList.toggle('hit',hit&&i===step);}
-    $('ba-bm').textContent=Math.floor(12*t);$('ba-bi').textContent=pi;
-    $('ba-bh').textContent=Math.round(26*t)+' h';$('ba-bp').textContent=t>=.82?'1':'0';
-    /* after: runs on its own */
-    if(t>=1){go.className='ba-go fin';go.textContent='Done';}
-    else if(ms>WEEK*.03){go.className='ba-go on';go.textContent='Running';}
-    else if(ms>WEEK*.012){go.className='ba-go press';}
-    var v=[];
-    for(i=0;i<STAGES.length;i++){var S=STAGES[i],p=cl((t-S[1])/(S[2]-S[1]));v[i]=Math.round(S[0]*p);flow[i].style.setProperty('--p',p);flow[i].classList.toggle('on',p>0&&p<1);flow[i].classList.toggle('ok',p>=1);flow[i].querySelector('.c').textContent=v[i];}
-    while(shown<v[3]){var r=el('li');r.appendChild(el('span',null,STORES[shown]));r.appendChild(el('span','st y','Said yes'));rows.insertBefore(r,rows.firstChild);rowEls.push(r);trim(rows,6);shown++;}
-    for(i=0;i<rowEls.length;i++){var st=rowEls[i].lastChild,k=v[5]>i?'d':v[4]>i?'s':'y';if(st.className!=='st '+k){st.className='st '+k;st.textContent=k==='d'?'Delivered · docs sent':k==='s'?'Product sent':'Said yes';}}
-    $('ba-ah').textContent=ms>WEEK*.03?'5 min':'0 min';$('ba-ap').textContent=v[3];$('ba-ap2').textContent=v[3];$('ba-aw').textContent=Math.round(38*t)+' h';
-    ba.classList.toggle('done',t>=1);
+  var slow=w.querySelector('.hz-slow'),fast=w.querySelector('.hz-fast'),sn=document.getElementById('hz-sn'),fn=document.getElementById('hz-fn');
+  var CYCLE=14000,FAST=3500,HOLD=2500,t0=0,raf=0,run=false,acc=0,last=0;
+  function set(row,p){row.style.setProperty('--p',p);var li=row.querySelectorAll('li');for(var i=0;i<li.length;i++)li[i].classList.toggle('on',p>=i/li.length-1e-6&&p>0);}
+  function draw(ms){
+    var ps=Math.min(1,ms/CYCLE),pf=Math.min(1,ms/FAST);
+    set(slow,ps);set(fast,pf);
+    sn.textContent=ps>=1?1:0; fn.textContent=Math.round(10*pf);
   }
-  function frame(now){if(!running)return;elapsed+=Math.min(64,now-last);last=now;if(elapsed>WEEK+HOLD)reset();render(Math.min(elapsed,WEEK));raf=requestAnimationFrame(frame);}
-  reset();
-  new IntersectionObserver(function(es){var vis=es[0].isIntersecting;if(vis&&!running){running=true;last=performance.now();raf=requestAnimationFrame(frame);}else if(!vis&&running){running=false;cancelAnimationFrame(raf);}},{threshold:.2}).observe(ba);
+  function frame(now){if(!run)return;acc+=Math.min(64,now-last);last=now;if(acc>CYCLE+HOLD)acc=0;draw(acc);raf=requestAnimationFrame(frame);}
+  draw(0);
+  new IntersectionObserver(function(es){var v=es[0].isIntersecting;if(v&&!run){run=true;last=performance.now();raf=requestAnimationFrame(frame);}else if(!v&&run){run=false;cancelAnimationFrame(raf);}},{threshold:.3}).observe(w);
 })();
 </script>
 </body>
