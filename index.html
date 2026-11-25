@@ -620,6 +620,17 @@
   .wf-cta .cap{color:var(--mute)}
   @media (max-width:900px){.wf-grid{grid-template-columns:1fr}.wf,.wf+.wf{padding:28px 0;border-left:0}.wf+.wf{border-top:1px solid var(--rule)}.wf>p{min-height:0}}
   @media (prefers-reduced-motion:reduce){.wf-steps li,.wf-steps .d{transition:none}}
+  .offer{padding:48px 0;background:var(--light);border-bottom:1px solid var(--rule)}
+  .offer-h{margin:0 0 20px;color:var(--mute)}
+  .offer-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--ink)}
+  .offer-list li{display:flex;flex-direction:column;padding:24px 32px 0 0}
+  .offer-list li+li{padding-left:32px;border-left:1px solid var(--rule)}
+  .offer-list .cap{color:var(--soft)}
+  .offer-list h3{margin:10px 0 8px;font-weight:400;font-size:clamp(19px,1.8vw,23px);letter-spacing:-.03em;line-height:1.2}
+  .offer-list p{margin:0 0 16px;font-weight:300;font-size:15px;color:var(--mute)}
+  .offer-list b{margin-top:auto;font-family:"Geist Mono",monospace;font-weight:400;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+  @media (max-width:900px){.offer-list{grid-template-columns:1fr}.offer-list li,.offer-list li+li{padding:22px 0;border-left:0}.offer-list li+li{border-top:1px solid var(--rule)}}
+  .offer+.light-sec{border-top:0}
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){.orb,.orbit .spin,.cur,.plate .live i,.plate .r .s.run::before{animation:none}.reveal{opacity:1;transform:none;transition:none}}
@@ -672,10 +683,21 @@
     <canvas class="wave" aria-hidden="true"></canvas>
     <p class="cap now" aria-label="AI agent at work on your operations"><span aria-hidden="true">AI agent at work · <span class="task" id="task">Answering “Where is my order?”</span><i class="cur"></i></span></p>
     <h1>Operational infrastructure <span>that connects the tools you already use.</span></h1>
-    <p class="sub">So your operations run without your input.</p>
+    <p class="sub">We set up AI that does your daily operations work, like customer messages, orders, returns and bookings, and we keep it running. So your operations run without your input.</p>
     <div class="ctas"><a class="btn" href="#contact">Book a free 30-minute call <span class="ar" aria-hidden="true"></span></a><a class="link" href="#process">How we work <span aria-hidden="true">→</span></a></div>
     <span class="scroll" aria-hidden="true"></span>
   </div>
+
+  <section id="offer" class="offer" aria-label="What we offer">
+    <div class="wrap">
+      <p class="cap offer-h">What you get</p>
+      <ol class="offer-list">
+        <li><span class="cap">01 · Audit</span><h3>We find the work that eats your week</h3><p>One week with your team. You get a ranked plan of what to automate, what to cut and what to leave.</p><b>$750, credited to the build</b></li>
+        <li><span class="cap">02 · Build</span><h3>We build AI and automations in your tools</h3><p>Shopify, your helpdesk, WhatsApp, email, your warehouse. Nothing new for your team to learn.</p><b>From $2,500 per flow</b></li>
+        <li><span class="cap">03 · Keep it running</span><h3>We check it every day and fix it</h3><p>Alerts when something stops, fixes when apps change, a monthly report. You only hear from us when it matters.</p><b>From $750 a month</b></li>
+      </ol>
+    </div>
+  </section>
 
   <section id="before-after" class="light-sec">
     <div class="wrap">
