@@ -602,6 +602,24 @@
     #before-after .hz-fast .hz-steps .t{font-size:16px;margin-top:12px}
   }
   @media (prefers-reduced-motion:reduce){.hz-steps li,.hz-steps .d{transition:none}.hz-steps li.now .d::after{animation:none}}
+  .wf-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:48px;border-top:2px solid var(--ink)}
+  .wf{padding:28px 32px 28px 0;display:flex;flex-direction:column}
+  .wf+.wf{padding-left:32px;border-left:1px solid var(--rule)}
+  .wf-n{color:var(--soft)}
+  .wf h3{margin:12px 0 8px;font-weight:400;font-size:clamp(20px,1.9vw,24px);letter-spacing:-.03em;line-height:1.2}
+  .wf>p{margin:0 0 22px;font-weight:300;font-size:15px;color:var(--mute);min-height:3em}
+  .wf-steps{position:relative;list-style:none;margin:0 0 20px;padding:0}
+  .wf-steps::before{content:"";position:absolute;left:8px;top:12px;bottom:12px;width:2px;background:var(--rule)}
+  .wf-steps li{position:relative;display:flex;align-items:center;gap:14px;padding:8px 0;font-size:15px;color:var(--soft);transition:color .3s}
+  .wf-steps .d{position:relative;z-index:1;flex:none;width:18px;height:18px;box-sizing:border-box;border-radius:50%;border:2px solid var(--rule);background:var(--paper);transition:background .3s,border-color .3s,transform .3s}
+  .wf-steps li.on{color:var(--ink)}
+  .wf-steps li.on .d{background:var(--ink);border-color:var(--ink)}
+  .wf-steps li.now .d{transform:scale(1.25);box-shadow:0 0 0 5px rgba(17,17,19,.1)}
+  .wf-tag{margin-top:auto;color:var(--mute)}
+  .wf-cta{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:40px}
+  .wf-cta .cap{color:var(--mute)}
+  @media (max-width:900px){.wf-grid{grid-template-columns:1fr}.wf,.wf+.wf{padding:28px 0;border-left:0}.wf+.wf{border-top:1px solid var(--rule)}.wf>p{min-height:0}}
+  @media (prefers-reduced-motion:reduce){.wf-steps li,.wf-steps .d{transition:none}}
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){.orb,.orbit .spin,.cur,.plate .live i,.plate .r .s.run::before{animation:none}.reveal{opacity:1;transform:none;transition:none}}
@@ -679,9 +697,25 @@
     </div>
   </section>
 
+  <section id="first" class="light-sec">
+    <div class="wrap">
+      <p class="label cap"><span class="n">01</span><span>What we automate first</span></p>
+      <div class="two reveal">
+        <h2>Three things most brands <span>hand over first.</span></h2>
+        <p class="lede">The audit decides what’s worth automating for you. These are the ones we see most often.</p>
+      </div>
+      <div class="wf-grid reveal" id="wf">
+        <article class="wf"><span class="cap wf-n">01</span><h3>“Where is my order?” messages</h3><p>Most support messages ask where an order is. Someone still looks each one up.</p><ol class="wf-steps"><li class="on"><span class="d" aria-hidden="true"></span>Customer asks where their order is</li><li class="on"><span class="d" aria-hidden="true"></span>Order and tracking found in Shopify</li><li class="on"><span class="d" aria-hidden="true"></span>Reply sent with live tracking</li><li class="on"><span class="d" aria-hidden="true"></span>Anything unusual goes to your team</li></ol><span class="cap wf-tag">Runs on its own · checked daily</span></article>
+        <article class="wf"><span class="cap wf-n">02</span><h3>Returns and exchanges</h3><p>Every return means emails, labels and refunds, all by hand.</p><ol class="wf-steps"><li class="on"><span class="d" aria-hidden="true"></span>Customer asks to return an item</li><li class="on"><span class="d" aria-hidden="true"></span>Checked against your return policy</li><li class="on"><span class="d" aria-hidden="true"></span>Return label sent automatically</li><li class="on"><span class="d" aria-hidden="true"></span>Refund or exchange once it’s back</li></ol><span class="cap wf-tag">Runs on its own · checked daily</span></article>
+        <article class="wf"><span class="cap wf-n">03</span><h3>Orders and stock</h3><p>Orders and stock levels copied between apps, and mistakes found late.</p><ol class="wf-steps"><li class="on"><span class="d" aria-hidden="true"></span>New order comes into Shopify</li><li class="on"><span class="d" aria-hidden="true"></span>Sent to your warehouse or 3PL</li><li class="on"><span class="d" aria-hidden="true"></span>Stock updated on every channel</li><li class="on"><span class="d" aria-hidden="true"></span>Alert if stock runs low or a sync fails</li></ol><span class="cap wf-tag">Runs on its own · checked daily</span></article>
+      </div>
+      <div class="wf-cta reveal"><a class="btn dark" href="#contact">Book a free 30-minute call <span class="ar" aria-hidden="true"></span></a><span class="cap">Leave with the 3 workflows worth automating first</span></div>
+    </div>
+  </section>
+
   <section id="numbers" class="light-sec numbers">
     <div class="wrap">
-      <p class="label cap"><span class="n">01</span><span>What the checking costs you</span></p>
+      <p class="label cap"><span class="n">02</span><span>What the checking costs you</span></p>
       <div class="calc-grid reveal">
         <div class="calc">
           <label for="calc-h" class="calc-q">Hours a week your team spends on manual work?</label>
@@ -699,7 +733,7 @@
 
   <section id="compare" class="light-sec">
     <div class="wrap">
-      <p class="label cap"><span class="n">02</span><span>Your options</span></p>
+      <p class="label cap"><span class="n">03</span><span>Your options</span></p>
       <div class="two reveal">
         <h2>Hire someone, use an agency, <span>or hand it to us.</span></h2>
         <p class="lede">Three ways to take the checking off your plate, and what each one really involves.</p>
@@ -733,7 +767,7 @@
 
   <section id="process" class="light-sec">
     <div class="wrap">
-      <p class="label cap"><span class="n">03</span><span>How we work</span></p>
+      <p class="label cap"><span class="n">04</span><span>How we work</span></p>
       <div class="two reveal">
         <h2>From first look <span>to looked after.</span></h2>
         <p class="lede">We only build what the audit shows is worth building. Everything lives in your accounts and is documented, so you’re never locked in.</p>
@@ -764,7 +798,7 @@
 
   <section id="pricing" class="light-sec">
     <div class="wrap">
-      <p class="label cap"><span class="n">04</span><span>Pricing</span></p>
+      <p class="label cap"><span class="n">05</span><span>Pricing</span></p>
       <div class="two reveal">
         <h2>Published pricing. <span>No surprise hours.</span></h2>
         <p class="lede">Fixed prices. Already running automations or an AI agent? Start with a health check.</p>
@@ -800,7 +834,7 @@
   <section id="about" class="dark-sec">
     <div class="wrap about">
       <div class="reveal">
-        <p class="label cap"><span class="n">05</span><span>About</span></p>
+        <p class="label cap"><span class="n">06</span><span>About</span></p>
         <h2>Reliability first, <span>not hype.</span></h2>
         <p class="body">We started WGY Labs to fix the part of AI automation most providers skip: making sure it keeps working, and stays safe, long after launch.</p>
         <p class="body">We work with Shopify and other e-commerce brands worldwide.</p>
@@ -817,7 +851,7 @@
 
   <section id="faq" class="light-sec">
     <div class="wrap">
-      <p class="label cap"><span class="n">06</span><span>Questions</span></p>
+      <p class="label cap"><span class="n">07</span><span>Questions</span></p>
       <h2 class="reveal">Questions brands ask us.</h2>
       <div class="faq reveal">
         <details><summary>We already have automations. Why does it still feel like we’re doing everything?</summary><p>Because most setups automate the steps but not the watching. Someone still has to notice when a flow stops, remember the edge cases and fix things when apps change. We take over that part too, so the work actually leaves your plate.</p></details>
@@ -1049,6 +1083,17 @@
   function frame(now){if(!run)return;acc+=Math.min(64,now-last);last=now;if(acc>CYCLE+HOLD)acc=0;draw(acc);raf=requestAnimationFrame(frame);}
   draw(0);
   new IntersectionObserver(function(es){var v=es[0].isIntersecting;if(v&&!run){run=true;last=performance.now();raf=requestAnimationFrame(frame);}else if(!v&&run){run=false;cancelAnimationFrame(raf);}},{threshold:.25}).observe(w);
+})();
+</script>
+<script>
+(function(){
+  var g=document.getElementById('wf'); if(!g) return;
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches||!('IntersectionObserver' in window)) return;
+  var lists=[].slice.call(g.querySelectorAll('.wf-steps')),tick=0,timer=0;
+  function draw(){lists.forEach(function(ol,k){var li=ol.children,n=li.length,pos=(tick-k*2)%(n+4);
+    for(var i=0;i<n;i++){li[i].classList.toggle('on',pos>=0&&i<=pos);li[i].classList.toggle('now',pos>=0&&i===pos);}});tick++;}
+  draw();
+  new IntersectionObserver(function(es){if(es[0].isIntersecting){if(!timer)timer=setInterval(draw,650);}else{clearInterval(timer);timer=0;}},{threshold:.2}).observe(g);
 })();
 </script>
 </body>
