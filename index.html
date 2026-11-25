@@ -630,6 +630,7 @@
   .offer-list b{font-family:"Geist Mono",monospace;font-weight:400;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
   @media (max-width:900px){.offer-list{grid-template-columns:1fr;gap:22px}}
   .get-strip+.light-sec{border-top:0}
+  .get-link{margin-top:24px;color:var(--ink)}
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){.orb,.orbit .spin,.cur,.plate .live i,.plate .r .s.run::before{animation:none}.reveal{opacity:1;transform:none;transition:none}}
@@ -691,10 +692,11 @@
     <div class="wrap">
       <p class="cap offer-h">What you get</p>
       <ol class="offer-list">
-        <li><span class="n">1</span><div><span class="cap">Audit</span><h3>We find what eats your week</h3><b>$750, credited to the build</b></div></li>
-        <li><span class="n">2</span><div><span class="cap">Build</span><h3>We build AI in your tools</h3><b>From $2,500 per flow</b></div></li>
-        <li><span class="n">3</span><div><span class="cap">Run</span><h3>We check it daily and fix it</h3><b>From $750 a month</b></div></li>
+        <li><span class="n">1</span><div><span class="cap">Audit</span><h3>We find what eats your week</h3><b>Takes 1 week</b></div></li>
+        <li><span class="n">2</span><div><span class="cap">Build</span><h3>We build AI in your tools</h3><b>First flow live in 1 week</b></div></li>
+        <li><span class="n">3</span><div><span class="cap">Run</span><h3>We check it daily and fix it</h3><b>Fixes included</b></div></li>
       </ol>
+      <a class="link get-link" href="#pricing">See published pricing <span aria-hidden="true">→</span></a>
     </div>
   </section>
 
